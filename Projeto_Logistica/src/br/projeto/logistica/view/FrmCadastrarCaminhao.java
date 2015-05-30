@@ -50,7 +50,7 @@ public class FrmCadastrarCaminhao extends JFrame {
 	 * Create the frame.
 	 */
 	public FrmCadastrarCaminhao() {
-		setTitle("Cadastro Caminh\u00F5es");
+		setTitle("Cadastro Caminhão"); //alterei para caminhão, pois o cadastro, embora seja de inumeros caminhões, naquele momento é de apenas 1 caminhão.
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 518, 378);
 		contentPane = new JPanel();
