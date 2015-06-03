@@ -9,8 +9,14 @@ import javax.swing.JCheckBox;
 import javax.swing.JButton;
 import javax.swing.JSpinner;
 import java.awt.Font;
+import java.awt.Label;
+import java.awt.Button;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.ImageIcon;
+import java.awt.Toolkit;
 
-public class FrmProduto {
+public class FrmCadastrarProduto {
 
 	private JFrame frame;
 	private JTextField txtNomeEmp;
@@ -28,7 +34,7 @@ public class FrmProduto {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					FrmProduto window = new FrmProduto();
+					FrmCadastrarProduto window = new FrmCadastrarProduto();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -40,7 +46,7 @@ public class FrmProduto {
 	/**
 	 * Create the application.
 	 */
-	public FrmProduto() {
+	public FrmCadastrarProduto() {
 		initialize();
 	}
 
@@ -49,6 +55,7 @@ public class FrmProduto {
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		frame.setIconImage(Toolkit.getDefaultToolkit().getImage(FrmCadastrarProduto.class.getResource("/javax/swing/plaf/basic/icons/JavaCup16.png")));
 		frame.setBounds(100, 100, 634, 471);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
@@ -79,14 +86,9 @@ public class FrmProduto {
 		frame.getContentPane().add(lblCodigoEmpresa);
 		
 		txtCodigoEmp = new JTextField();
-		txtCodigoEmp.setBounds(401, 8, 155, 20);
+		txtCodigoEmp.setBounds(401, 8, 133, 20);
 		frame.getContentPane().add(txtCodigoEmp);
 		txtCodigoEmp.setColumns(10);
-		
-		JButton btnProcurar = new JButton("");
-		btnProcurar.setSelectedIcon(null);
-		btnProcurar.setBounds(566, 8, 36, 20);
-		frame.getContentPane().add(btnProcurar);
 		
 		JLabel lblCodigoProduto = new JLabel("Codigo Produto :");
 		lblCodigoProduto.setBounds(10, 56, 97, 14);
@@ -126,6 +128,7 @@ public class FrmProduto {
 		textField_6.setColumns(10);
 		
 		JButton btnSalvar = new JButton("Salvar");
+		btnSalvar.setIcon(new ImageIcon(FrmCadastrarProduto.class.getResource("/br/projeto/logistica/icon/1432771715_file_add.png")));
 		btnSalvar.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnSalvar.setBounds(69, 347, 109, 35);
 		frame.getContentPane().add(btnSalvar);
@@ -134,5 +137,10 @@ public class FrmProduto {
 		btnVoltar.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnVoltar.setBounds(447, 347, 109, 35);
 		frame.getContentPane().add(btnVoltar);
+		
+		JButton btnNewButton = new JButton("\r\n");
+		btnNewButton.setIcon(new ImageIcon(FrmCadastrarProduto.class.getResource("/br/projeto/logistica/icon/1432771351_Search.png")));
+		btnNewButton.setBounds(544, 7, 53, 23);
+		frame.getContentPane().add(btnNewButton);
 	}
 }
