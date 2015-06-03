@@ -68,31 +68,39 @@ public class FrmCadastrarProduto {
 		lblDescricao.setBounds(10, 106, 63, 14);
 		frame.getContentPane().add(lblDescricao);
 		
-		JCheckBox chckbxFragil = new JCheckBox("Fr\u00E1gil");
-		chckbxFragil.setBounds(353, 77, 97, 23);
-		frame.getContentPane().add(chckbxFragil);
+		JLabel lblPeso = new JLabel("Peso :");
+		lblPeso.setBounds(10, 260, 46, 14);
+		frame.getContentPane().add(lblPeso);
 		
 		JLabel lblNomeDaEmpresa = new JLabel("Nome da Empresa :");
 		lblNomeDaEmpresa.setBounds(10, 11, 105, 14);
 		frame.getContentPane().add(lblNomeDaEmpresa);
+		
+		JLabel lblCodigoEmpresa = new JLabel("Codigo Empresa :");
+		lblCodigoEmpresa.setBounds(315, 11, 97, 14);
+		frame.getContentPane().add(lblCodigoEmpresa);
+		
+		JLabel lblTamanho = new JLabel("Tamanho :");
+		lblTamanho.setBounds(10, 285, 63, 14);
+		frame.getContentPane().add(lblTamanho);
+		
+		JLabel lblCodigoProduto = new JLabel("Codigo Produto :");
+		lblCodigoProduto.setBounds(10, 56, 97, 14);
+		frame.getContentPane().add(lblCodigoProduto);
+		
+		JCheckBox chckbxFragil = new JCheckBox("Fr\u00E1gil");
+		chckbxFragil.setBounds(353, 77, 97, 23);
+		frame.getContentPane().add(chckbxFragil);
 		
 		txtNomeEmp = new JTextField();
 		txtNomeEmp.setBounds(106, 8, 194, 20);
 		frame.getContentPane().add(txtNomeEmp);
 		txtNomeEmp.setColumns(10);
 		
-		JLabel lblCodigoEmpresa = new JLabel("Codigo Empresa :");
-		lblCodigoEmpresa.setBounds(315, 11, 97, 14);
-		frame.getContentPane().add(lblCodigoEmpresa);
-		
 		txtCodigoEmp = new JTextField();
 		txtCodigoEmp.setBounds(401, 8, 133, 20);
 		frame.getContentPane().add(txtCodigoEmp);
 		txtCodigoEmp.setColumns(10);
-		
-		JLabel lblCodigoProduto = new JLabel("Codigo Produto :");
-		lblCodigoProduto.setBounds(10, 56, 97, 14);
-		frame.getContentPane().add(lblCodigoProduto);
 		
 		txtCodigoProduto = new JTextField();
 		txtCodigoProduto.setBounds(106, 53, 86, 20);
@@ -109,18 +117,10 @@ public class FrmCadastrarProduto {
 		frame.getContentPane().add(txtDescrição);
 		txtDescrição.setColumns(10);
 		
-		JLabel lblPeso = new JLabel("Peso :");
-		lblPeso.setBounds(10, 260, 46, 14);
-		frame.getContentPane().add(lblPeso);
-		
 		textField_5 = new JTextField();
 		textField_5.setBounds(69, 257, 97, 20);
 		frame.getContentPane().add(textField_5);
 		textField_5.setColumns(10);
-		
-		JLabel lblTamanho = new JLabel("Tamanho :");
-		lblTamanho.setBounds(10, 285, 63, 14);
-		frame.getContentPane().add(lblTamanho);
 		
 		textField_6 = new JTextField();
 		textField_6.setBounds(69, 282, 97, 20);
@@ -138,9 +138,9 @@ public class FrmCadastrarProduto {
 		btnVoltar.setBounds(447, 347, 109, 35);
 		frame.getContentPane().add(btnVoltar);
 		
-		JButton btnNewButton = new JButton("\r\n");
-		btnNewButton.setIcon(new ImageIcon(FrmCadastrarProduto.class.getResource("/br/projeto/logistica/icon/1432771351_Search.png")));
-		btnNewButton.setBounds(544, 7, 53, 23);
-		frame.getContentPane().add(btnNewButton);
+		JButton btnBuscar = new JButton("\r\n");
+		btnBuscar.setIcon(new ImageIcon(FrmCadastrarProduto.class.getResource("/br/projeto/logistica/icon/1432771351_Search.png")));
+		btnBuscar.setBounds(544, 7, 53, 23);
+		frame.getContentPane().add(btnBuscar);
 	}
 }
