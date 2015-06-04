@@ -147,7 +147,7 @@ public class FrmCadastrarCaminhao {
 		txtCategoria.setColumns(10);
 		
 		btnSalvar = new JButton("  Salvar");
-		btnSalvar.setIcon(new ImageIcon(FrmCadastrarCaminhao.class.getResource("/img/img-disquete.png")));
+		//btnSalvar.setIcon(new ImageIcon(FrmCadastrarCaminhao.class.getResource("/img/img-disquete.png")));
 		btnSalvar.setBounds(351, 340, 109, 29);
 		frame.getContentPane().add(btnSalvar);
 		
@@ -157,12 +157,12 @@ public class FrmCadastrarCaminhao {
 				frame.dispose();
 			}
 		});
-		btnCancelar.setIcon(new ImageIcon(FrmCadastrarCaminhao.class.getResource("/img/img-cancela.png")));
+		//btnCancelar.setIcon(new ImageIcon(FrmCadastrarCaminhao.class.getResource("/img/img-cancela.png")));
 		btnCancelar.setBounds(10, 340, 120, 29);
 		frame.getContentPane().add(btnCancelar);
 		
 		btnNovo = new JButton("  Novo ");
-		btnNovo.setIcon(new ImageIcon(FrmCadastrarCaminhao.class.getResource("/img/img-novo.png")));
+		//btnNovo.setIcon(new ImageIcon(FrmCadastrarCaminhao.class.getResource("/img/img-novo.png")));
 		btnNovo.setBounds(212, 340, 120, 29);
 		frame.getContentPane().add(btnNovo);
 		

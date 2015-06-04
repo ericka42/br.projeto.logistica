@@ -38,6 +38,8 @@ public class FrmCadastrarMotorista extends JFrame {
 	private JTextField txtCep;
 	private JTextField txtFone;
 	private JTextField txtDescricao;
+	private JTextField txtTipo;
+	private JTextField txtOperadora;
 
 	/**
 	 * Launch the application.
@@ -169,11 +171,6 @@ public class FrmCadastrarMotorista extends JFrame {
 		lblTipo.setBounds(10, 21, 53, 14);
 		pContato.add(lblTipo);
 		
-		JComboBox cbTipo = new JComboBox();
-		cbTipo.setModel(new DefaultComboBoxModel(new String[] {"celular", "residencial", "recado", "radio"}));
-		cbTipo.setBounds(45, 20, 88, 17);
-		pContato.add(cbTipo);
-		
 		txtFone = new JTextField();
 		txtFone.setBounds(215, 18, 127, 20);
 		pContato.add(txtFone);
@@ -187,19 +184,24 @@ public class FrmCadastrarMotorista extends JFrame {
 		lblOperadora.setBounds(378, 21, 78, 14);
 		pContato.add(lblOperadora);
 		
-		JComboBox<ContatoMotorista> cbOperadora = new JComboBox<ContatoMotorista> ();
-		cbOperadora.setModel(new DefaultComboBoxModel<ContatoMotorista> ());
-		cbOperadora.setBounds(445, 18, 78, 20);
-		pContato.add(cbOperadora);
-		
 		JLabel lblDescricao = new JLabel("Descri\u00E7\u00E3o :");
 		lblDescricao.setBounds(10, 50, 78, 14);
 		pContato.add(lblDescricao);
 		
 		txtDescricao = new JTextField();
-		txtDescricao.setBounds(96, 47, 246, 20);
+		txtDescricao.setBounds(96, 47, 433, 20);
 		pContato.add(txtDescricao);
 		txtDescricao.setColumns(10);
+		
+		txtTipo = new JTextField();
+		txtTipo.setBounds(41, 18, 86, 20);
+		pContato.add(txtTipo);
+		txtTipo.setColumns(10);
+		
+		txtOperadora = new JTextField();
+		txtOperadora.setBounds(444, 18, 86, 20);
+		pContato.add(txtOperadora);
+		txtOperadora.setColumns(10);
 		
 		JButton btnCancelar = new JButton("Cancelar");
 		btnCancelar.addActionListener(new ActionListener() {

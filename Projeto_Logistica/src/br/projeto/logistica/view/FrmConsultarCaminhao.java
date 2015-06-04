@@ -152,27 +152,27 @@ public class FrmConsultarCaminhao {
 				frame.dispose();
 			}
 		});
-		btnCancelar.setIcon(new ImageIcon(FrmConsultarCaminhao.class.getResource("/img/img-cancela.png")));
+		//btnCancelar.setIcon(new ImageIcon(FrmConsultarCaminhao.class.getResource("/img/img-cancela.png")));
 		btnCancelar.setBounds(10, 284, 120, 29);
 		frame.getContentPane().add(btnCancelar);
 		
 		btnAlterar = new JButton("Alterar");
-		btnAlterar.setIcon(new ImageIcon(FrmConsultarCaminhao.class.getResource("/img/img-alterar.png")));
+		//btnAlterar.setIcon(new ImageIcon(FrmConsultarCaminhao.class.getResource("/img/img-alterar.png")));
 		btnAlterar.setBounds(467, 284, 120, 29);
 		frame.getContentPane().add(btnAlterar);
 		
 		btnNovaConsulta = new JButton("Nova Consulta");
-		btnNovaConsulta.setIcon(new ImageIcon(FrmConsultarCaminhao.class.getResource("/img/img-novaC.png")));
+		//btnNovaConsulta.setIcon(new ImageIcon(FrmConsultarCaminhao.class.getResource("/img/img-novaC.png")));
 		btnNovaConsulta.setBounds(307, 284, 129, 29);
 		frame.getContentPane().add(btnNovaConsulta);
 		
 		btnPesquisar = new JButton("");
-		btnPesquisar.setIcon(new ImageIcon(FrmConsultarCaminhao.class.getResource("/img/img-pesquisa.png")));
+		//btnPesquisar.setIcon(new ImageIcon(FrmConsultarCaminhao.class.getResource("/img/img-pesquisa.png")));
 		btnPesquisar.setBounds(173, 9, 46, 29);
 		frame.getContentPane().add(btnPesquisar);
 		
 		btnExcluir = new JButton("Excluir");
-		btnExcluir.setIcon(new ImageIcon(FrmConsultarCaminhao.class.getResource("/img/img-excluir.png")));
+		//btnExcluir.setIcon(new ImageIcon(FrmConsultarCaminhao.class.getResource("/img/img-excluir.png")));
 		btnExcluir.setBounds(153, 284, 129, 29);
 		frame.getContentPane().add(btnExcluir);
 

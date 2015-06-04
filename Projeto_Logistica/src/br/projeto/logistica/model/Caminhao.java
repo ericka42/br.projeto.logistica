@@ -10,15 +10,8 @@ public class Caminhao {
 	private String marca;
 	private int anoModelo;
 	private int eixo;
-	private String estado;
 	private String cor;
 	
-	public String getCor() {
-		return cor;
-	}
-	public void setCor(String cor) {
-		this.cor = cor;
-	}
 	public String getPlaca() {
 		return placa;
 	}
@@ -67,11 +60,11 @@ public class Caminhao {
 	public void setEixo(int eixo) {
 		this.eixo = eixo;
 	}
-	public String getEstado() {
-		return estado;
+	public String getCor() {
+		return cor;
 	}
-	public void setEstado(String estado) {
-		this.estado = estado;
+	public void setCor(String cor) {
+		this.cor = cor;
 	}
 	
 }
