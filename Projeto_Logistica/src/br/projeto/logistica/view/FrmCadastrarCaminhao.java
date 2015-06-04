@@ -1,44 +1,42 @@
 package br.projeto.logistica.view;
 
+import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.text.ParseException;
 
-import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
 import br.projeto.logistica.controller.CaminhaoController;
 
-public class FrmCadastrarCaminhao extends JFrame {
+public class FrmCadastrarCaminhao {
 
-	private static final long serialVersionUID = 1L;
-	
-	private JPanel contentPane;
-	private JTextField txtMarca;
+	private JFrame frame;
 	private JTextField txtModelo;
 	private JTextField txtAnoModelo;
-	private JTextField txtRenavam;
+	private JTextField txtMarca;
 	private JTextField txtPlaca;
 	private JTextField txtChassi;
-	private JTextField txtCategoria;
-	private JTextField txtEixo;
-	private JRadioButton rdbtnNovo;
-	private JRadioButton rdbtnSemiNovo;
 	private JTextField txtCor;
+	private JTextField txtEixo;
+	private JTextField txtRenavam;
+	private JButton btnSalvar;
+	private JButton btnCancelar;
+	private JButton btnNovo;
+	private JTextField txtCategoria;
 
-	/**
-	 * Launch the application.
-	 */
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					FrmCadastrarCaminhao frame = new FrmCadastrarCaminhao();
-					frame.setVisible(true);
+					FrmCadastrarCaminhao window = new FrmCadastrarCaminhao();
+					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -46,89 +44,68 @@ public class FrmCadastrarCaminhao extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
 	public FrmCadastrarCaminhao() {
-		setTitle("Cadastro Caminh\u00F5es");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 518, 378);
-		contentPane = new JPanel();
-		contentPane.setToolTipText("");
-		setContentPane(contentPane);
-		contentPane.setLayout(null);
+		initialize();
+	}
+
+	private void initialize() {
+		frame = new JFrame("Cadastro Caminhão");
+		frame.setAutoRequestFocus(false);
+		frame.getContentPane().setBackground(new Color(255, 255, 204));
+		frame.setBounds(100, 100, 486, 421);
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
 		
-		JLabel lblMarca = new JLabel("Marca :");
-		lblMarca.setBounds(10, 27, 59, 14);
-		contentPane.add(lblMarca);
+		JLabel lblModelo = new JLabel("Modelo : ");
+		lblModelo.setBounds(10, 26, 52, 14);
+		frame.getContentPane().add(lblModelo);
 		
-		JLabel lblModelo = new JLabel("Modelo :");
-		lblModelo.setBounds(261, 27, 53, 14);
-		contentPane.add(lblModelo);
+		JLabel lblAno = new JLabel("Ano : ");
+		lblAno.setBounds(303, 26, 34, 14);
+		frame.getContentPane().add(lblAno);
 		
-		JLabel lblAnoModelo = new JLabel("Ano Modelo :");
-		lblAnoModelo.setBounds(10, 75, 79, 14);
-		contentPane.add(lblAnoModelo);
+		JLabel lblMarca = new JLabel("Marca : ");
+		lblMarca.setBounds(10, 79, 46, 14);
+		frame.getContentPane().add(lblMarca);
+		
+		JLabel lblPlaca = new JLabel("Placa : ");
+		lblPlaca.setBounds(248, 76, 46, 14);
+		frame.getContentPane().add(lblPlaca);
 		
 		JLabel lblRenavam = new JLabel("Renavam :");
-		lblRenavam.setBounds(189, 75, 69, 14);
-		contentPane.add(lblRenavam);
+		lblRenavam.setBounds(10, 170, 66, 14);
+		frame.getContentPane().add(lblRenavam);
 		
-		JLabel lblPlaca = new JLabel("Placa :");
-		lblPlaca.setBounds(10, 130, 46, 14);
-		contentPane.add(lblPlaca);
-		
-		JLabel lblChassi = new JLabel("Chassi :");
-		lblChassi.setBounds(204, 130, 53, 14);
-		contentPane.add(lblChassi);
-		
-		JLabel lblCategoria = new JLabel("Categoria :");
-		lblCategoria.setBounds(10, 183, 69, 14);
-		contentPane.add(lblCategoria);
-		
-		JLabel lblQuantidadeDeEixo = new JLabel("Quantidade de Eixo :");
-		lblQuantidadeDeEixo.setBounds(235, 183, 115, 14);
-		contentPane.add(lblQuantidadeDeEixo);
-		
-		JLabel lblEstado = new JLabel("Estado :");
-		lblEstado.setBounds(10, 223, 46, 14);
-		contentPane.add(lblEstado);
+		JLabel lblChassi = new JLabel("Chassi : ");
+		lblChassi.setBounds(10, 221, 52, 14);
+		frame.getContentPane().add(lblChassi);
 		
 		JLabel lblCor = new JLabel("Cor :");
-		lblCor.setBounds(283, 223, 46, 14);
-		contentPane.add(lblCor);
+		lblCor.setBounds(10, 266, 34, 14);
+		frame.getContentPane().add(lblCor);
 		
-		rdbtnNovo = new JRadioButton("Novo");
-		rdbtnNovo.setBounds(53, 244, 69, 23);
-		contentPane.add(rdbtnNovo);
+		JLabel lblQtdEixo = new JLabel("Qtd. Eixo :");
+		lblQtdEixo.setBounds(228, 266, 66, 14);
+		frame.getContentPane().add(lblQtdEixo);
 		
-		rdbtnSemiNovo = new JRadioButton("Semi - Novo");
-		rdbtnSemiNovo.setBounds(136, 244, 93, 23);
-		contentPane.add(rdbtnSemiNovo);
-		
-		ButtonGroup bg = new ButtonGroup();
-		bg.add(rdbtnNovo);
-		bg.add(rdbtnSemiNovo);
-		
-		txtMarca = new JTextField();
-		txtMarca.setBounds(67, 24, 162, 20);
-		contentPane.add(txtMarca);
-		txtMarca.setColumns(10);
+		JLabel lblCategoria = new JLabel("Categoria :");
+		lblCategoria.setBounds(10, 129, 66, 14);
+		frame.getContentPane().add(lblCategoria);
 		
 		txtModelo = new JTextField();
-		txtModelo.setBounds(324, 24, 135, 20);
-		contentPane.add(txtModelo);
+		txtModelo.setBounds(72, 23, 195, 20);
+		frame.getContentPane().add(txtModelo);
 		txtModelo.setColumns(10);
 		
 		txtAnoModelo = new JTextField();
-		txtAnoModelo.setBounds(88, 72, 69, 20);
-		contentPane.add(txtAnoModelo);
+		txtAnoModelo.setBounds(342, 23, 86, 20);
+		frame.getContentPane().add(txtAnoModelo);
 		txtAnoModelo.setColumns(10);
 		
-		txtRenavam = new JTextField();
-		txtRenavam.setBounds(260, 72, 162, 20);
-		contentPane.add(txtRenavam);
-		txtRenavam.setColumns(10);
+		txtMarca = new JTextField();
+		txtMarca.setBounds(54, 76, 146, 20);
+		frame.getContentPane().add(txtMarca);
+		txtMarca.setColumns(10);
 		
 		txtPlaca = new JTextField();
 		javax.swing.text.MaskFormatter placa;
@@ -136,47 +113,62 @@ public class FrmCadastrarCaminhao extends JFrame {
 			placa = new javax.swing.text.MaskFormatter("???-####");
 			txtPlaca = new javax.swing.JFormattedTextField(placa);
 		} catch (ParseException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		txtPlaca.setBounds(60, 127, 122, 20);
-		contentPane.add(txtPlaca);
+		txtPlaca.setBounds(291, 73, 96, 20);
+		frame.getContentPane().add(txtPlaca);
 		txtPlaca.setColumns(10);
 		
+		txtRenavam = new JTextField();
+		txtRenavam.setBounds(86, 167, 168, 20);
+		frame.getContentPane().add(txtRenavam);
+		txtRenavam.setColumns(10);
+		
 		txtChassi = new JTextField();
-		txtChassi.setBounds(258, 127, 211, 20);
-		contentPane.add(txtChassi);
+		txtChassi.setBounds(66, 218, 201, 20);
+		frame.getContentPane().add(txtChassi);
 		txtChassi.setColumns(10);
 		
-		txtCategoria = new JTextField();
-		txtCategoria.setBounds(79, 180, 135, 20);
-		contentPane.add(txtCategoria);
-		txtCategoria.setColumns(10);
-		
-		txtEixo = new JTextField();
-		txtEixo.setBounds(353, 180, 69, 20);
-		contentPane.add(txtEixo);
-		txtEixo.setColumns(10);
-		
 		txtCor = new JTextField();
-		txtCor.setBounds(324, 220, 115, 20);
-		contentPane.add(txtCor);
+		txtCor.setBounds(54, 263, 104, 20);
+		frame.getContentPane().add(txtCor);
 		txtCor.setColumns(10);
 		
-		JButton btnSalvar = new JButton("Salvar");
-		btnSalvar.setBounds(369, 306, 89, 23);
-		contentPane.add(btnSalvar);
+		txtEixo = new JTextField();
+		txtEixo.setText("");
+		txtEixo.setBounds(291, 263, 66, 20);
+		frame.getContentPane().add(txtEixo);
+		txtEixo.setColumns(10);
 		
-		JButton btnNovo = new JButton("Novo");
-		btnNovo.setBounds(261, 306, 89, 23);
-		contentPane.add(btnNovo);
+		txtCategoria = new JTextField();
+		txtCategoria.setBounds(72, 126, 161, 20);
+		frame.getContentPane().add(txtCategoria);
+		txtCategoria.setColumns(10);
 		
-		JButton btnCancelar = new JButton("Cancelar");
-		btnCancelar.setBounds(10, 306, 89, 23);
-		contentPane.add(btnCancelar);
+		btnSalvar = new JButton("  Salvar");
+		btnSalvar.setIcon(new ImageIcon(FrmCadastrarCaminhao.class.getResource("/img/img-disquete.png")));
+		btnSalvar.setBounds(351, 340, 109, 29);
+		frame.getContentPane().add(btnSalvar);
 		
-		CaminhaoController cController = new CaminhaoController(txtMarca, txtModelo, txtAnoModelo, txtRenavam, txtPlaca, txtChassi, txtCategoria, txtEixo, txtAnoModelo, rdbtnNovo, rdbtnSemiNovo);
-		btnSalvar.addActionListener(cController);
-		btnNovo.addActionListener(cController);
-		btnCancelar.addActionListener(cController);
+		btnCancelar = new JButton("  Cancelar");
+		btnCancelar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
+			}
+		});
+		btnCancelar.setIcon(new ImageIcon(FrmCadastrarCaminhao.class.getResource("/img/img-cancela.png")));
+		btnCancelar.setBounds(10, 340, 120, 29);
+		frame.getContentPane().add(btnCancelar);
+		
+		btnNovo = new JButton("  Novo ");
+		btnNovo.setIcon(new ImageIcon(FrmCadastrarCaminhao.class.getResource("/img/img-novo.png")));
+		btnNovo.setBounds(212, 340, 120, 29);
+		frame.getContentPane().add(btnNovo);
+		
+		CaminhaoController cc = new CaminhaoController(txtModelo, txtAnoModelo, txtMarca, txtPlaca, txtRenavam, txtChassi, txtCor, txtEixo, txtCategoria);
+		btnSalvar.addActionListener(cc);
+		btnNovo.addActionListener(cc);
+		
 	}
 }

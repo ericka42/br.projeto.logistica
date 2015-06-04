@@ -5,91 +5,106 @@ import java.awt.event.ActionListener;
 import java.sql.SQLException;
 
 import javax.swing.JOptionPane;
-import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
 import br.projeto.logistica.model.Caminhao;
 import br.projeto.logistica.persistence.CaminhaoDAO;
 import br.projeto.logistica.persistence.CaminhaoDAOImpl;
-import br.projeto.logistica.view.FrmCadastrarCaminhao;
 
 public class CaminhaoController implements ActionListener{
 	
-	JTextField txtMarca;
-	JTextField txtModelo;
-	JTextField txtAnoModelo;
-	JTextField txtRenavam;
-	JTextField txtPlaca;
-	JTextField txtChassi;
-	JTextField txtCategoria;
-	JTextField txtEixo;
-	JTextField txtCor;
-	JRadioButton rdbtnNovo;
-	JRadioButton rdbtnSemiNovo;
+	private JTextField txtModelo;
+	private JTextField txtAnoModelo;
+	private JTextField txtMarca;
+	private JTextField txtPlaca;
+	private JTextField txtRenavam;
+	private JTextField txtChassi; 
+	private JTextField txtCor;
+	private JTextField txtEixo;
+	private JTextField txtCategoria;
 	
-	public CaminhaoController(JTextField txtMarca, JTextField txtModelo, JTextField txtAnoModelo,
-			JTextField txtRenavam, JTextField txtPlaca, JTextField txtChassi, JTextField txtCategoria,
-			JTextField txtEixo, JTextField txtCor, JRadioButton rdbtnNovo, JRadioButton rdbtnSemiNovo) {
+	public CaminhaoController(JTextField txtModelo, JTextField txtAnoModelo, JTextField txtMarca, JTextField txtPlaca, JTextField txtRenavam, JTextField txtChassi,
+			JTextField txtCor, JTextField txtEixo, JTextField txtCategoria) {
 		
-		this.txtMarca = txtMarca;
 		this.txtModelo = txtModelo;
 		this.txtAnoModelo = txtAnoModelo;
-		this.txtRenavam = txtRenavam;
+		this.txtMarca = txtMarca;
 		this.txtPlaca = txtPlaca;
+		this.txtRenavam = txtRenavam;
 		this.txtChassi = txtChassi;
-		this.txtCategoria = txtCategoria;
-		this.txtEixo = txtEixo;
 		this.txtCor = txtCor;
-		this.rdbtnNovo = rdbtnNovo;
-		this.rdbtnSemiNovo = rdbtnSemiNovo;
-		
-	}
+		this.txtEixo = txtEixo;
+		this.txtCategoria = txtCategoria;
 
+	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		String cmd = e.getActionCommand();
 		Caminhao c = new Caminhao();
-		
-		if ("Salvar".equals(cmd)) {
-			apresenta();
-//			salvaCaminhao(c);
-//			congelaCampo();
-		}else{
-			if ("Novo".equals(cmd)) {
+		if("  Salvar".equals(cmd)){
+			salvarCaminhao(c);
+			congelaCampo();
+		}else if("  Novo".equals(cmd)){
 				limpaCampo();
-			}else{
-				cancela();
 			}
-		}
+		
 	}
 
-
-	private void salvaCaminhao(Caminhao c) {
-		c.setPlaca(txtPlaca.getText().replace("-", ""));
+	public void salvarCaminhao(Caminhao c) {
+		c.setPlaca(txtPlaca.getText().replaceAll("-", ""));
 		c.setRenavam(txtRenavam.getText());
 		c.setChassi(txtChassi.getText());
+		c.setModelo(txtModelo.getText());
+		c.setMarca(txtMarca.getText());
 		c.setCategoria(txtCategoria.getText());
+		c.setAnoModelo(Integer.parseInt(txtAnoModelo.getText()));
+		c.setEixo(Integer.parseInt(txtEixo.getText()));
+		c.setCor(txtCor.getText());
+		CaminhaoDAO cDao = new CaminhaoDAOImpl();
+		try {
+			cDao.cadastrarCaminhao(c);
+			JOptionPane.showMessageDialog(null, "Caminhão Cadastrado com Sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+		} catch (SQLException e) {
+			JOptionPane.showMessageDialog(null, e.getMessage(), "ERRO", JOptionPane.ERROR_MESSAGE);
+		}
+	}
+	
+	public void alterarCaminhao(Caminhao c){
+		c.setPlaca(txtPlaca.getText().replaceAll("-", ""));
+		c.setRenavam(txtRenavam.getText());
+		c.setChassi(txtChassi.getText());
 		c.setModelo(txtModelo.getText());
 		c.setMarca(txtMarca.getText());
 		c.setAnoModelo(Integer.parseInt(txtAnoModelo.getText()));
 		c.setEixo(Integer.parseInt(txtEixo.getText()));
+		c.setCor(txtCor.getText());
 		CaminhaoDAO cDao = new CaminhaoDAOImpl();
 		try {
-			cDao.cadastraCaminhao(c);
-			JOptionPane.showMessageDialog(null, "Cadastrado com sucesso",
-					"Sucesso", JOptionPane.INFORMATION_MESSAGE);
+			cDao.alterarCaminhao(c);
+			JOptionPane.showMessageDialog(null, "Caminhão Cadastrado com Sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
 		} catch (SQLException e) {
-			JOptionPane.showMessageDialog(null, e.getMessage(), "Erro",
-					JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, e.getMessage(), "ERRO", JOptionPane.ERROR_MESSAGE);
+		}
+	}
+	
+	public void consultaCaminhao(){
+		CaminhaoDAO cDao = new CaminhaoDAOImpl();
+		Caminhao c = null;
+		try {
+			c = cDao.consultaCaminhao(txtPlaca.getText().replaceAll("-", ""));
+			txtModelo.setText(c.getModelo());
+			txtAnoModelo.setText(String.valueOf(c.getAnoModelo()));
+			txtMarca.setText(c.getMarca());
+//			Terminar de fazer a consulta!!!!
+		} catch (SQLException e) {
+			JOptionPane.showMessageDialog(null, e.getMessage(), "ERRO", JOptionPane.INFORMATION_MESSAGE);
 		}
 	}
 
-
 	@SuppressWarnings("deprecation")
-	private void congelaCampo() {
+	public void congelaCampo() {
 		txtAnoModelo.disable();
-		txtCategoria.disable();
 		txtChassi.disable();
 		txtCor.disable();
 		txtEixo.disable();
@@ -97,14 +112,10 @@ public class CaminhaoController implements ActionListener{
 		txtModelo.disable();
 		txtPlaca.disable();
 		txtRenavam.disable();
-		rdbtnSemiNovo.disable();
-		rdbtnNovo.disable();
 	}
 
-
-	private void limpaCampo() {
+	public void limpaCampo() {
 		txtAnoModelo.setText("");
-		txtCategoria.setText("");
 		txtChassi.setText("");
 		txtCor.setText("");
 		txtEixo.setText("");
@@ -112,30 +123,6 @@ public class CaminhaoController implements ActionListener{
 		txtModelo.setText("");
 		txtPlaca.setText("");
 		txtRenavam.setText("");
-		rdbtnNovo.isEnabled();
-		rdbtnSemiNovo.isEnabled();
 	}
 
-
-	private void cancela() {
-		FrmCadastrarCaminhao frm = new FrmCadastrarCaminhao();
-		int opc = JOptionPane.showConfirmDialog(null, "Deseja realmente Cancelar?", "Alerta!", JOptionPane.YES_NO_OPTION);
-		if(opc == JOptionPane.YES_OPTION){
-			frm.dispose();
-		}
-	}
-	
-	public void apresenta(){
-		System.out.println(txtPlaca.getText().replace("-", ""));
-		System.out.println(txtRenavam.getText());
-		System.out.println(txtChassi.getText());
-		System.out.println(txtCategoria.getText());
-		System.out.println(txtModelo.getText());
-		System.out.println(txtMarca.getText());
-		System.out.println(txtAnoModelo.getText());
-		System.out.println(Integer.parseInt(txtEixo.getText()));
-		System.out.println(rdbtnSemiNovo.getText());
-		System.out.println(rdbtnNovo.getText());
-	}
-	
 }
