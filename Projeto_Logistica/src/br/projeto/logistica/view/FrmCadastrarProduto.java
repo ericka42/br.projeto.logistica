@@ -26,6 +26,7 @@ public class FrmCadastrarProduto {
 	private JTextField txtDescrição;
 	private JTextField textField_5;
 	private JTextField textField_6;
+	private JTextField txtQuantidade;
 
 	/**
 	 * Launch the application.
@@ -80,9 +81,9 @@ public class FrmCadastrarProduto {
 		lblCodigoEmpresa.setBounds(315, 11, 97, 14);
 		frame.getContentPane().add(lblCodigoEmpresa);
 		
-		JLabel lblTamanho = new JLabel("Tamanho :");
-		lblTamanho.setBounds(10, 285, 63, 14);
-		frame.getContentPane().add(lblTamanho);
+		JLabel lblMedida = new JLabel("Medida :");
+		lblMedida.setBounds(10, 285, 63, 14);
+		frame.getContentPane().add(lblMedida);
 		
 		JLabel lblCodigoProduto = new JLabel("Codigo Produto :");
 		lblCodigoProduto.setBounds(10, 56, 97, 14);
@@ -113,34 +114,47 @@ public class FrmCadastrarProduto {
 		txtNomeProduto.setColumns(10);
 		
 		txtDescrição = new JTextField();
-		txtDescrição.setBounds(69, 103, 448, 140);
+		txtDescrição.setBounds(83, 106, 448, 140);
 		frame.getContentPane().add(txtDescrição);
 		txtDescrição.setColumns(10);
 		
 		textField_5 = new JTextField();
-		textField_5.setBounds(69, 257, 97, 20);
+		textField_5.setBounds(83, 257, 97, 20);
 		frame.getContentPane().add(textField_5);
 		textField_5.setColumns(10);
 		
 		textField_6 = new JTextField();
-		textField_6.setBounds(69, 282, 97, 20);
+		textField_6.setBounds(83, 282, 97, 20);
 		frame.getContentPane().add(textField_6);
 		textField_6.setColumns(10);
 		
 		JButton btnSalvar = new JButton("Salvar");
-		btnSalvar.setIcon(new ImageIcon(FrmCadastrarProduto.class.getResource("/br/projeto/logistica/icon/1432771715_file_add.png")));
 		btnSalvar.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnSalvar.setBounds(69, 347, 109, 35);
+		btnSalvar.setBounds(488, 347, 109, 35);
 		frame.getContentPane().add(btnSalvar);
 		
 		JButton btnVoltar = new JButton("Voltar");
 		btnVoltar.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnVoltar.setBounds(447, 347, 109, 35);
+		btnVoltar.setBounds(57, 347, 109, 35);
 		frame.getContentPane().add(btnVoltar);
 		
 		JButton btnBuscar = new JButton("\r\n");
 		btnBuscar.setIcon(new ImageIcon(FrmCadastrarProduto.class.getResource("/br/projeto/logistica/icon/1432771351_Search.png")));
 		btnBuscar.setBounds(544, 7, 53, 23);
 		frame.getContentPane().add(btnBuscar);
+		
+		JButton btnNovo = new JButton("Novo");
+		btnNovo.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnNovo.setBounds(333, 349, 109, 35);
+		frame.getContentPane().add(btnNovo);
+		
+		JLabel lblQuantidade = new JLabel("Quantidade :");
+		lblQuantidade.setBounds(10, 310, 77, 14);
+		frame.getContentPane().add(lblQuantidade);
+		
+		txtQuantidade = new JTextField();
+		txtQuantidade.setBounds(83, 307, 97, 20);
+		frame.getContentPane().add(txtQuantidade);
+		txtQuantidade.setColumns(10);
 	}
 }
