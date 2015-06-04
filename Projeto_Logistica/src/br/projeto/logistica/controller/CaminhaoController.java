@@ -42,7 +42,7 @@ public class CaminhaoController implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		String cmd = e.getActionCommand();
 		Caminhao c = new Caminhao();
-		if("  Salvar".equals(cmd)){
+		if("Salvar".equals(cmd)){
 			salvarCaminhao(c);
 			congelaCampo();
 		}else if("  Novo".equals(cmd)){

@@ -2,19 +2,41 @@ package br.projeto.logistica.controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+
+import br.projeto.logistica.model.Motorista;
+import br.projeto.logistica.persistence.MotoristaDAO;
+import br.projeto.logistica.persistence.MotoristaDAOImpl;
 
 public class MotoristaController implements ActionListener {
 
-	JTextField txtNome,txtCpf,txtCnh,txtCategoria,txtLogradouro;
-	JTextField txtNumero,txtBairro,txtCidade,txtCep,txtFone,txtDescricao; 
+	JTextField txtNome,txtCpf,txtCnh,txtCategoria,txtLogradouro ;
+	JTextField txtNumero,txtBairro,txtCidade,txtCep,txtTipo,txtFone,txtOperadora,txtDescricao; 
 	JLabel lblNome,lblCpf,lblCnh,lblCategoria;
 	JLabel lblLogradouro,lblNumero,lblBairro,lblCidade,lblCep;
 	JLabel Tipo,lblFone,lblOperadora,lblDescricao;
 	
-	public MotoristaController(){
+	public MotoristaController(JTextField txtNome,JTextField txtCpf,JTextField txtCnh,JTextField txtCategoria,
+			JTextField txtLogradouro,JTextField txtNumero,JTextField txtBairro,JTextField txtCidade,JTextField txtCep,
+			JTextField txtTipo,JTextField txtFone,JTextField txtOperadora,JTextField txtDescricao){
+		
+		this.txtNome = txtNome;
+		this.txtCpf = txtCpf;
+		this.txtCnh = txtCnh;
+		this.txtCategoria = txtCategoria;
+		this.txtLogradouro = txtLogradouro;
+		this.txtNumero = txtNumero;
+		this.txtBairro = txtBairro;
+		this.txtCidade = txtCidade;
+		this.txtCep  = txtCep;
+		//this.txtTipo = txtTipo;
+		//this.txtFone = txtFone;
+		//this.txtOperadora = txtOperadora;
+		//this.txtDescricao =  txtDescricao;		
 		
 	}
 	
@@ -22,8 +44,33 @@ public class MotoristaController implements ActionListener {
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
+		String cmd =e.getActionCommand();
+		Motorista m =new Motorista();
+		if("Salvar".equals(cmd)){
+			salvarMotorista(m);
+		}	
 		
+	
+	}
+		
+	
+	public void salvarMotorista(Motorista m){
+		m.setNome(txtNome.getText());
+		m.setCpf(txtCpf.getText());  // atribuir o validar cpf
+		m.setChn(txtCnh.getText());
+		m.setCategoria(txtCategoria.getText());
+		m.setLogradouro(txtLogradouro.getText());
+		m.setNumero(Integer.parseInt(txtNumero.getText()));
+		m.setBairro(txtBairro.getText());
+		m.setCidade(txtCidade.getText());
+		m.setCep(txtCep.getText());
+		MotoristaDAO cDao=new MotoristaDAOImpl();
+		try{
+			cDao.cadastrarMotorista(m);
+			JOptionPane.showMessageDialog(null,"Motorista Cadastrado com Sucesso!","Sucesso", JOptionPane.INFORMATION_MESSAGE);
+		}catch(SQLException e) {
+			JOptionPane.showMessageDialog(null,e.getMessage(),"ERRO",JOptionPane.ERROR_MESSAGE);
+		}
 	}
 
 }

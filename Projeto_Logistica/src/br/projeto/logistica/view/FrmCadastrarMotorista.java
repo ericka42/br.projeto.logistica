@@ -22,6 +22,7 @@ import java.awt.event.ActionEvent;
 
 import javax.swing.UIManager;
 
+import br.projeto.logistica.controller.MotoristaController;
 import br.projeto.logistica.model.ContatoMotorista;
 
 public class FrmCadastrarMotorista extends JFrame {
@@ -96,12 +97,13 @@ public class FrmCadastrarMotorista extends JFrame {
 		txtNome.setColumns(10);
 		
 		txtCpf = new JTextField();
-		txtCpf.setBounds(53, 57, 123, 20);
+		txtCpf.setText("   .   .   -    ");
+		txtCpf.setBounds(53, 57, 86, 20);
 		pDados.add(txtCpf);
 		txtCpf.setColumns(10);
 		
 		txtCnh = new JTextField();
-		txtCnh.setBounds(287, 57, 167, 20);
+		txtCnh.setBounds(287, 57, 120, 20);
 		pDados.add(txtCnh);
 		txtCnh.setColumns(10);
 		
@@ -111,7 +113,7 @@ public class FrmCadastrarMotorista extends JFrame {
 		txtCategoria.setColumns(10);
 		
 		JPanel pEndereco = new JPanel();
-		pEndereco.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0)), "Endere\u00E7o", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		pEndereco.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0)), "Endereço", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		pEndereco.setBounds(10, 122, 711, 131);
 		contentPane.add(pEndereco);
 		pEndereco.setLayout(null);
@@ -157,8 +159,9 @@ public class FrmCadastrarMotorista extends JFrame {
 		pEndereco.add(txtCidade);
 		
 		txtCep = new JTextField();
+		txtCep.setText("     -");
 		txtCep.setColumns(10);
-		txtCep.setBounds(53, 76, 110, 20);
+		txtCep.setBounds(53, 76, 80, 20);
 		pEndereco.add(txtCep);
 		
 		JPanel pContato = new JPanel();
@@ -172,7 +175,8 @@ public class FrmCadastrarMotorista extends JFrame {
 		pContato.add(lblTipo);
 		
 		txtFone = new JTextField();
-		txtFone.setBounds(215, 18, 127, 20);
+		txtFone.setText("(  )     -");
+		txtFone.setBounds(215, 18, 100, 20);
 		pContato.add(txtFone);
 		txtFone.setColumns(10);
 		
@@ -223,6 +227,8 @@ public class FrmCadastrarMotorista extends JFrame {
 		btnSalvar.setBounds(589, 376, 105, 47);
 		contentPane.add(btnSalvar);
 		
+		MotoristaController mc = new MotoristaController (txtNome,  txtCpf, txtCnh, txtCategoria ,txtLogradouro,txtNumero,txtBairro, txtCidade, txtCep,txtTipo,txtNumero,txtOperadora,txtDescricao);
+		btnSalvar.addActionListener(mc);
 		
 	}
 }
