@@ -74,11 +74,6 @@ public class CaminhaoController implements ActionListener{
 		c.setMarca(txtMarca.getText());
 		c.setAnoModelo(Integer.parseInt(txtAnoModelo.getText()));
 		c.setEixo(Integer.parseInt(txtEixo.getText()));
-		if (rdbtnNovo.isSelected()) {
-			c.setEstado(rdbtnNovo.getText());
-		} else {
-			c.setEstado(rdbtnSemiNovo.getText());
-		}
 		CaminhaoDAO cDao = new CaminhaoDAOImpl();
 		try {
 			cDao.cadastraCaminhao(c);
