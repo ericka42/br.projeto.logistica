@@ -9,6 +9,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import br.projeto.logistica.model.ContatoMotorista;
+import br.projeto.logistica.model.Motorista;
 import br.projeto.logistica.persistence.ContatoMotoristaDAO;
 import br.projeto.logistica.persistence.ContatoMotoristaDAOImpl;
 import br.projeto.logistica.persistence.MotoristaDAO;
@@ -43,6 +44,7 @@ public class ContatoMotoristaController implements ActionListener{
 	}
 	
 	public void salvarContatoMotorista(ContatoMotorista cm){
+		MotoristaDAOImpl mdao = new MotoristaDAOImpl();
 		
 		cm.getId_mot();
 		cm.setTipo(txtTipo.getText());

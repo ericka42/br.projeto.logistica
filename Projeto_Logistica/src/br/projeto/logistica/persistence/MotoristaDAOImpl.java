@@ -2,8 +2,10 @@ package br.projeto.logistica.persistence;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import br.projeto.logistica.model.ContatoMotorista;
 import br.projeto.logistica.model.Motorista;
 
 public  class MotoristaDAOImpl implements MotoristaDAO{
@@ -36,6 +38,18 @@ public  class MotoristaDAOImpl implements MotoristaDAO{
 		
 	}
 
+	
+	
+	public void buscarUltimo(Motorista m ) throws SQLException{
+		String sql= "SELECT TOP (1) WITH TIES ID FROM motorista ORDER BY ID DESC"; 
+		PreparedStatement ps = con.prepareStatement(sql);
+		ResultSet rs = ps.executeQuery();
+		ContatoMotorista cms= new ContatoMotorista();
+		cms.setId_mot(rs.getInt(0));
+	}
+	
+	
+	
 	@Override
 	public void alterarMotorista(Motorista m) throws SQLException {
 		String sql="UPDATE motorista SET nome=?,cpf=?,cnh=?,categoria=?,logradouro=?,numero=?,bairro=?,cidade=?,cep=? WHERE ID=?";

@@ -42,28 +42,37 @@ public class CaminhaoController implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		String cmd = e.getActionCommand();
 		Caminhao c = new Caminhao();
-		if("Salvar".equals(cmd)){
+		if("  Salvar".equals(cmd)){
 			salvarCaminhao(c);
 			congelaCampo();
 		}else if("  Novo".equals(cmd)){
+				descongelaCampo();
 				limpaCampo();
+			}else if("".equals(cmd)){
+				consultaCaminhao();
+			}else if("  Alterar".equals(cmd)){
+				alterarCaminhao(c);
+			}else if("  Nova Consulta".equals(cmd)){
+				limpaCampo();
+			}else if("  Excluir".equals(cmd)){
+				excluiCaminhao();
 			}
 		
 	}
 
-	public void salvarCaminhao(Caminhao c) {
-		c.setPlaca(txtPlaca.getText().replaceAll("-", ""));
-		c.setRenavam(txtRenavam.getText());
-		c.setChassi(txtChassi.getText());
-		c.setModelo(txtModelo.getText());
-		c.setMarca(txtMarca.getText());
-		c.setCategoria(txtCategoria.getText());
-		c.setAnoModelo(Integer.parseInt(txtAnoModelo.getText()));
-		c.setEixo(Integer.parseInt(txtEixo.getText()));
-		c.setCor(txtCor.getText());
+	public void salvarCaminhao(Caminhao ca) {
+		ca.setPlaca(txtPlaca.getText().replaceAll("-", ""));
+		ca.setRenavam(txtRenavam.getText());
+		ca.setChassi(txtChassi.getText());
+		ca.setModelo(txtModelo.getText());
+		ca.setMarca(txtMarca.getText());
+		ca.setCategoria(txtCategoria.getText());
+		ca.setAnoModelo(Integer.parseInt(txtAnoModelo.getText()));
+		ca.setEixo(Integer.parseInt(txtEixo.getText()));
+		ca.setCor(txtCor.getText());
 		CaminhaoDAO cDao = new CaminhaoDAOImpl();
 		try {
-			cDao.cadastrarCaminhao(c);
+			cDao.cadastrarCaminhao(ca);
 			JOptionPane.showMessageDialog(null, "Caminhão Cadastrado com Sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
 		} catch (SQLException e) {
 			JOptionPane.showMessageDialog(null, e.getMessage(), "ERRO", JOptionPane.ERROR_MESSAGE);
@@ -76,6 +85,7 @@ public class CaminhaoController implements ActionListener{
 		c.setChassi(txtChassi.getText());
 		c.setModelo(txtModelo.getText());
 		c.setMarca(txtMarca.getText());
+		c.setCategoria(txtCategoria.getText());
 		c.setAnoModelo(Integer.parseInt(txtAnoModelo.getText()));
 		c.setEixo(Integer.parseInt(txtEixo.getText()));
 		c.setCor(txtCor.getText());
@@ -93,25 +103,42 @@ public class CaminhaoController implements ActionListener{
 		Caminhao c = null;
 		try {
 			c = cDao.consultaCaminhao(txtPlaca.getText().replaceAll("-", ""));
+			txtPlaca.setEditable(false);
+			txtRenavam.setText(c.getRenavam());
+			txtChassi.setText(c.getChassi());
 			txtModelo.setText(c.getModelo());
-			txtAnoModelo.setText(String.valueOf(c.getAnoModelo()));
 			txtMarca.setText(c.getMarca());
-//			Terminar de fazer a consulta!!!!
+			txtCategoria.setText(c.getCategoria());
+			txtAnoModelo.setText(String.valueOf(c.getAnoModelo()));
+			txtEixo.setText(String.valueOf(c.getEixo()));
+			txtCor.setText(c.getCor());
 		} catch (SQLException e) {
 			JOptionPane.showMessageDialog(null, e.getMessage(), "ERRO", JOptionPane.INFORMATION_MESSAGE);
 		}
 	}
-
-	@SuppressWarnings("deprecation")
+	
+	@SuppressWarnings("unused")
+	public void excluiCaminhao(){
+		CaminhaoDAO cDao = new CaminhaoDAOImpl();
+		boolean ca;
+		try {
+			ca = cDao.excluirCaminhao(txtPlaca.getText().replaceAll("-", ""));
+			JOptionPane.showMessageDialog(null, "Caminhão Excluído com Sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+		} catch (SQLException e) {
+			JOptionPane.showMessageDialog(null, e.getMessage(), "ERRO", JOptionPane.INFORMATION_MESSAGE);
+		}
+	}
+	
 	public void congelaCampo() {
-		txtAnoModelo.disable();
-		txtChassi.disable();
-		txtCor.disable();
-		txtEixo.disable();
-		txtMarca.disable();
-		txtModelo.disable();
-		txtPlaca.disable();
-		txtRenavam.disable();
+		txtAnoModelo.setEditable(false);
+		txtChassi.setEditable(false);
+		txtCor.setEditable(false);
+		txtEixo.setEditable(false);
+		txtMarca.setEditable(false);
+		txtModelo.setEditable(false);
+		txtPlaca.setEditable(false);
+		txtRenavam.setEditable(false);
+		txtCategoria.setEditable(false);
 	}
 
 	public void limpaCampo() {
@@ -123,6 +150,23 @@ public class CaminhaoController implements ActionListener{
 		txtModelo.setText("");
 		txtPlaca.setText("");
 		txtRenavam.setText("");
+		txtCategoria.setText("");
+		liberaTxtPlaca();
 	}
 
+	public void descongelaCampo() {
+		txtAnoModelo.setEditable(true);
+		txtChassi.setEditable(true);
+		txtCor.setEditable(true);
+		txtEixo.setEditable(true);
+		txtMarca.setEditable(true);
+		txtModelo.setEditable(true);
+		txtPlaca.setEditable(true);
+		txtRenavam.setEditable(true);
+		txtCategoria.setEditable(true);
+	}
+	
+	public void liberaTxtPlaca(){
+		txtPlaca.setEditable(true);
+	}
 }
