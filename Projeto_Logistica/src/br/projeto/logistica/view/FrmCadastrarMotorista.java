@@ -22,6 +22,7 @@ import java.awt.event.ActionEvent;
 
 import javax.swing.UIManager;
 
+import br.projeto.logistica.controller.ContatoMotoristaController;
 import br.projeto.logistica.controller.MotoristaController;
 import br.projeto.logistica.model.ContatoMotorista;
 
@@ -97,7 +98,6 @@ public class FrmCadastrarMotorista extends JFrame {
 		txtNome.setColumns(10);
 		
 		txtCpf = new JTextField();
-		txtCpf.setText("   .   .   -    ");
 		txtCpf.setBounds(53, 57, 86, 20);
 		pDados.add(txtCpf);
 		txtCpf.setColumns(10);
@@ -159,26 +159,25 @@ public class FrmCadastrarMotorista extends JFrame {
 		pEndereco.add(txtCidade);
 		
 		txtCep = new JTextField();
-		txtCep.setText("     -");
 		txtCep.setColumns(10);
 		txtCep.setBounds(53, 76, 80, 20);
 		pEndereco.add(txtCep);
 		
+		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		
 		JPanel pContato = new JPanel();
-		pContato.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0)), "Contato", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		pContato.setBounds(10, 265, 711, 75);
-		contentPane.add(pContato);
 		pContato.setLayout(null);
+		pContato.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0)), "Contato", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		pContato.setBounds(10, 259, 711, 75);
+		contentPane.add(pContato);
 		
 		JLabel lblTipo = new JLabel("Tipo :");
 		lblTipo.setBounds(10, 21, 53, 14);
 		pContato.add(lblTipo);
-		
-		txtFone = new JTextField();
-		txtFone.setText("(  )     -");
-		txtFone.setBounds(215, 18, 100, 20);
-		pContato.add(txtFone);
-		txtFone.setColumns(10);
 		
 		JLabel lblFone = new JLabel("Fone :");
 		lblFone.setBounds(159, 21, 46, 14);
@@ -192,26 +191,25 @@ public class FrmCadastrarMotorista extends JFrame {
 		lblDescricao.setBounds(10, 50, 78, 14);
 		pContato.add(lblDescricao);
 		
+		txtFone = new JTextField();
+		txtFone.setColumns(10);
+		txtFone.setBounds(215, 18, 100, 20);
+		pContato.add(txtFone);
+		
 		txtDescricao = new JTextField();
+		txtDescricao.setColumns(10);
 		txtDescricao.setBounds(96, 47, 433, 20);
 		pContato.add(txtDescricao);
-		txtDescricao.setColumns(10);
 		
 		txtTipo = new JTextField();
+		txtTipo.setColumns(10);
 		txtTipo.setBounds(41, 18, 86, 20);
 		pContato.add(txtTipo);
-		txtTipo.setColumns(10);
 		
 		txtOperadora = new JTextField();
+		txtOperadora.setColumns(10);
 		txtOperadora.setBounds(444, 18, 86, 20);
 		pContato.add(txtOperadora);
-		txtOperadora.setColumns(10);
-		
-		JButton btnCancelar = new JButton("Cancelar");
-		btnCancelar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
 		btnCancelar.setBounds(24, 376, 105, 47);
 		contentPane.add(btnCancelar);
 		
@@ -227,8 +225,12 @@ public class FrmCadastrarMotorista extends JFrame {
 		btnSalvar.setBounds(589, 376, 105, 47);
 		contentPane.add(btnSalvar);
 		
-		MotoristaController mc = new MotoristaController (txtNome,  txtCpf, txtCnh, txtCategoria ,txtLogradouro,txtNumero,txtBairro, txtCidade, txtCep,txtTipo,txtNumero,txtOperadora,txtDescricao);
+		MotoristaController mc = new MotoristaController (txtNome,  txtCpf, txtCnh, txtCategoria ,txtLogradouro,txtNumero,txtBairro, txtCidade, txtCep);
+		
+		ContatoMotoristaController cmc= new ContatoMotoristaController(txtBairro, txtBairro, txtBairro, txtBairro, txtBairro);
+		
 		btnSalvar.addActionListener(mc);
+		btnSalvar.addActionListener(cmc);
 		
 	}
 }

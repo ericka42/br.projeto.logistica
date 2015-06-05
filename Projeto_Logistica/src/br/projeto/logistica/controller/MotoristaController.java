@@ -15,14 +15,13 @@ import br.projeto.logistica.persistence.MotoristaDAOImpl;
 public class MotoristaController implements ActionListener {
 
 	JTextField txtNome,txtCpf,txtCnh,txtCategoria,txtLogradouro ;
-	JTextField txtNumero,txtBairro,txtCidade,txtCep,txtTipo,txtFone,txtOperadora,txtDescricao; 
+	JTextField txtNumero,txtBairro,txtCidade,txtCep; 
 	JLabel lblNome,lblCpf,lblCnh,lblCategoria;
 	JLabel lblLogradouro,lblNumero,lblBairro,lblCidade,lblCep;
-	JLabel Tipo,lblFone,lblOperadora,lblDescricao;
+	
 	
 	public MotoristaController(JTextField txtNome,JTextField txtCpf,JTextField txtCnh,JTextField txtCategoria,
-			JTextField txtLogradouro,JTextField txtNumero,JTextField txtBairro,JTextField txtCidade,JTextField txtCep,
-			JTextField txtTipo,JTextField txtFone,JTextField txtOperadora,JTextField txtDescricao){
+			JTextField txtLogradouro,JTextField txtNumero,JTextField txtBairro,JTextField txtCidade,JTextField txtCep){
 		
 		this.txtNome = txtNome;
 		this.txtCpf = txtCpf;
@@ -33,10 +32,7 @@ public class MotoristaController implements ActionListener {
 		this.txtBairro = txtBairro;
 		this.txtCidade = txtCidade;
 		this.txtCep  = txtCep;
-		//this.txtTipo = txtTipo;
-		//this.txtFone = txtFone;
-		//this.txtOperadora = txtOperadora;
-		//this.txtDescricao =  txtDescricao;		
+				
 		
 	}
 	
@@ -56,7 +52,7 @@ public class MotoristaController implements ActionListener {
 	
 	public void salvarMotorista(Motorista m){
 		m.setNome(txtNome.getText());
-		m.setCpf(txtCpf.getText());  // atribuir o validar cpf
+		m.setCpf(txtCpf.getText());  
 		m.setChn(txtCnh.getText());
 		m.setCategoria(txtCategoria.getText());
 		m.setLogradouro(txtLogradouro.getText());

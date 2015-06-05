@@ -20,7 +20,7 @@ public class ContatoMotoristaDAOImpl implements ContatoMotoristaDAO{
 	public void cadastrarContatoMotorista(ContatoMotorista cm)
 			throws SQLException {
 		
-		String sql= "INSERT INTO contato(id_mot,tipo, telefone, descricao, operadora) VALUES ?,?,?,?,?,?";
+		String sql= "INSERT INTO contato(id_mot,tipo, telefone, descricao, operadora) VALUES (?,?,?,?,?,?)";
 		PreparedStatement ps= con.prepareStatement(sql);
 		ps.setInt(1, cm.getId_mot());
 		ps.setString(2, cm.getTipo());

@@ -18,7 +18,7 @@ public class CaminhaoDAOImpl implements CaminhaoDAO{
 
 	@Override
 	public void cadastrarCaminhao(Caminhao c) throws SQLException {
-		String sql = "INSERT INTO caminhao (placa, renavam, chassi, modelo, marca, categoria, anomodelo, eixo, cor) VALUES ?,?,?,?,?,?,?,?,?";
+		String sql = "INSERT INTO caminhao (placa, renavam, chassi, modelo, marca, categoria, anomodelo, eixo, cor) VALUES (?,?,?,?,?,?,?,?,?)";
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setString(1, c.getPlaca());
 		ps.setString(2, c.getRenavam());

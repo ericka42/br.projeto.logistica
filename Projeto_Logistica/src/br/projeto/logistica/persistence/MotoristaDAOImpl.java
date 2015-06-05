@@ -20,7 +20,7 @@ public  class MotoristaDAOImpl implements MotoristaDAO{
 
 	@Override
 	public void cadastrarMotorista(Motorista m) throws SQLException {
-		String sql= "INSERT INTO motorista(nome,cpf,cnh,categoria,logradouro,numero,bairro,cidade,cep) VALUES ?,?,?,?,?,?,?,?,?" ;
+		String sql= "INSERT INTO motorista(nome,cpf,cnh,categoria,logradouro,numero,bairro,cidade,cep) VALUES (?,?,?,?,?,?,?,?,?)" ;
 		PreparedStatement ps =con.prepareStatement(sql);
 		ps.setString(1, m.getNome());
 		ps.setString(2, m.getCpf());
