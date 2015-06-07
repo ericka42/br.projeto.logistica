@@ -54,8 +54,6 @@ public class CaminhaoController implements ActionListener{
 				alterarCaminhao(c);
 			}else if("  Nova Consulta".equals(cmd)){
 				limpaCampo();
-			}else if("  Excluir".equals(cmd)){
-				excluiCaminhao();
 			}
 		
 	}
@@ -117,17 +115,17 @@ public class CaminhaoController implements ActionListener{
 		}
 	}
 	
-	@SuppressWarnings("unused")
-	public void excluiCaminhao(){
-		CaminhaoDAO cDao = new CaminhaoDAOImpl();
-		boolean ca;
-		try {
-			ca = cDao.excluirCaminhao(txtPlaca.getText().replaceAll("-", ""));
-			JOptionPane.showMessageDialog(null, "Caminhão Excluído com Sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
-		} catch (SQLException e) {
-			JOptionPane.showMessageDialog(null, e.getMessage(), "ERRO", JOptionPane.INFORMATION_MESSAGE);
-		}
-	}
+//	@SuppressWarnings("unused")
+//	public void excluiCaminhao(){
+//		CaminhaoDAO cDao = new CaminhaoDAOImpl();
+//		boolean ca;
+//		try {
+//			ca = cDao.excluirCaminhao(txtPlaca.getText().replaceAll("-", ""));
+//			JOptionPane.showMessageDialog(null, "Caminhão Excluído com Sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+//		} catch (SQLException e) {
+//			JOptionPane.showMessageDialog(null, e.getMessage(), "ERRO", JOptionPane.INFORMATION_MESSAGE);
+//		}
+//	}
 	
 	public void congelaCampo() {
 		txtAnoModelo.setEditable(false);

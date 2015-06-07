@@ -19,12 +19,14 @@ import javax.swing.JButton;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.sql.SQLException;
 
 import javax.swing.UIManager;
 
 import br.projeto.logistica.controller.ContatoMotoristaController;
 import br.projeto.logistica.controller.MotoristaController;
 import br.projeto.logistica.model.ContatoMotorista;
+import br.projeto.logistica.persistence.MotoristaDAOImpl;
 
 public class FrmCadastrarMotorista extends JFrame {
 
@@ -38,10 +40,6 @@ public class FrmCadastrarMotorista extends JFrame {
 	private JTextField txtBairro;
 	private JTextField txtCidade;
 	private JTextField txtCep;
-	private JTextField txtFone;
-	private JTextField txtDescricao;
-	private JTextField txtTipo;
-	private JTextField txtOperadora;
 
 	/**
 	 * Launch the application.
@@ -168,48 +166,6 @@ public class FrmCadastrarMotorista extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		
-		JPanel pContato = new JPanel();
-		pContato.setLayout(null);
-		pContato.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0)), "Contato", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		pContato.setBounds(10, 259, 711, 75);
-		contentPane.add(pContato);
-		
-		JLabel lblTipo = new JLabel("Tipo :");
-		lblTipo.setBounds(10, 21, 53, 14);
-		pContato.add(lblTipo);
-		
-		JLabel lblFone = new JLabel("Fone :");
-		lblFone.setBounds(159, 21, 46, 14);
-		pContato.add(lblFone);
-		
-		JLabel lblOperadora = new JLabel("Operadora :");
-		lblOperadora.setBounds(378, 21, 78, 14);
-		pContato.add(lblOperadora);
-		
-		JLabel lblDescricao = new JLabel("Descri\u00E7\u00E3o :");
-		lblDescricao.setBounds(10, 50, 78, 14);
-		pContato.add(lblDescricao);
-		
-		txtFone = new JTextField();
-		txtFone.setColumns(10);
-		txtFone.setBounds(215, 18, 100, 20);
-		pContato.add(txtFone);
-		
-		txtDescricao = new JTextField();
-		txtDescricao.setColumns(10);
-		txtDescricao.setBounds(96, 47, 433, 20);
-		pContato.add(txtDescricao);
-		
-		txtTipo = new JTextField();
-		txtTipo.setColumns(10);
-		txtTipo.setBounds(41, 18, 86, 20);
-		pContato.add(txtTipo);
-		
-		txtOperadora = new JTextField();
-		txtOperadora.setColumns(10);
-		txtOperadora.setBounds(444, 18, 86, 20);
-		pContato.add(txtOperadora);
 		btnCancelar.setBounds(24, 376, 105, 47);
 		contentPane.add(btnCancelar);
 		
@@ -227,10 +183,38 @@ public class FrmCadastrarMotorista extends JFrame {
 		
 		MotoristaController mc = new MotoristaController (txtNome,  txtCpf, txtCnh, txtCategoria ,txtLogradouro,txtNumero,txtBairro, txtCidade, txtCep);
 		
-		ContatoMotoristaController cmc= new ContatoMotoristaController(txtBairro, txtBairro, txtBairro, txtBairro, txtBairro);
-		
 		btnSalvar.addActionListener(mc);
-		btnSalvar.addActionListener(cmc);
+		
+		JPanel pContato= new JPanel();
+		pContato.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0)), "Contato", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		pContato.setBounds(10, 259, 711, 82);
+		contentPane.add(pContato);
+		pContato.setLayout(null);
+		
+		JButton btnCadastrarContato = new JButton("CadastrarContato");
+		btnCadastrarContato.addActionListener(new ActionListener() {
+			FrmContato telacontato= new  FrmContato();
+			MotoristaDAOImpl busca = new MotoristaDAOImpl();
+			public void actionPerformed(ActionEvent arg0) {
+				int result = 0;
+				try {
+					
+					System.out.println("ultimo achado"+busca.buscarUltimo(result));
+				} catch (SQLException e) {
+					System.out.println("ERRO!, dado não encontrado");
+					e.printStackTrace();
+				}
+				telacontato.setVisible(true);
+				
+			}
+		});
+		btnCadastrarContato.setBounds(10, 21, 106, 50);
+		pContato.add(btnCadastrarContato);
+		
+		
+		
+	
+		
 		
 	}
 }

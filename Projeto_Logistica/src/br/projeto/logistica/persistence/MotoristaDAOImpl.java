@@ -40,12 +40,16 @@ public  class MotoristaDAOImpl implements MotoristaDAO{
 
 	
 	
-	public void buscarUltimo(Motorista m ) throws SQLException{
+	public int buscarUltimo(int result ) throws SQLException{
 		String sql= "SELECT TOP (1) WITH TIES ID FROM motorista ORDER BY ID DESC"; 
 		PreparedStatement ps = con.prepareStatement(sql);
 		ResultSet rs = ps.executeQuery();
 		ContatoMotorista cms= new ContatoMotorista();
-		cms.setId_mot(rs.getInt(0));
+		while(rs.next()){
+			cms.setId_mot (rs.getInt (1));
+		}
+		
+		return cms.getId_mot();
 	}
 	
 	

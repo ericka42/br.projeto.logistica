@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -18,20 +19,21 @@ import br.projeto.logistica.persistence.MotoristaDAOImpl;
 public class ContatoMotoristaController implements ActionListener{
 	
 	
-	JTextField txtTipo,txtFone,txtOperadora,txtDescricao,txtIDMot;
+	JTextField txtFone,txtDescricao,txtIDMot;
 	JLabel lblTipo,lblFone,lblOperadora,lblDescricao;
+	JComboBox cbTipoFone, cbOperadora;	
+	
+	
+	
+	
+	
+	public ContatoMotoristaController( JTextField txtFone,JTextField txtDescricao,
+		JTextField txtIDMot,JComboBox cbTipoFone,JComboBox cbOperadora) {
 		
-	
-	
-	
-	
-	
-	public ContatoMotoristaController(JTextField txtTipo, JTextField txtFone,
-			JTextField txtOperadora, JTextField txtDescricao,JTextField txtIDMot) {
 		this.txtIDMot = txtIDMot;
-		this.txtTipo = txtTipo;
+		this.cbTipoFone = cbTipoFone;
 		this.txtFone = txtFone;
-		this.txtOperadora = txtOperadora;
+		this.cbOperadora = cbOperadora;
 		this.txtDescricao = txtDescricao;
    
 	}
@@ -46,10 +48,10 @@ public class ContatoMotoristaController implements ActionListener{
 	public void salvarContatoMotorista(ContatoMotorista cm){
 		MotoristaDAOImpl mdao = new MotoristaDAOImpl();
 		
-		cm.getId_mot();
-		cm.setTipo(txtTipo.getText());
+		cm.setId_mot(txtIDMot.getHeight());
+		cm.setTipo(cbTipoFone.getSelectedItem().toString());
 		cm.setTelefone(txtFone.getText());
-		cm.setOperadora(txtOperadora.getText());
+		cm.setOperadora(cbOperadora.getSelectedItem().toString());
 		cm.setDescricao(txtDescricao.getText());
 		
 		ContatoMotoristaDAO cDao=new ContatoMotoristaDAOImpl();
