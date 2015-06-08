@@ -208,7 +208,7 @@ public class FrmCadastrarMotorista extends JFrame {
 				
 			}
 		});
-		btnCadastrarContato.setBounds(10, 21, 106, 50);
+		btnCadastrarContato.setBounds(10, 21, 145, 50);
 		pContato.add(btnCadastrarContato);
 		
 		

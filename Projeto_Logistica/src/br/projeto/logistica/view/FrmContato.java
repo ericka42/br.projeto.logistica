@@ -17,6 +17,9 @@ import javax.swing.JComboBox;
 
 import br.projeto.logistica.model.Operadora;
 import br.projeto.logistica.model.TipoFone;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class FrmContato extends JFrame {
 
@@ -101,5 +104,20 @@ public class FrmContato extends JFrame {
 		txtDescricao.setBounds(75, 68, 315, 20);
 		pContato.add(txtDescricao);
 		txtDescricao.setColumns(10);
+		
+		JButton btnSalvar = new JButton("Salvar");
+		btnSalvar.setBounds(375, 156, 89, 51);
+		contentPane.add(btnSalvar);
+		
+		JButton btnVoltar = new JButton("Voltar");
+		btnVoltar.addActionListener(new ActionListener() {
+			FrmContato tela=new FrmContato();
+			
+			public void actionPerformed(ActionEvent e) {
+				tela.dispose();
+			}
+		});
+		btnVoltar.setBounds(20, 156, 89, 51);
+		contentPane.add(btnVoltar);
 	}
 }
