@@ -17,6 +17,7 @@ import javax.swing.border.TitledBorder;
 
 import br.projeto.logistica.controller.MotoristaController;
 import br.projeto.logistica.persistence.MotoristaDAOImpl;
+import javax.swing.ImageIcon;
 
 public class FrmCadastrarMotorista  {
 
@@ -153,6 +154,7 @@ public class FrmCadastrarMotorista  {
 		pEndereco.add(txtCep);
 		
 		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar.setIcon(new ImageIcon(FrmCadastrarMotorista.class.getResource("/br/projeto/logistica/icon/img-cancela.png")));
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			}
@@ -161,6 +163,7 @@ public class FrmCadastrarMotorista  {
 		contentPane.add(btnCancelar);
 		
 		JButton btnNovo = new JButton("Novo");
+		btnNovo.setIcon(new ImageIcon(FrmCadastrarMotorista.class.getResource("/br/projeto/logistica/icon/img-novo.png")));
 		btnNovo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -169,6 +172,7 @@ public class FrmCadastrarMotorista  {
 		contentPane.add(btnNovo);
 		
 		JButton btnSalvar = new JButton("Salvar");
+		btnSalvar.setIcon(new ImageIcon(FrmCadastrarMotorista.class.getResource("/br/projeto/logistica/icon/img-add.png")));
 		btnSalvar.setBounds(589, 376, 105, 47);
 		contentPane.add(btnSalvar);
 		
@@ -183,6 +187,7 @@ public class FrmCadastrarMotorista  {
 		pContato.setLayout(null);
 		
 		JButton btnCadastrarContato = new JButton("CadastrarContato");
+		btnCadastrarContato.setIcon(new ImageIcon(FrmCadastrarMotorista.class.getResource("/br/projeto/logistica/icon/1433896496_phone_add.png")));
 		btnCadastrarContato.addActionListener(new ActionListener() {
 			FrmContato telacontato= new  FrmContato();
 			MotoristaDAOImpl busca = new MotoristaDAOImpl();
@@ -199,7 +204,7 @@ public class FrmCadastrarMotorista  {
 				
 			}
 		});
-		btnCadastrarContato.setBounds(10, 21, 145, 50);
+		btnCadastrarContato.setBounds(10, 21, 189, 50);
 		pContato.add(btnCadastrarContato);
 		
 		
