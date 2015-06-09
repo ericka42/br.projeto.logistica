@@ -156,5 +156,9 @@ public class FrmCadastrarProduto {
 		txtQuantidade.setBounds(83, 307, 97, 20);
 		frame.getContentPane().add(txtQuantidade);
 		txtQuantidade.setColumns(10);
+		
+		JButton btnTamanho = new JButton("Tamanho");
+		btnTamanho.setBounds(242, 281, 89, 23);
+		frame.getContentPane().add(btnTamanho);
 	}
 }
