@@ -172,7 +172,7 @@ public class FrmCadastrarMotorista  {
 		contentPane.add(btnNovo);
 		
 		JButton btnSalvar = new JButton("Salvar");
-		btnSalvar.setIcon(new ImageIcon(FrmCadastrarMotorista.class.getResource("/br/projeto/logistica/icon/img-add.png")));
+		btnSalvar.setIcon(new ImageIcon(FrmCadastrarMotorista.class.getResource("/br/projeto/logistica/icon/img-disquete.png")));
 		btnSalvar.setBounds(589, 376, 105, 47);
 		contentPane.add(btnSalvar);
 		

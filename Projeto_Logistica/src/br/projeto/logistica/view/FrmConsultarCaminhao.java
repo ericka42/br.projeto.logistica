@@ -169,7 +169,7 @@ public class FrmConsultarCaminhao {
 		frame.getContentPane().add(btnNovaConsulta);
 		
 		btnPesquisar = new JButton("");
-		btnPesquisar.setIcon(new ImageIcon(FrmConsultarCaminhao.class.getResource("/br/projeto/logistica/icon/img-pesquisa.png")));
+		btnPesquisar.setIcon(new ImageIcon(FrmConsultarCaminhao.class.getResource("/br/projeto/logistica/icon/1432771351_Search.png")));
 		btnPesquisar.setBounds(173, 9, 46, 29);
 		frame.getContentPane().add(btnPesquisar);
 		

@@ -20,6 +20,7 @@ import br.projeto.logistica.model.TipoFone;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.ImageIcon;
 
 public class FrmContato extends JFrame {
 
@@ -106,10 +107,12 @@ public class FrmContato extends JFrame {
 		txtDescricao.setColumns(10);
 		
 		JButton btnSalvar = new JButton("Salvar");
+		btnSalvar.setIcon(new ImageIcon(FrmContato.class.getResource("/br/projeto/logistica/icon/img-disquete.png")));
 		btnSalvar.setBounds(375, 156, 89, 51);
 		contentPane.add(btnSalvar);
 		
 		JButton btnVoltar = new JButton("Voltar");
+		btnVoltar.setIcon(new ImageIcon(FrmContato.class.getResource("/br/projeto/logistica/icon/1433897020_undo.png")));
 		btnVoltar.addActionListener(new ActionListener() {
 			FrmContato tela=new FrmContato();
 			
