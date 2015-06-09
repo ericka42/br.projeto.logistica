@@ -1,35 +1,26 @@
 package br.projeto.logistica.view;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JTextField;
-import javax.swing.JLabel;
-import javax.swing.border.TitledBorder;
-import javax.swing.border.LineBorder;
-
 import java.awt.Color;
-
-import javax.swing.JComboBox;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JButton;
-
-import java.awt.event.ActionListener;
+import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.SQLException;
 
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.UIManager;
+import javax.swing.border.LineBorder;
+import javax.swing.border.TitledBorder;
 
-import br.projeto.logistica.controller.ContatoMotoristaController;
 import br.projeto.logistica.controller.MotoristaController;
-import br.projeto.logistica.model.ContatoMotorista;
 import br.projeto.logistica.persistence.MotoristaDAOImpl;
 
-public class FrmCadastrarMotorista extends JFrame {
+public class FrmCadastrarMotorista  {
 
+	private JFrame tela;
 	private JPanel contentPane;
 	private JTextField txtNome;
 	private JTextField txtCpf;
@@ -49,7 +40,7 @@ public class FrmCadastrarMotorista extends JFrame {
 			public void run() {
 				try {
 					FrmCadastrarMotorista frame = new FrmCadastrarMotorista();
-					frame.setVisible(true);
+					frame.tela.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -61,11 +52,11 @@ public class FrmCadastrarMotorista extends JFrame {
 	 * Create the frame.
 	 */
 	public FrmCadastrarMotorista() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 747, 472);
+		tela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		tela.setBounds(100, 100, 747, 472);
 		contentPane = new JPanel();
 		contentPane.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Cadastro Motorista", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
-		setContentPane(contentPane);
+		tela.setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JPanel pDados = new JPanel();

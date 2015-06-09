@@ -45,13 +45,14 @@ public class CaminhaoDAOImpl implements CaminhaoDAO{
 		ps.setInt(6, c.getAnoModelo());
 		ps.setInt(7, c.getEixo());
 		ps.setString(8, c.getCor());
+		ps.setString(9, c.getPlaca());
 		ps.execute();
 		ps.close();
 	}
 
 	@Override
 	public Caminhao consultaCaminhao(String placa) throws SQLException {
-		String sql = "SELECT renanvam, chassi, modelo, marca, categoria, anomodelo eixo, cor WHERE placa = ?";
+		String sql = "SELECT renavam, chassi, modelo, marca, categoria, anomodelo, eixo, cor FROM caminhao WHERE placa = (?)";
 		PreparedStatement ps = con.prepareStatement(sql);
 		Caminhao c = new Caminhao();
 		ps.setString(1, placa);
@@ -67,6 +68,17 @@ public class CaminhaoDAOImpl implements CaminhaoDAO{
 			c.setCor(rs.getString("cor"));
 		}
 		return c;
+	}
+
+	@Override
+	public boolean excluirCaminhao(String placa) throws SQLException {
+		String sql = "DELETE caminhao WHERE placa = (?)";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setString(1, placa);
+		ps.execute();
+		ps.close();
+		
+		return true;
 	}
 
 }

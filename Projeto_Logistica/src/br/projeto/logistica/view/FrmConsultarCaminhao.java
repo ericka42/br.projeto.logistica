@@ -12,6 +12,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
+import br.projeto.logistica.controller.CaminhaoController;
+
 public class FrmConsultarCaminhao {
 
 	private JFrame frame;
@@ -52,7 +54,7 @@ public class FrmConsultarCaminhao {
 		frame = new JFrame("Consulta Caminhão");
 		frame.setAutoRequestFocus(false);
 		frame.getContentPane().setBackground(new Color(255, 255, 204));
-		frame.setBounds(100, 100, 613, 372);
+		frame.setBounds(100, 100, 632, 372);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
@@ -81,7 +83,7 @@ public class FrmConsultarCaminhao {
 		frame.getContentPane().add(lblRenavam);
 		
 		JLabel lblChassi = new JLabel("Chassi : ");
-		lblChassi.setBounds(276, 160, 46, 14);
+		lblChassi.setBounds(276, 160, 56, 14);
 		frame.getContentPane().add(lblChassi);
 		
 		JLabel lblCor = new JLabel("Cor :");
@@ -121,7 +123,7 @@ public class FrmConsultarCaminhao {
 		txtPlaca.setColumns(10);
 		
 		txtRenavam = new JTextField();
-		txtRenavam.setBounds(72, 160, 168, 20);
+		txtRenavam.setBounds(81, 160, 168, 20);
 		frame.getContentPane().add(txtRenavam);
 		txtRenavam.setColumns(10);
 		
@@ -152,29 +154,35 @@ public class FrmConsultarCaminhao {
 				frame.dispose();
 			}
 		});
-		//btnCancelar.setIcon(new ImageIcon(FrmConsultarCaminhao.class.getResource("/img/img-cancela.png")));
+		btnCancelar.setIcon(new ImageIcon(FrmConsultarCaminhao.class.getResource("/img/img-cancela.png")));
 		btnCancelar.setBounds(10, 284, 120, 29);
 		frame.getContentPane().add(btnCancelar);
 		
-		btnAlterar = new JButton("Alterar");
-		//btnAlterar.setIcon(new ImageIcon(FrmConsultarCaminhao.class.getResource("/img/img-alterar.png")));
-		btnAlterar.setBounds(467, 284, 120, 29);
+		btnAlterar = new JButton("  Alterar");
+		btnAlterar.setIcon(new ImageIcon(FrmConsultarCaminhao.class.getResource("/img/img-alterar.png")));
+		btnAlterar.setBounds(486, 284, 120, 29);
 		frame.getContentPane().add(btnAlterar);
 		
-		btnNovaConsulta = new JButton("Nova Consulta");
-		//btnNovaConsulta.setIcon(new ImageIcon(FrmConsultarCaminhao.class.getResource("/img/img-novaC.png")));
-		btnNovaConsulta.setBounds(307, 284, 129, 29);
+		btnNovaConsulta = new JButton("  Nova Consulta");
+		btnNovaConsulta.setIcon(new ImageIcon(FrmConsultarCaminhao.class.getResource("/img/img-novaC.png")));
+		btnNovaConsulta.setBounds(307, 284, 153, 29);
 		frame.getContentPane().add(btnNovaConsulta);
 		
 		btnPesquisar = new JButton("");
-		//btnPesquisar.setIcon(new ImageIcon(FrmConsultarCaminhao.class.getResource("/img/img-pesquisa.png")));
+		btnPesquisar.setIcon(new ImageIcon(FrmConsultarCaminhao.class.getResource("/img/img-pesquisa.png")));
 		btnPesquisar.setBounds(173, 9, 46, 29);
 		frame.getContentPane().add(btnPesquisar);
 		
-		btnExcluir = new JButton("Excluir");
-		//btnExcluir.setIcon(new ImageIcon(FrmConsultarCaminhao.class.getResource("/img/img-excluir.png")));
+		btnExcluir = new JButton("  Excluir");
+		btnExcluir.setIcon(new ImageIcon(FrmConsultarCaminhao.class.getResource("/img/img-excluir.png")));
 		btnExcluir.setBounds(153, 284, 129, 29);
 		frame.getContentPane().add(btnExcluir);
+		
+		CaminhaoController cc = new CaminhaoController(txtModelo, txtAnoModelo, txtMarca, txtPlaca, txtRenavam, txtChassi, txtCor, txtEixo, txtCategoria);
+		btnPesquisar.addActionListener(cc);
+		btnAlterar.addActionListener(cc);
+		btnNovaConsulta.addActionListener(cc);
+		btnExcluir.addActionListener(cc);
 
 	}
 }

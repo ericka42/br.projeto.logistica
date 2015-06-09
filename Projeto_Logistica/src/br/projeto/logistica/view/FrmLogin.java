@@ -9,6 +9,8 @@ import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.ImageIcon;
 
+import br.projeto.logistica.controller.FuncionarioController;
+
 import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -91,5 +93,9 @@ public class FrmLogin {
 		JButton btnEntrar = new JButton("Entrar");
 		btnEntrar.setBounds(364, 218, 104, 33);
 		frame.getContentPane().add(btnEntrar);
+		
+		FuncionarioController fControle = new FuncionarioController(txtUsuario, txtSenha);
+		btnEntrar.addActionListener(fControle);
 	}
+
 }
