@@ -18,9 +18,9 @@ import javax.swing.border.TitledBorder;
 import br.projeto.logistica.controller.MotoristaController;
 import br.projeto.logistica.persistence.MotoristaDAOImpl;
 
-public class FrmCadastrarMotorista  {
+public class FrmCadastrarMotorista  extends JFrame{
 
-	private JFrame tela;
+
 	private JPanel contentPane;
 	private JTextField txtNome;
 	private JTextField txtCpf;
@@ -40,7 +40,7 @@ public class FrmCadastrarMotorista  {
 			public void run() {
 				try {
 					FrmCadastrarMotorista frame = new FrmCadastrarMotorista();
-					frame.tela.setVisible(true);
+					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -52,11 +52,11 @@ public class FrmCadastrarMotorista  {
 	 * Create the frame.
 	 */
 	public FrmCadastrarMotorista() {
-		tela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		tela.setBounds(100, 100, 747, 472);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 747, 472);
 		contentPane = new JPanel();
 		contentPane.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Cadastro Motorista", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
-		tela.setContentPane(contentPane);
+		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JPanel pDados = new JPanel();
@@ -182,30 +182,20 @@ public class FrmCadastrarMotorista  {
 		contentPane.add(pContato);
 		pContato.setLayout(null);
 		
-		JButton btnCadastrarContato = new JButton("CadastrarContato");
+		JButton btnCadastrarContato = new JButton("CadastrarContato");	
 		btnCadastrarContato.addActionListener(new ActionListener() {
-			FrmContato telacontato= new  FrmContato();
-			MotoristaDAOImpl busca = new MotoristaDAOImpl();
 			public void actionPerformed(ActionEvent arg0) {
-				int result = 0;
-				try {
-					
-					System.out.println("ultimo achado"+busca.buscarUltimo(result));
-				} catch (SQLException e) {
-					System.out.println("ERRO!, dado não encontrado");
-					e.printStackTrace();
-				}
-				telacontato.setVisible(true);
-				
-			}
+				FrmContato c= new FrmContato();
+				c.main(null);
+			}	
+			
 		});
+		
 		btnCadastrarContato.setBounds(10, 21, 145, 50);
 		pContato.add(btnCadastrarContato);
+		pContato.setLayout(null);
 		
-		
-		
-	
-		
+
 		
 	}
 }

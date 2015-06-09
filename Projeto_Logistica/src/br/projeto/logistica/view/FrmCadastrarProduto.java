@@ -15,18 +15,18 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
 import java.awt.Toolkit;
+import javax.swing.JPanel;
+import javax.swing.border.TitledBorder;
+import javax.swing.border.LineBorder;
+import java.awt.Color;
 
 public class FrmCadastrarProduto {
 
 	private JFrame frame;
 	private JTextField txtNomeEmp;
 	private JTextField txtCodigoEmp;
-	private JTextField txtCodigoProduto;
 	private JTextField txtNomeProduto;
 	private JTextField txtDescrição;
-	private JTextField textField_5;
-	private JTextField textField_6;
-	private JTextField txtQuantidade;
 
 	/**
 	 * Launch the application.
@@ -61,72 +61,56 @@ public class FrmCadastrarProduto {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
+		JPanel panel = new JPanel();
+		panel.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0)), "Produto", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		panel.setBounds(10, 11, 598, 171);
+		frame.getContentPane().add(panel);
+		panel.setLayout(null);
+		
 		JLabel lblNome = new JLabel("Nome do Produto :");
-		lblNome.setBounds(10, 81, 105, 14);
-		frame.getContentPane().add(lblNome);
+		lblNome.setBounds(10, 28, 105, 14);
+		panel.add(lblNome);
 		
 		JLabel lblDescricao = new JLabel("Descri\u00E7\u00E3o :");
-		lblDescricao.setBounds(10, 106, 63, 14);
-		frame.getContentPane().add(lblDescricao);
-		
-		JLabel lblPeso = new JLabel("Peso :");
-		lblPeso.setBounds(10, 260, 46, 14);
-		frame.getContentPane().add(lblPeso);
+		lblDescricao.setBounds(10, 52, 63, 14);
+		panel.add(lblDescricao);
 		
 		JLabel lblNomeDaEmpresa = new JLabel("Nome da Empresa :");
-		lblNomeDaEmpresa.setBounds(10, 11, 105, 14);
-		frame.getContentPane().add(lblNomeDaEmpresa);
+		lblNomeDaEmpresa.setBounds(10, 146, 105, 14);
+		panel.add(lblNomeDaEmpresa);
 		
 		JLabel lblCodigoEmpresa = new JLabel("Codigo Empresa :");
-		lblCodigoEmpresa.setBounds(315, 11, 97, 14);
-		frame.getContentPane().add(lblCodigoEmpresa);
-		
-		JLabel lblMedida = new JLabel("Medida :");
-		lblMedida.setBounds(10, 285, 63, 14);
-		frame.getContentPane().add(lblMedida);
-		
-		JLabel lblCodigoProduto = new JLabel("Codigo Produto :");
-		lblCodigoProduto.setBounds(10, 56, 97, 14);
-		frame.getContentPane().add(lblCodigoProduto);
+		lblCodigoEmpresa.setBounds(321, 146, 97, 14);
+		panel.add(lblCodigoEmpresa);
 		
 		JCheckBox chckbxFragil = new JCheckBox("Fr\u00E1gil");
-		chckbxFragil.setBounds(353, 77, 97, 23);
-		frame.getContentPane().add(chckbxFragil);
+		chckbxFragil.setBounds(352, 21, 97, 23);
+		panel.add(chckbxFragil);
 		
 		txtNomeEmp = new JTextField();
-		txtNomeEmp.setBounds(106, 8, 194, 20);
-		frame.getContentPane().add(txtNomeEmp);
+		txtNomeEmp.setBounds(111, 140, 194, 20);
+		panel.add(txtNomeEmp);
 		txtNomeEmp.setColumns(10);
 		
 		txtCodigoEmp = new JTextField();
-		txtCodigoEmp.setBounds(401, 8, 133, 20);
-		frame.getContentPane().add(txtCodigoEmp);
+		txtCodigoEmp.setBounds(413, 140, 63, 20);
+		panel.add(txtCodigoEmp);
 		txtCodigoEmp.setColumns(10);
 		
-		txtCodigoProduto = new JTextField();
-		txtCodigoProduto.setBounds(106, 53, 86, 20);
-		frame.getContentPane().add(txtCodigoProduto);
-		txtCodigoProduto.setColumns(10);
-		
-		txtNomeProduto = new JTextField();
-		txtNomeProduto.setBounds(106, 78, 222, 20);
-		frame.getContentPane().add(txtNomeProduto);
-		txtNomeProduto.setColumns(10);
-		
 		txtDescrição = new JTextField();
-		txtDescrição.setBounds(83, 106, 448, 140);
-		frame.getContentPane().add(txtDescrição);
+		txtDescrição.setBounds(68, 50, 448, 56);
+		panel.add(txtDescrição);
 		txtDescrição.setColumns(10);
 		
-		textField_5 = new JTextField();
-		textField_5.setBounds(83, 257, 97, 20);
-		frame.getContentPane().add(textField_5);
-		textField_5.setColumns(10);
+		txtNomeProduto = new JTextField();
+		txtNomeProduto.setBounds(102, 24, 245, 20);
+		panel.add(txtNomeProduto);
+		txtNomeProduto.setColumns(10);
 		
-		textField_6 = new JTextField();
-		textField_6.setBounds(83, 282, 97, 20);
-		frame.getContentPane().add(textField_6);
-		textField_6.setColumns(10);
+		JButton btnBuscar = new JButton("\r\n");
+		btnBuscar.setBounds(488, 137, 53, 23);
+		panel.add(btnBuscar);
+		btnBuscar.setIcon(new ImageIcon(FrmCadastrarProduto.class.getResource("/br/projeto/logistica/icon/1432771351_Search.png")));
 		
 		JButton btnSalvar = new JButton("Salvar");
 		btnSalvar.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -138,23 +122,19 @@ public class FrmCadastrarProduto {
 		btnVoltar.setBounds(57, 347, 109, 35);
 		frame.getContentPane().add(btnVoltar);
 		
-		JButton btnBuscar = new JButton("\r\n");
-		btnBuscar.setIcon(new ImageIcon(FrmCadastrarProduto.class.getResource("/br/projeto/logistica/icon/1432771351_Search.png")));
-		btnBuscar.setBounds(544, 7, 53, 23);
-		frame.getContentPane().add(btnBuscar);
-		
 		JButton btnNovo = new JButton("Novo");
 		btnNovo.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnNovo.setBounds(333, 349, 109, 35);
 		frame.getContentPane().add(btnNovo);
 		
-		JLabel lblQuantidade = new JLabel("Quantidade :");
-		lblQuantidade.setBounds(10, 310, 77, 14);
-		frame.getContentPane().add(lblQuantidade);
+		JPanel panel_1 = new JPanel();
+		panel_1.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0)), "Peso & Medida", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		panel_1.setBounds(10, 193, 598, 120);
+		frame.getContentPane().add(panel_1);
+		panel_1.setLayout(null);
 		
-		txtQuantidade = new JTextField();
-		txtQuantidade.setBounds(83, 307, 97, 20);
-		frame.getContentPane().add(txtQuantidade);
-		txtQuantidade.setColumns(10);
+		JLabel lblPeso = new JLabel("Peso :");
+		lblPeso.setBounds(10, 26, 46, 14);
+		panel_1.add(lblPeso);
 	}
 }

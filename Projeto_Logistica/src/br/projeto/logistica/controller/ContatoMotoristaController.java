@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.sql.SQLException;
 
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -20,9 +21,8 @@ public class ContatoMotoristaController implements ActionListener{
 	
 	
 	JTextField txtFone,txtDescricao,txtIDMot;
-	JLabel lblTipo,lblFone,lblOperadora,lblDescricao;
 	JComboBox cbTipoFone, cbOperadora;	
-	
+	private JFrame  frame;
 	
 	
 	
@@ -38,6 +38,12 @@ public class ContatoMotoristaController implements ActionListener{
    
 	}
 
+	public  ContatoMotoristaController(JFrame  frame) {
+		this.frame = frame;
+	}
+	
+	
+	
 
 	@Override
 	public void actionPerformed(ActionEvent e) {

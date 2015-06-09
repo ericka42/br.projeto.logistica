@@ -11,7 +11,7 @@ public interface MotoristaDAO {
 	public void alterarMotorista(Motorista m ) throws SQLException;
 	public void excluirMotorista(Motorista m) throws SQLException;
 	public Motorista consultarMotorista(Motorista m) throws SQLException;
-	
+	public int buscarUltimo() throws SQLException;
 	
 
 }

@@ -1,5 +1,6 @@
 package br.projeto.logistica.controller;
 
+import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
@@ -44,12 +45,25 @@ public class MotoristaController implements ActionListener {
 		Motorista m =new Motorista();
 		if("Salvar".equals(cmd)){
 			salvarMotorista(m);
-		}	
+		}else if ("Voltar".equals(cmd)){
+			fechar();
+			
+		}
 		
 	
 	}
-		
 	
+	
+
+
+
+	private void fechar() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
 	public void salvarMotorista(Motorista m){
 		m.setNome(txtNome.getText());
 		m.setCpf(txtCpf.getText());  
@@ -89,6 +103,9 @@ public class MotoristaController implements ActionListener {
 	}
 	
 	public void consultarMotorista(){
+		MotoristaDAO mDao=new MotoristaDAOImpl();
+		Motorista m = null;
+		
 		
 	}
 	

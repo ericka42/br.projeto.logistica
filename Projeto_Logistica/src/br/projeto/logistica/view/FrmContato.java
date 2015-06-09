@@ -1,32 +1,39 @@
 package br.projeto.logistica.view;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.border.TitledBorder;
-import javax.swing.border.LineBorder;
-
 import java.awt.Color;
+import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.SQLException;
+import java.text.ParseException;
 
-import javax.swing.JLabel;
-import javax.swing.JTextField;
+import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
+import javax.swing.border.TitledBorder;
+import javax.swing.text.MaskFormatter;
 
 import br.projeto.logistica.model.Operadora;
 import br.projeto.logistica.model.TipoFone;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+import br.projeto.logistica.persistence.MotoristaDAO;
+import br.projeto.logistica.persistence.MotoristaDAOImpl;
 
 public class FrmContato extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField txtIDMot;
 	private JTextField txtFone;
 	private JTextField txtDescricao;
+	private JFrame frame;
 
 	/**
 	 * Launch the application.
@@ -87,16 +94,31 @@ public class FrmContato extends JFrame {
 		pContato.add(txtIDMot);
 		txtIDMot.setColumns(10);
 		
-		JComboBox cbTipo = new JComboBox(TipoFone.values());
+		MotoristaDAO mDao = new MotoristaDAOImpl();
+		try {
+			txtIDMot.setText(String.valueOf(mDao.buscarUltimo()));
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		JComboBox<TipoFone> cbTipo = new JComboBox<TipoFone>(TipoFone.values());
 		cbTipo.setBounds(44, 46, 82, 20);
 		pContato.add(cbTipo);
 		
 		txtFone = new JTextField();
+		javax.swing.text.MaskFormatter fone;
+		try {
+			fone = new MaskFormatter("(##)##### - ####");
+		} catch (ParseException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		txtFone.setBounds(186, 43, 119, 20);
 		pContato.add(txtFone);
 		txtFone.setColumns(10);
 		
-		JComboBox cbOperadora = new JComboBox(Operadora.values());
+		JComboBox<Operadora> cbOperadora = new JComboBox<Operadora>(Operadora.values());
 		cbOperadora.setBounds(388, 43, 76, 20);
 		pContato.add(cbOperadora);
 		
@@ -111,10 +133,7 @@ public class FrmContato extends JFrame {
 		
 		JButton btnVoltar = new JButton("Voltar");
 		btnVoltar.addActionListener(new ActionListener() {
-			FrmContato tela=new FrmContato();
-			
 			public void actionPerformed(ActionEvent e) {
-				tela.dispose();
 			}
 		});
 		btnVoltar.setBounds(20, 156, 89, 51);
