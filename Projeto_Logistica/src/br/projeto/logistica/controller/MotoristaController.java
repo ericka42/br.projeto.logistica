@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -11,6 +12,7 @@ import javax.swing.JTextField;
 import br.projeto.logistica.model.Motorista;
 import br.projeto.logistica.persistence.MotoristaDAO;
 import br.projeto.logistica.persistence.MotoristaDAOImpl;
+import br.projeto.logistica.view.FrmContato;
 
 public class MotoristaController implements ActionListener {
 
@@ -18,6 +20,7 @@ public class MotoristaController implements ActionListener {
 	JTextField txtNumero,txtBairro,txtCidade,txtCep; 
 	JLabel lblNome,lblCpf,lblCnh,lblCategoria;
 	JLabel lblLogradouro,lblNumero,lblBairro,lblCidade,lblCep;
+	JFrame frame;
 	
 	
 	public MotoristaController(JTextField txtNome,JTextField txtCpf,JTextField txtCnh,JTextField txtCategoria,
@@ -36,6 +39,10 @@ public class MotoristaController implements ActionListener {
 		
 	}
 	
+	public MotoristaController(JFrame frame) {
+		this.frame = frame;
+	}
+	
 	
 	
 	@Override
@@ -44,12 +51,21 @@ public class MotoristaController implements ActionListener {
 		Motorista m =new Motorista();
 		if("Salvar".equals(cmd)){
 			salvarMotorista(m);
-		}	
+		}else if("Voltar".equals(cmd)){
+			fechar();
+		}
 		
 	
 	}
 		
 	
+	public void fechar() {
+		System.out.println("saiu");
+		frame.dispose();
+	}
+
+
+
 	public void salvarMotorista(Motorista m){
 		m.setNome(txtNome.getText());
 		m.setCpf(txtCpf.getText());  

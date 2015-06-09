@@ -1,29 +1,31 @@
 package br.projeto.logistica.view;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.border.TitledBorder;
-import javax.swing.border.LineBorder;
-
 import java.awt.Color;
+import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-import javax.swing.JLabel;
-import javax.swing.JTextField;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
+import javax.swing.border.TitledBorder;
 
+import br.projeto.logistica.controller.MotoristaController;
 import br.projeto.logistica.model.Operadora;
 import br.projeto.logistica.model.TipoFone;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import javax.swing.ImageIcon;
 
 public class FrmContato extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField txtIDMot;
 	private JTextField txtFone;
@@ -48,6 +50,7 @@ public class FrmContato extends JFrame {
 	/**
 	 * Create the frame.
 	 */
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public FrmContato() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 510, 256);
@@ -108,19 +111,20 @@ public class FrmContato extends JFrame {
 		
 		JButton btnSalvar = new JButton("Salvar");
 		btnSalvar.setIcon(new ImageIcon(FrmContato.class.getResource("/br/projeto/logistica/icon/img-disquete.png")));
-		btnSalvar.setBounds(375, 156, 89, 51);
+		btnSalvar.setBounds(354, 156, 110, 51);
 		contentPane.add(btnSalvar);
 		
 		JButton btnVoltar = new JButton("Voltar");
 		btnVoltar.setIcon(new ImageIcon(FrmContato.class.getResource("/br/projeto/logistica/icon/1433897020_undo.png")));
-		btnVoltar.addActionListener(new ActionListener() {
-			FrmContato tela=new FrmContato();
-			
-			public void actionPerformed(ActionEvent e) {
-				tela.dispose();
-			}
-		});
-		btnVoltar.setBounds(20, 156, 89, 51);
+//		btnVoltar.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//				FrmContato c = new F
+//			}
+//		});
+		btnVoltar.setBounds(20, 156, 121, 51);
 		contentPane.add(btnVoltar);
+		
+		MotoristaController m = new MotoristaController(this);
+		btnVoltar.addActionListener(m);
 	}
 }
