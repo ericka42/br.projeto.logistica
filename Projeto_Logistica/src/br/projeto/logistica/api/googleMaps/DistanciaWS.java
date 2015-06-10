@@ -1,4 +1,4 @@
-package br.projeto.logistica.controller;
+package br.projeto.logistica.api.googleMaps;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
