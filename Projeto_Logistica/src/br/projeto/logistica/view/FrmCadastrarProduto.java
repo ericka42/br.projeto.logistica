@@ -23,10 +23,7 @@ import br.projeto.logistica.model.UnidadeMedida;
 public class FrmCadastrarProduto {
 
 	private JFrame frmCadastrarProduto;
-	private JTextField txtNomeEmp;
-	private JTextField txtCodigoEmp;
-	private JTextField txtNomeProduto;
-	private JTextField txtDescrição;
+
 	private JTextField txtNome;
 	private JTextField txtDescricao;
 	private JTextField txtQuantidade;

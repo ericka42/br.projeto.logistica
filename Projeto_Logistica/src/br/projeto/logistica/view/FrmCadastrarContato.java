@@ -23,7 +23,7 @@ import br.projeto.logistica.model.TipoFone;
 import br.projeto.logistica.persistence.MotoristaDAO;
 import br.projeto.logistica.persistence.MotoristaDAOImpl;
 
-public class FrmContato extends JFrame {
+public class FrmCadastrarContato extends JFrame {
 
 	/**
 	 * 
@@ -42,7 +42,7 @@ public class FrmContato extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					FrmContato frame = new FrmContato();
+					FrmCadastrarContato frame = new FrmCadastrarContato();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -52,7 +52,7 @@ public class FrmContato extends JFrame {
 	}
 
 	
-	public FrmContato() {
+	public FrmCadastrarContato() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 510, 256);
 		contentPane = new JPanel();
@@ -88,7 +88,7 @@ public class FrmContato extends JFrame {
 		
 		txtIDMot = new JTextField();
 		txtIDMot.setEditable(false);
-		txtIDMot.setBounds(80, 18, 46, 20);
+		txtIDMot.setBounds(92, 18, 46, 20);
 		pContato.add(txtIDMot);
 		txtIDMot.setColumns(10);
 		
@@ -99,7 +99,7 @@ public class FrmContato extends JFrame {
 			e1.printStackTrace();
 		}
 		
-		JComboBox<TipoFone> cbTipo = new JComboBox<TipoFone>(TipoFone.values());
+		JComboBox cbTipo = new JComboBox(TipoFone.values());
 		cbTipo.setBounds(44, 46, 82, 20);
 		pContato.add(cbTipo);
 		
@@ -108,7 +108,7 @@ public class FrmContato extends JFrame {
 		pContato.add(txtFone);
 		txtFone.setColumns(10);
 		
-		JComboBox<Operadora> cbOperadora = new JComboBox<Operadora>(Operadora.values());
+		JComboBox cbOperadora = new JComboBox(Operadora.values());
 		cbOperadora.setBounds(388, 43, 76, 20);
 		pContato.add(cbOperadora);
 		
@@ -118,7 +118,7 @@ public class FrmContato extends JFrame {
 		txtDescricao.setColumns(10);
 		
 		JButton btnSalvar = new JButton("Salvar");
-		btnSalvar.setIcon(new ImageIcon(FrmContato.class.getResource("/br/projeto/logistica/icon/img-disquete.png")));
+		btnSalvar.setIcon(new ImageIcon(FrmCadastrarContato.class.getResource("/br/projeto/logistica/icon/img-disquete.png")));
 		btnSalvar.setBounds(354, 156, 110, 51);
 		contentPane.add(btnSalvar);
 		
@@ -128,7 +128,7 @@ public class FrmContato extends JFrame {
 			}
 		});
 		btnVoltar.setBounds(20, 156, 89, 51);
-		btnVoltar.setIcon(new ImageIcon(FrmContato.class.getResource("/br/projeto/logistica/icon/1433897020_undo.png")));
+		btnVoltar.setIcon(new ImageIcon(FrmCadastrarContato.class.getResource("/br/projeto/logistica/icon/1433897020_undo.png")));
 		btnVoltar.setBounds(20, 156, 121, 51);
 		contentPane.add(btnVoltar);
 		
