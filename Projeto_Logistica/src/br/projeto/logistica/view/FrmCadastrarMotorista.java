@@ -36,6 +36,7 @@ public class FrmCadastrarMotorista  extends JFrame{
 	private JTextField txtBairro;
 	private JTextField txtCidade;
 	private JTextField txtCep;
+	private static FrmCadastrarMotorista frame;
 
 	/**
 	 * Launch the application.
@@ -44,7 +45,7 @@ public class FrmCadastrarMotorista  extends JFrame{
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					FrmCadastrarMotorista frame = new FrmCadastrarMotorista();
+					frame = new FrmCadastrarMotorista();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -60,10 +61,12 @@ public class FrmCadastrarMotorista  extends JFrame{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 747, 472);
 		contentPane = new JPanel();
+		contentPane.setBackground(new Color(255, 255, 153));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JPanel pDados = new JPanel();
+		pDados.setBackground(new Color(255, 255, 153));
 		pDados.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0)), "Dados Pessoais", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		pDados.setBounds(10, 11, 711, 100);
 		contentPane.add(pDados);
@@ -106,6 +109,7 @@ public class FrmCadastrarMotorista  extends JFrame{
 		txtCategoria.setColumns(10);
 		
 		JPanel pEndereco = new JPanel();
+		pEndereco.setBackground(new Color(255, 255, 153));
 		pEndereco.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0)), "Endereço", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		pEndereco.setBounds(10, 122, 711, 131);
 		contentPane.add(pEndereco);
@@ -157,8 +161,14 @@ public class FrmCadastrarMotorista  extends JFrame{
 		pEndereco.add(txtCep);
 		
 		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar.setIcon(new ImageIcon(FrmCadastrarMotorista.class.getResource("/br/projeto/logistica/icon/img-novo.png")));
+		btnCancelar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
+			}
+		});
 		btnCancelar.setIcon(new ImageIcon(FrmCadastrarMotorista.class.getResource("/br/projeto/logistica/icon/img-cancela.png")));
-		btnCancelar.setBounds(24, 376, 105, 47);
+		btnCancelar.setBounds(24, 376, 140, 47);
 		contentPane.add(btnCancelar);
 		
 		JButton btnNovo = new JButton("Novo");
@@ -167,26 +177,24 @@ public class FrmCadastrarMotorista  extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnNovo.setBounds(442, 376, 105, 47);
+		btnNovo.setBounds(407, 376, 140, 47);
 		contentPane.add(btnNovo);
 		
 		JButton btnSalvar = new JButton("Salvar");
 		btnSalvar.setIcon(new ImageIcon(FrmCadastrarMotorista.class.getResource("/br/projeto/logistica/icon/img-disquete.png")));
-		btnSalvar.setBounds(589, 376, 105, 47);
+		btnSalvar.setBounds(589, 376, 132, 47);
 		contentPane.add(btnSalvar);
 		
-		MotoristaController mc = new MotoristaController (txtNome,  txtCpf, txtCnh, txtCategoria ,txtLogradouro,txtNumero,txtBairro, txtCidade, txtCep);
-		btnSalvar.addActionListener(mc);
 		
 		
 		JPanel pContato= new JPanel();
+		pContato.setBackground(new Color(255, 255, 153));
 		pContato.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0)), "Contato", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		pContato.setBounds(10, 259, 711, 82);
 		contentPane.add(pContato);
 		pContato.setLayout(null);
 		
 		JButton btnCadastrarContato = new JButton("CadastrarContato");
-		btnCadastrarContato.addActionListener(mc);
 		btnCadastrarContato.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				FrmCadastrarContato.main(null);
@@ -198,8 +206,9 @@ public class FrmCadastrarMotorista  extends JFrame{
 		btnCadastrarContato.setBounds(10, 21, 189, 50);
 		pContato.add(btnCadastrarContato);
 		pContato.setLayout(null);
-		
-		
+
+		MotoristaController mc = new MotoristaController (txtNome,  txtCpf, txtCnh, txtCategoria ,txtLogradouro,txtNumero,txtBairro, txtCidade, txtCep);
+		btnSalvar.addActionListener(mc);
 		
 	}
 }

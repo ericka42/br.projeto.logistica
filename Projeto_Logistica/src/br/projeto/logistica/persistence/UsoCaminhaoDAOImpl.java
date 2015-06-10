@@ -18,9 +18,7 @@ public class UsoCaminhaoDAOImpl implements UsoCaminhaoDAO{
 	}
 
 	@Override
-	public void cadastraUsoCaminhao(UsoCaminhao u) throws SQLException {
-		Motorista m = new Motorista();
-		Caminhao c = new Caminhao();
+	public void cadastraUsoCaminhao(Motorista m, Caminhao c, UsoCaminhao u) throws SQLException {
 		String sql = "INSERT INTO usocaminhao (id_mot, id_placa, dt_retirada, hr_retirada, dt_retorno, hr_retorno) VALUES (?,?,?,?,?,?)";
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setInt(1, m.getId());

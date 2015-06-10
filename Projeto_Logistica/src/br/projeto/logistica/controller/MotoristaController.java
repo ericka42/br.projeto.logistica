@@ -1,27 +1,32 @@
 package br.projeto.logistica.controller;
 
-import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.sql.SQLException;
+import java.util.List;
 
-import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import br.projeto.logistica.model.Motorista;
 import br.projeto.logistica.persistence.MotoristaDAO;
 import br.projeto.logistica.persistence.MotoristaDAOImpl;
-import br.projeto.logistica.view.FrmCadastrarContato;
 
-public class MotoristaController implements ActionListener{
+public class MotoristaController implements ActionListener, KeyListener{
 
 	
 	
 	JTextField txtNome,txtCpf,txtCnh,txtCategoria,txtLogradouro ;
 	JTextField txtNumero,txtBairro,txtCidade,txtCep;
-	
+	private JTextField txtMotorista;
+	@SuppressWarnings("rawtypes")
+	private JComboBox cmbMotorista;
+	private JTextField txtCod;
+	private List<Motorista> lista = null;
 	
 	
 	public MotoristaController(JTextField txtNome, JTextField txtCpf,
@@ -47,30 +52,21 @@ public class MotoristaController implements ActionListener{
 
 
 	public MotoristaController(JTextField txtMotorista, JComboBox cmbMotorista) {
-		// TODO Auto-generated constructor stub
+		this.txtMotorista = txtMotorista;
+		this.cmbMotorista = cmbMotorista;
+		this.txtCod = txtCod;
+		
 	}
-
-
-
-
+	
 
 	public void actionPerformed(ActionEvent e) {
 		String cmd =e.getActionCommand();
 		Motorista m =new Motorista();
 		if("Salvar".equals(cmd)){
 			salvarMotorista(m);
-		}else if("CadastrarContato".equals(cmd)){
-			
 		}
-		
-	
 	}
-	
-	
-	
-	
-	
-	
+
 	public void salvarMotorista(Motorista m){
 		m.setNome(txtNome.getText());
 		m.setCpf(txtCpf.getText());  
@@ -109,5 +105,47 @@ public class MotoristaController implements ActionListener{
 		}
 	}
 	
+	private MotoristaDAO dao = new MotoristaDAOImpl();
+
+	public List<Motorista> retornaListaMotorista(String nome){
+		try {
+			lista = dao.consultaNomeMotorista(nome);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return lista;
+	}
+
+	@Override
+	public void keyPressed(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void keyReleased(KeyEvent arg0) {
+		try {
+			lista = dao.consultaNomeMotorista(txtMotorista.getText());
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		if (lista != null){
+			cmbMotorista.removeAllItems();
+			cmbMotorista.addItem("--------------------");
+			for (Motorista m : lista){
+				cmbMotorista.addItem(m.getNome());
+			}
+		}
+	}
+
+	@Override
+	public void keyTyped(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }

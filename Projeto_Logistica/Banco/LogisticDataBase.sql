@@ -68,7 +68,7 @@ nome VARCHAR(50) NOT NULL,
 fragil  CHAR(1) DEFAULT('S') CHECK (fragil ='S' OR fragil='N') NULL,
 descricao VARCHAR(50) NULL,
 peso DECIMAL(7,2) NOT NULL,
-pesagem CHAR(2),
+pesagem CHAR(2) DEFAULT('KG') CHECK (pesagem ='KG' OR pesagem ='L'),
 comprimento DECIMAL(7,2) NOT NULL,
 altura DECIMAL(7,2) NOT NULL,
 largura DECIMAL(7,2) NOT NULL,
@@ -136,13 +136,14 @@ FOREIGN KEY (registro_rota) REFERENCES rota(registro),
 FOREIGN KEY (id_prod) REFERENCES produto(ID),
 FOREIGN KEY (placa_cam) REFERENCES caminhao(placa))
 
-
+drop table produto, relacao, carga
 
 
 #retorna o ultimo id do motorista cadastrado
 SELECT TOP (1) WITH TIES ID
 from motorista
 ORDER BY ID DESC 
+
 
 
 

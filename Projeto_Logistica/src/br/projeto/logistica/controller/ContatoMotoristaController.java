@@ -39,9 +39,6 @@ public class ContatoMotoristaController implements ActionListener{
    
 	}
 
-	public  ContatoMotoristaController(JFrame  frame) {
-		this.frame = frame;
-	}
 	
 	
 	

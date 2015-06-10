@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import br.projeto.logistica.model.ContatoMotorista;
 import br.projeto.logistica.model.Motorista;
@@ -86,6 +88,23 @@ public  class MotoristaDAOImpl implements MotoristaDAO{
 	public void excluirMotorista(Motorista m) throws SQLException {
 		String sql= "DELETE motorista WHERE id = ?";
 		
+	}
+	
+	@Override
+	public List<Motorista> consultaNomeMotorista(String nome)
+			throws SQLException {
+		String sql = "SELECT id, nome FROM motorista WHERE nome like (?)";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setString(1, "%".concat(nome.concat("%")));
+		ResultSet rs = ps.executeQuery();
+		List<Motorista> lista = new ArrayList<Motorista>();
+		while (rs.next()) {
+			Motorista m = new Motorista();
+			m.setId(rs.getInt("id"));
+			m.setNome(rs.getString("nome"));
+			lista.add(m);
+		}
+		return lista;
 	}
 
 }

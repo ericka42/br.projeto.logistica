@@ -54,35 +54,38 @@ public class FrmCalculoDistancia {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 569, 352);
+		frame.getContentPane().setBackground(new Color(255, 255, 153));
+		frame.setBounds(100, 100, 661, 352);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		JPanel pOrigemDestino = new JPanel();
+		pOrigemDestino.setBackground(new Color(255, 255, 153));
 		pOrigemDestino.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0)), "Origem & Destino", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		pOrigemDestino.setBounds(10, 10, 533, 103);
+		pOrigemDestino.setBounds(10, 10, 625, 103);
 		frame.getContentPane().add(pOrigemDestino);
 		pOrigemDestino.setLayout(null);
 		
 		JLabel lblOrigem = new JLabel("Origem :");
-		lblOrigem.setBounds(10, 24, 46, 14);
+		lblOrigem.setBounds(10, 24, 67, 14);
 		pOrigemDestino.add(lblOrigem);
 		
 		JLabel lblDestino = new JLabel("Destino :");
-		lblDestino.setBounds(10, 58, 46, 14);
+		lblDestino.setBounds(10, 58, 67, 14);
 		pOrigemDestino.add(lblDestino);
 		
 		txtOrigem = new JTextField();
-		txtOrigem.setBounds(62, 21, 461, 20);
+		txtOrigem.setBounds(107, 21, 461, 20);
 		pOrigemDestino.add(txtOrigem);
 		txtOrigem.setColumns(10);
 		
 		txtDestino = new JTextField();
 		txtDestino.setColumns(10);
-		txtDestino.setBounds(62, 55, 461, 20);
+		txtDestino.setBounds(107, 55, 461, 20);
 		pOrigemDestino.add(txtDestino);
 		
 		JPanel pDistancia = new JPanel();
+		pDistancia.setBackground(new Color(255, 255, 153));
 		pDistancia.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0)), "Dist\u00E2ncia M\u00EDnima", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		pDistancia.setBounds(10, 123, 267, 92);
 		frame.getContentPane().add(pDistancia);
@@ -100,6 +103,11 @@ public class FrmCalculoDistancia {
 		frame.getContentPane().add(btnCalcular);
 		
 		JButton btnVoltar = new JButton("Voltar");
+		btnVoltar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
+			}
+		});
 		btnVoltar.setBounds(10, 255, 89, 48);
 		frame.getContentPane().add(btnVoltar);
 		

@@ -1,19 +1,17 @@
 package br.projeto.logistica.view;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JTextField;
-import javax.swing.border.TitledBorder;
-import javax.swing.border.LineBorder;
 import java.awt.Color;
-import javax.swing.JLabel;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
+import javax.swing.border.TitledBorder;
 
 public class FrmCadastroEmpresa {
 	
@@ -33,15 +31,17 @@ public class FrmCadastroEmpresa {
 
 	
 	public FrmCadastroEmpresa() {
-		frame =new JFrame();
+		frame =new JFrame("Cadastrar Empresa");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setBounds(100, 100, 719, 456);
 		contentPane = new JPanel();
+		contentPane.setBackground(new Color(255, 255, 153));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		frame.setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JPanel panel = new JPanel();
+		panel.setBackground(new Color(255, 255, 153));
 		panel.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0)), "Empresa", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		panel.setBounds(10, 11, 683, 93);
 		contentPane.add(panel);
@@ -84,6 +84,7 @@ public class FrmCadastroEmpresa {
 		txtRamo.setColumns(10);
 		
 		JPanel pEndereco = new JPanel();
+		pEndereco.setBackground(new Color(255, 255, 153));
 		pEndereco.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0)), "Endereço", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		pEndereco.setBounds(10, 115, 683, 116);
 		contentPane.add(pEndereco);
@@ -144,6 +145,7 @@ public class FrmCadastroEmpresa {
 		txtComplemento.setColumns(10);
 		
 		JPanel pContato = new JPanel();
+		pContato.setBackground(new Color(255, 255, 153));
 		pContato.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0)), "Contato", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		pContato.setBounds(10, 242, 683, 93);
 		contentPane.add(pContato);
@@ -154,6 +156,11 @@ public class FrmCadastroEmpresa {
 		pContato.add(btnContato);
 		
 		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
+			}
+		});
 		btnCancelar.setBounds(10, 359, 89, 48);
 		contentPane.add(btnCancelar);
 		
@@ -165,8 +172,6 @@ public class FrmCadastroEmpresa {
 		btnSalvar.setBounds(583, 359, 89, 48);
 		contentPane.add(btnSalvar);
 		frame.setVisible(true);
-		
-		
 		
 	}
 	

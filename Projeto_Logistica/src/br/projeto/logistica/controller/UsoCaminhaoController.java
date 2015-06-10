@@ -3,6 +3,7 @@ package br.projeto.logistica.controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
+import java.util.List;
 
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
@@ -27,9 +28,10 @@ public class UsoCaminhaoController implements ActionListener {
 	private JTextField txtDataRetorno;
 	private JTextField txtHoraRetorno;
 	private JComboBox<Motorista> cmbMotorista;
+	private List<Motorista> lista;
 	
 	public UsoCaminhaoController(JTextField txtMotorista, JTextField txtPlaca, JTextField txtModelo, JTextField txtCategoria, JTextField txtDataRetirada,
-			JTextField txtHoraRetirada, JTextField txtDataRetorno, JTextField txtHoraRetorno, JComboBox<Motorista> cmbMotorista) {
+			JTextField txtHoraRetirada, JTextField txtDataRetorno, JTextField txtHoraRetorno, JComboBox<Motorista> cmbMotorista, List<Motorista> lista) {
 		this.txtMotorista = txtMotorista;
 		this.txtPlaca = txtPlaca;
 		this.txtModelo = txtModelo;
@@ -39,15 +41,19 @@ public class UsoCaminhaoController implements ActionListener {
 		this.txtDataRetorno = txtDataRetorno;
 		this.txtHoraRetorno = txtHoraRetorno;
 		this.cmbMotorista = cmbMotorista;
+		this.lista = lista;
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		Motorista m = new Motorista();
+		Caminhao c = new Caminhao();
+		UsoCaminhao u = new UsoCaminhao();
 		String cmd = e.getActionCommand();
 		if("  Novo".equals(cmd)){
 			limpaCampos();
 		}else if("  Salvar".equals(cmd)){
-			salvaMovimentacao();
+			salvaMovimentacao(m, c, u);
 		}else if("".equals(cmd)){
 			pesquisaPlaca();
 		}
@@ -65,13 +71,13 @@ public class UsoCaminhaoController implements ActionListener {
 		cmbMotorista.removeAllItems();
 	}
 	
-	public void salvaMovimentacao() {
-		Object m = new Motorista();
-		Caminhao c = new Caminhao();
-		UsoCaminhao u = new UsoCaminhao();
-		if(cmbMotorista.getItemCount() > 0){
-			m = cmbMotorista.getSelectedItem();
-			((Motorista) m).getId();
+	public void salvaMovimentacao(Motorista m, Caminhao c, UsoCaminhao u) {
+		if(cmbMotorista.getSelectedItem() != null || !cmbMotorista.getSelectedItem().equals("--------------------")){
+			for (Motorista mo : lista){
+				if (cmbMotorista.getSelectedItem().toString().equals(mo.getNome())){
+					m.setId(mo.getId());
+				}
+			}
 		}
 		c.setPlaca(txtPlaca.getText().replaceAll("-", ""));
 		u.setDataRetirada(txtDataRetirada.getText());
@@ -80,7 +86,7 @@ public class UsoCaminhaoController implements ActionListener {
 		u.setHoraRetorno(txtHoraRetorno.getText());
 		UsoCaminhaoDAO uDao = new UsoCaminhaoDAOImpl();
 		try {
-			uDao.cadastraUsoCaminhao(u);
+			uDao.cadastraUsoCaminhao(m, c, u);
 			JOptionPane.showMessageDialog(null,
 					"Caminhão Cadastrado com Sucesso!", "Sucesso",
 					JOptionPane.INFORMATION_MESSAGE);

@@ -6,12 +6,12 @@ public class Produto {
 	private String fragil;
 	private String descricao;
 	private float peso;
-	private String medida;
+	private String pesagem;
+	private String uniMedida;
 	private int quantidade;
-	
-	
-	
-	
+	private Float comprimento;
+	private Float largura;
+	private Float altura;
 	
 	public int getId() {
 		return id;
@@ -43,11 +43,17 @@ public class Produto {
 	public void setPeso(float peso) {
 		this.peso = peso;
 	}
-	public String getMedida() {
-		return medida;
+	public String getPesagem() {
+		return pesagem;
 	}
-	public void setMedida(String medida) {
-		this.medida = medida;
+	public void setPesagem(String pesagem) {
+		this.pesagem = pesagem;
+	}
+	public String getUniMedida() {
+		return uniMedida;
+	}
+	public void setUniMedida(String uniMedida) {
+		this.uniMedida = uniMedida;
 	}
 	public int getQuantidade() {
 		return quantidade;
@@ -55,4 +61,23 @@ public class Produto {
 	public void setQuantidade(int quantidade) {
 		this.quantidade = quantidade;
 	}
+	public Float getComprimento() {
+		return comprimento;
+	}
+	public void setComprimento(Float comprimento) {
+		this.comprimento = comprimento;
+	}
+	public Float getLargura() {
+		return largura;
+	}
+	public void setLargura(Float largura) {
+		this.largura = largura;
+	}
+	public Float getAltura() {
+		return altura;
+	}
+	public void setAltura(Float altura) {
+		this.altura = altura;
+	}
+	
 }

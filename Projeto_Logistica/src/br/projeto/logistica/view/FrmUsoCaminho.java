@@ -4,8 +4,8 @@ import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyListener;
 import java.text.ParseException;
+import java.util.List;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -16,6 +16,7 @@ import javax.swing.JTextField;
 
 import br.projeto.logistica.controller.MotoristaController;
 import br.projeto.logistica.controller.UsoCaminhaoController;
+import br.projeto.logistica.model.Motorista;
 
 public class FrmUsoCaminho {
 
@@ -137,21 +138,49 @@ public class FrmUsoCaminho {
 		txtCategoria.setColumns(10);
 		
 		txtDataRetirada = new JTextField();
+		javax.swing.text.MaskFormatter dataR;
+		try {
+			dataR = new javax.swing.text.MaskFormatter("##/##/####");
+			txtDataRetirada = new javax.swing.JFormattedTextField(dataR);
+		} catch (ParseException e1) {
+			e1.printStackTrace();
+		}
 		txtDataRetirada.setBounds(102, 218, 111, 20);
 		frame.getContentPane().add(txtDataRetirada);
 		txtDataRetirada.setColumns(10);
 		
 		txtHoraRetirada = new JTextField();
+		javax.swing.text.MaskFormatter horaR;
+		try {
+			horaR = new javax.swing.text.MaskFormatter("##:##");
+			txtHoraRetirada = new javax.swing.JFormattedTextField(horaR);
+		} catch (ParseException e1) {
+			e1.printStackTrace();
+		}
 		txtHoraRetirada.setBounds(102, 248, 86, 20);
 		frame.getContentPane().add(txtHoraRetirada);
 		txtHoraRetirada.setColumns(10);
 		
 		txtDataRetorno = new JTextField();
+		javax.swing.text.MaskFormatter dataRe;
+		try {
+			dataRe = new javax.swing.text.MaskFormatter("##/##/####");
+			txtDataRetorno = new javax.swing.JFormattedTextField(dataRe);
+		} catch (ParseException e1) {
+			e1.printStackTrace();
+		}
 		txtDataRetorno.setBounds(398, 215, 121, 20);
 		frame.getContentPane().add(txtDataRetorno);
 		txtDataRetorno.setColumns(10);
 		
 		txtHoraRetorno = new JTextField();
+		javax.swing.text.MaskFormatter horaRe;
+		try {
+			horaRe = new javax.swing.text.MaskFormatter("##:##");
+			txtHoraRetorno = new javax.swing.JFormattedTextField(horaRe);
+		} catch (ParseException e1) {
+			e1.printStackTrace();
+		}
 		txtHoraRetorno.setBounds(398, 245, 86, 20);
 		frame.getContentPane().add(txtHoraRetorno);
 		txtHoraRetorno.setColumns(10);
@@ -182,10 +211,11 @@ public class FrmUsoCaminho {
 		frame.getContentPane().add(btnCancelar);
 		
 		MotoristaController cm = new MotoristaController(txtMotorista, cmbMotorista);
-		txtMotorista.addKeyListener((KeyListener) cm);
+		txtMotorista.addKeyListener(cm);
 		
+		List<Motorista> lista = cm.retornaListaMotorista(txtMotorista.getText());
 		
-		UsoCaminhaoController ucc = new UsoCaminhaoController(txtMotorista, txtPlaca, txtModelo, txtCategoria, txtDataRetirada, txtHoraRetirada, txtDataRetorno, txtHoraRetorno, cmbMotorista);
+		UsoCaminhaoController ucc = new UsoCaminhaoController(txtMotorista, txtPlaca, txtModelo, txtCategoria, txtDataRetirada, txtHoraRetirada, txtDataRetorno, txtHoraRetorno, cmbMotorista, lista);
 		btnNovo.addActionListener(ucc);
 		btnPesquisar.addActionListener(ucc);
 		btnSalvar.addActionListener(ucc);

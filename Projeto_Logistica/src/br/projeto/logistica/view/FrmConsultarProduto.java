@@ -62,6 +62,7 @@ public class FrmConsultarProduto {
 	 */
 	private void initialize() {
 		frmCadastrarProduto = new JFrame();
+		frmCadastrarProduto.getContentPane().setBackground(new Color(255, 255, 153));
 		frmCadastrarProduto.setTitle("Alterar,Consultar e Excluir"
 				+ " Produto");
 		frmCadastrarProduto.setIconImage(Toolkit.getDefaultToolkit().getImage(FrmConsultarProduto.class.getResource("/javax/swing/plaf/basic/icons/JavaCup16.png")));
@@ -70,6 +71,7 @@ public class FrmConsultarProduto {
 		frmCadastrarProduto.getContentPane().setLayout(null);
 		
 		JPanel pProdutos = new JPanel();
+		pProdutos.setBackground(new Color(255, 255, 153));
 		pProdutos.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0)), "Produto", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		pProdutos.setBounds(10, 11, 598, 134);
 		frmCadastrarProduto.getContentPane().add(pProdutos);
@@ -103,6 +105,7 @@ public class FrmConsultarProduto {
 		txtQuantidade.setColumns(10);
 		
 		JCheckBox cbxFragil = new JCheckBox("Fr\u00E1gil");
+		cbxFragil.setBackground(new Color(255, 255, 153));
 		cbxFragil.setBounds(256, 96, 66, 23);
 		pProdutos.add(cbxFragil);
 		
@@ -143,6 +146,7 @@ public class FrmConsultarProduto {
 		frmCadastrarProduto.getContentPane().add(btnEditar);
 		
 		JPanel pPesoMedida = new JPanel();
+		pPesoMedida.setBackground(new Color(255, 255, 153));
 		pPesoMedida.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0)), "Peso & Medida", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		pPesoMedida.setBounds(10, 156, 598, 94);
 		frmCadastrarProduto.getContentPane().add(pPesoMedida);
@@ -206,6 +210,7 @@ public class FrmConsultarProduto {
 		frmCadastrarProduto.getContentPane().add(btnCancelar);
 		
 		JPanel pAssociar = new JPanel();
+		pAssociar.setBackground(new Color(255, 255, 153));
 		pAssociar.setBorder(new TitledBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0)), "", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)), "Associar Empresa", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		pAssociar.setBounds(10, 261, 283, 75);
 		frmCadastrarProduto.getContentPane().add(pAssociar);

@@ -169,6 +169,7 @@ public class FrmCadastrarCaminhao {
 		CaminhaoController cc = new CaminhaoController(txtModelo, txtAnoModelo, txtMarca, txtPlaca, txtRenavam, txtChassi, txtCor, txtEixo, txtCategoria);
 		btnSalvar.addActionListener(cc);
 		btnNovo.addActionListener(cc);
+		txtChassi.addKeyListener(cc);
 		
 	}
 }

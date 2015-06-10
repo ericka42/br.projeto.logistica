@@ -57,11 +57,13 @@ public class FrmCadastrarContato extends JFrame {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 510, 256);
 		contentPane = new JPanel();
+		contentPane.setBackground(new Color(255, 255, 153));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JPanel pContato = new JPanel();
+		pContato.setBackground(new Color(255, 255, 153));
 		pContato.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0)), "CadastrarContato", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		pContato.setBounds(10, 11, 474, 140);
 		contentPane.add(pContato);
@@ -100,7 +102,7 @@ public class FrmCadastrarContato extends JFrame {
 			e1.printStackTrace();
 		}
 		
-		JComboBox<TipoFone> cbTipo = new JComboBox<TipoFone>(TipoFone.values());
+		JComboBox<TipoFone> cbTipo = new JComboBox(TipoFone.values());
 		cbTipo.setBounds(44, 46, 82, 20);
 		pContato.add(cbTipo);
 		
@@ -109,7 +111,7 @@ public class FrmCadastrarContato extends JFrame {
 		pContato.add(txtFone);
 		txtFone.setColumns(10);
 		
-		JComboBox<Operadora> cbOperadora = new JComboBox<Operadora>(Operadora.values());
+		JComboBox<Operadora> cbOperadora = new JComboBox(Operadora.values());
 		cbOperadora.setBounds(388, 43, 76, 20);
 		pContato.add(cbOperadora);
 		

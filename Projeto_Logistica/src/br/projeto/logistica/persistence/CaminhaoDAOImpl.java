@@ -66,6 +66,8 @@ public class CaminhaoDAOImpl implements CaminhaoDAO{
 			c.setAnoModelo(rs.getInt("anomodelo"));
 			c.setEixo(rs.getInt("eixo"));
 			c.setCor(rs.getString("cor"));
+		} else {
+			c = null;
 		}
 		return c;
 	}
