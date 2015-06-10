@@ -1,33 +1,52 @@
 package br.projeto.logistica.api.googleMaps;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
- 
+
+import javax.swing.JTextField;
+
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
+
+import com.sun.xml.internal.txw2.TXW;
  
-public class DistanciaWS {
+public class DistanciaWS implements ActionListener{
 	
+	JTextField txtOrigem;
+	JTextField txtDestino;
+	JTextField txtResultado;
 	
+    public DistanciaWS(JTextField txtOrigem, JTextField txtDestino, JTextField txtResultado) {
 	
-	
-	
-	private String txtOrigem;
-	private String txtDestino;
-	
-	
-	
-	
-	
-    public static String calcular(String origem, String destino) {
+		this.txtDestino = txtDestino;
+		this.txtOrigem = txtOrigem;
+		this.txtResultado = txtResultado;
+
+	}
+    
+    @Override
+	public void actionPerformed(ActionEvent e) {
+		String cmd = e.getActionCommand();
+		OrigemDestino o = new OrigemDestino();
+			if("Calcular".equals(cmd)){
+				o.setDestino(txtDestino.getText());
+				o.setOrigem(txtOrigem.getText());
+				txtResultado.setText(calcular(o));
+			}
+    }
+    
+
+	public String calcular(OrigemDestino o) {
+
         URL url;
-        
         try {
             url = new URL(
                     "http://maps.google.es/maps/api/directions/xml?origin="
-                            + origem + "&destination=" + destino
+                            + o.getOrigem() + "&destination=" + o.getDestino()
                             + "&sensor=false");
  
             Document document = getDocumento(url);
@@ -54,21 +73,7 @@ public class DistanciaWS {
         Document document = reader.read(url);
         return document;
     }
- 
-    public static void main(String[] args) {
-    	
-//        System.out.println(calcular("07262-160, guarulhos - SP",
-//                "Rua sao felix do piaui ,360, Sao Paulo - SP"));
-    	
-    }
-    
-    public void entrada(String txtOrigem, String txtDestino){
-    	this.txtOrigem = txtOrigem; 
-    	this.txtDestino =txtDestino;
-    	
-    	
-    	
-    	
-    }
- 
+
 }
+ 
+

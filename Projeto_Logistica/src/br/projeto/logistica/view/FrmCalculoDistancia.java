@@ -6,10 +6,18 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
 import javax.swing.border.LineBorder;
+
 import java.awt.Color;
+
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+
+import br.projeto.logistica.api.googleMaps.DistanciaWS;
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.Font;
 
 public class FrmCalculoDistancia {
 
@@ -81,6 +89,7 @@ public class FrmCalculoDistancia {
 		pDistancia.setLayout(null);
 		
 		txtResultado = new JTextField();
+		txtResultado.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		txtResultado.setEditable(false);
 		txtResultado.setBounds(10, 22, 247, 59);
 		pDistancia.add(txtResultado);
@@ -101,5 +110,8 @@ public class FrmCalculoDistancia {
 		JButton btnSalvar = new JButton("Salvar");
 		btnSalvar.setBounds(440, 255, 89, 48);
 		frame.getContentPane().add(btnSalvar);
+		
+		DistanciaWS acao = new DistanciaWS(txtOrigem, txtDestino, txtResultado);
+		btnCalcular.addActionListener(acao);
 	}
 }
