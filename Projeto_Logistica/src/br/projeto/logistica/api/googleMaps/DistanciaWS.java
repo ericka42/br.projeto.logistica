@@ -9,8 +9,21 @@ import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
  
 public class DistanciaWS {
+	
+	
+	
+	
+	
+	private String txtOrigem;
+	private String txtDestino;
+	
+	
+	
+	
+	
     public static String calcular(String origem, String destino) {
         URL url;
+        
         try {
             url = new URL(
                     "http://maps.google.es/maps/api/directions/xml?origin="
@@ -43,8 +56,19 @@ public class DistanciaWS {
     }
  
     public static void main(String[] args) {
-        System.out.println(calcular("Rua Augusta, 500, Sao Paulo - SP",
-                "Rua Edgar Codazzi, 65, Sao Paulo - SP"));
+    	
+//        System.out.println(calcular("07262-160, guarulhos - SP",
+//                "Rua sao felix do piaui ,360, Sao Paulo - SP"));
+    	
+    }
+    
+    public void entrada(String txtOrigem, String txtDestino){
+    	this.txtOrigem = txtOrigem; 
+    	this.txtDestino =txtDestino;
+    	
+    	
+    	
+    	
     }
  
 }
