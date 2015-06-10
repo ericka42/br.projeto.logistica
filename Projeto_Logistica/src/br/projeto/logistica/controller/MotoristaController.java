@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import java.sql.SQLException;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
@@ -43,6 +44,14 @@ public class MotoristaController implements ActionListener{
 
 
 	
+
+
+	public MotoristaController(JTextField txtMotorista, JComboBox cmbMotorista) {
+		// TODO Auto-generated constructor stub
+	}
+
+
+
 
 
 	public void actionPerformed(ActionEvent e) {

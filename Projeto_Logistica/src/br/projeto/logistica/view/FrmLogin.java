@@ -1,19 +1,16 @@
 package br.projeto.logistica.view;
 
+import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JButton;
-import javax.swing.JTextField;
 import javax.swing.JPasswordField;
-import javax.swing.ImageIcon;
-
-import br.projeto.logistica.controller.FuncionarioController;
-
-import java.awt.Color;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+import javax.swing.JTextField;
 
 public class FrmLogin {
 
@@ -36,6 +33,7 @@ public class FrmLogin {
 			}
 		});
 	}
+	
 
 	/**
 	 * Create the application.
@@ -43,6 +41,7 @@ public class FrmLogin {
 	public FrmLogin() {
 		initialize();
 	}
+
 
 	/**
 	 * Initialize the contents of the frame.
@@ -77,7 +76,7 @@ public class FrmLogin {
 		frame.getContentPane().add(txtSenha);
 		
 		JLabel lblImg = new JLabel("");
-		lblImg.setIcon(new ImageIcon(FrmLogin.class.getResource("/img/img-login.png")));
+		lblImg.setIcon(new ImageIcon(FrmLogin.class.getResource("/br/projeto/logistica/icon/img-login.png")));
 		lblImg.setBounds(352, 62, 104, 115);
 		frame.getContentPane().add(lblImg);
 		
@@ -94,8 +93,15 @@ public class FrmLogin {
 		btnEntrar.setBounds(364, 218, 104, 33);
 		frame.getContentPane().add(btnEntrar);
 		
-		FuncionarioController fControle = new FuncionarioController(txtUsuario, txtSenha);
-		btnEntrar.addActionListener(fControle);
+		btnEntrar.addActionListener(new ActionListener() {
+			@SuppressWarnings("static-access")
+			public void actionPerformed(ActionEvent e) {
+				FrmMenu fr = new FrmMenu();
+				fr.main(null);
+				frame.dispose();
+			}
+		});
+		
 	}
-
+	
 }
