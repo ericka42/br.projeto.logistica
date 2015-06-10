@@ -16,6 +16,7 @@ import br.projeto.logistica.persistence.ContatoMotoristaDAO;
 import br.projeto.logistica.persistence.ContatoMotoristaDAOImpl;
 import br.projeto.logistica.persistence.MotoristaDAO;
 import br.projeto.logistica.persistence.MotoristaDAOImpl;
+import br.projeto.logistica.view.FrmCadastrarContato;
 
 public class ContatoMotoristaController implements ActionListener{
 	
@@ -47,7 +48,16 @@ public class ContatoMotoristaController implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
+		String cmd =e.getActionCommand();
+		ContatoMotorista cm = new ContatoMotorista();
+		if("salvar".equals(cmd)){
+			salvarContatoMotorista(cm);	
+		} else if("CadastrarContato".equals(cmd)){
+
+			salvarContatoMotorista(cm);
+			System.out.println("salvou antes de adicionar");
+		}
+		
 		
 	}
 	

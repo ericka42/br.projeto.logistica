@@ -1,15 +1,18 @@
 package br.projeto.logistica.controller;
 
+import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import br.projeto.logistica.model.Motorista;
 import br.projeto.logistica.persistence.MotoristaDAO;
 import br.projeto.logistica.persistence.MotoristaDAOImpl;
+import br.projeto.logistica.view.FrmCadastrarContato;
 
 public class MotoristaController implements ActionListener{
 
@@ -19,11 +22,14 @@ public class MotoristaController implements ActionListener{
 	JTextField txtNumero,txtBairro,txtCidade,txtCep;
 	
 	
+	
 	public MotoristaController(JTextField txtNome, JTextField txtCpf,
 			JTextField txtCnh, JTextField txtCategoria,
 			JTextField txtLogradouro, JTextField txtNumero,
-			JTextField txtBairro, JTextField txtCidade, JTextField txtCep) {
-		super();
+			JTextField txtBairro, JTextField txtCidade, JTextField txtCep
+			) {
+		
+		
 		this.txtNome = txtNome;
 		this.txtCpf = txtCpf;
 		this.txtCnh = txtCnh;
@@ -44,6 +50,8 @@ public class MotoristaController implements ActionListener{
 		Motorista m =new Motorista();
 		if("Salvar".equals(cmd)){
 			salvarMotorista(m);
+		}else if("CadastrarContato".equals(cmd)){
+			
 		}
 		
 	

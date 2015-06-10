@@ -17,6 +17,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
+import br.projeto.logistica.controller.ContatoMotoristaController;
 import br.projeto.logistica.controller.MotoristaController;
 import br.projeto.logistica.model.Operadora;
 import br.projeto.logistica.model.TipoFone;
@@ -99,7 +100,7 @@ public class FrmCadastrarContato extends JFrame {
 			e1.printStackTrace();
 		}
 		
-		JComboBox cbTipo = new JComboBox(TipoFone.values());
+		JComboBox<TipoFone> cbTipo = new JComboBox<TipoFone>(TipoFone.values());
 		cbTipo.setBounds(44, 46, 82, 20);
 		pContato.add(cbTipo);
 		
@@ -108,7 +109,7 @@ public class FrmCadastrarContato extends JFrame {
 		pContato.add(txtFone);
 		txtFone.setColumns(10);
 		
-		JComboBox cbOperadora = new JComboBox(Operadora.values());
+		JComboBox<Operadora> cbOperadora = new JComboBox<Operadora>(Operadora.values());
 		cbOperadora.setBounds(388, 43, 76, 20);
 		pContato.add(cbOperadora);
 		
@@ -121,12 +122,11 @@ public class FrmCadastrarContato extends JFrame {
 		btnSalvar.setIcon(new ImageIcon(FrmCadastrarContato.class.getResource("/br/projeto/logistica/icon/img-disquete.png")));
 		btnSalvar.setBounds(354, 156, 110, 51);
 		contentPane.add(btnSalvar);
+		ContatoMotoristaController cmc= new ContatoMotoristaController(txtFone, txtDescricao, txtIDMot, cbTipo, cbOperadora);
+		btnSalvar.addActionListener(cmc);
+		
 		
 		JButton btnVoltar = new JButton("Voltar");
-		btnVoltar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
 		btnVoltar.setBounds(20, 156, 89, 51);
 		btnVoltar.setIcon(new ImageIcon(FrmCadastrarContato.class.getResource("/br/projeto/logistica/icon/1433897020_undo.png")));
 		btnVoltar.setBounds(20, 156, 121, 51);

@@ -11,6 +11,9 @@ import javax.swing.border.TitledBorder;
 import javax.swing.border.LineBorder;
 import java.awt.Color;
 import javax.swing.JLabel;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class FrmCadastroEmpresa {
 	
@@ -40,7 +43,7 @@ public class FrmCadastroEmpresa {
 		
 		JPanel panel = new JPanel();
 		panel.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0)), "Empresa", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panel.setBounds(10, 11, 687, 93);
+		panel.setBounds(10, 11, 683, 93);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
@@ -66,7 +69,7 @@ public class FrmCadastroEmpresa {
 		txtNome.setColumns(10);
 		
 		txtInsc = new JTextField();
-		txtInsc.setBounds(112, 52, 153, 20);
+		txtInsc.setBounds(119, 52, 153, 20);
 		panel.add(txtInsc);
 		txtInsc.setColumns(10);
 		
@@ -139,6 +142,28 @@ public class FrmCadastroEmpresa {
 		txtComplemento.setBounds(94, 51, 250, 20);
 		pEndereco.add(txtComplemento);
 		txtComplemento.setColumns(10);
+		
+		JPanel pContato = new JPanel();
+		pContato.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0)), "Contato", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		pContato.setBounds(10, 242, 683, 93);
+		contentPane.add(pContato);
+		pContato.setLayout(null);
+		
+		JButton btnContato = new JButton("Cadastrar Contato");
+		btnContato.setBounds(10, 23, 158, 59);
+		pContato.add(btnContato);
+		
+		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar.setBounds(10, 359, 89, 48);
+		contentPane.add(btnCancelar);
+		
+		JButton btnNovo = new JButton("Novo");
+		btnNovo.setBounds(442, 359, 89, 48);
+		contentPane.add(btnNovo);
+		
+		JButton btnSalvar = new JButton("Salvar");
+		btnSalvar.setBounds(583, 359, 89, 48);
+		contentPane.add(btnSalvar);
 		frame.setVisible(true);
 		
 		
