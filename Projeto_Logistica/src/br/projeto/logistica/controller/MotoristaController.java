@@ -36,6 +36,9 @@ public class MotoristaController implements ActionListener{
 	}
 
 
+	
+
+
 	public void actionPerformed(ActionEvent e) {
 		String cmd =e.getActionCommand();
 		Motorista m =new Motorista();
