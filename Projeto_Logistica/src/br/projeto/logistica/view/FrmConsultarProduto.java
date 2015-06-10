@@ -62,7 +62,8 @@ public class FrmConsultarProduto {
 	 */
 	private void initialize() {
 		frmCadastrarProduto = new JFrame();
-		frmCadastrarProduto.setTitle("Cadastrar Produto");
+		frmCadastrarProduto.setTitle("Alterar,Consultar e Excluir"
+				+ " Produto");
 		frmCadastrarProduto.setIconImage(Toolkit.getDefaultToolkit().getImage(FrmConsultarProduto.class.getResource("/javax/swing/plaf/basic/icons/JavaCup16.png")));
 		frmCadastrarProduto.setBounds(100, 100, 634, 471);
 		frmCadastrarProduto.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -70,7 +71,7 @@ public class FrmConsultarProduto {
 		
 		JPanel pProdutos = new JPanel();
 		pProdutos.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0)), "Produto", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
-		pProdutos.setBounds(10, 11, 598, 131);
+		pProdutos.setBounds(10, 11, 598, 134);
 		frmCadastrarProduto.getContentPane().add(pProdutos);
 		pProdutos.setLayout(null);
 		
@@ -131,19 +132,19 @@ public class FrmConsultarProduto {
 		});
 		btnExcluir.setIcon(new ImageIcon(FrmConsultarProduto.class.getResource("/br/projeto/logistica/icon/img-cancela.png")));
 		btnExcluir.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnExcluir.setBounds(130, 287, 109, 35);
+		btnExcluir.setBounds(129, 347, 109, 35);
 		frmCadastrarProduto.getContentPane().add(btnExcluir);
 		
 		
 		JButton btnEditar = new JButton("Editar");
 		btnEditar.setIcon(new ImageIcon(FrmConsultarProduto.class.getResource("/br/projeto/logistica/icon/img-novo.png")));
 		btnEditar.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnEditar.setBounds(327, 287, 109, 35);
+		btnEditar.setBounds(358, 347, 109, 35);
 		frmCadastrarProduto.getContentPane().add(btnEditar);
 		
 		JPanel pPesoMedida = new JPanel();
 		pPesoMedida.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0)), "Peso & Medida", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		pPesoMedida.setBounds(10, 156, 598, 120);
+		pPesoMedida.setBounds(10, 156, 598, 94);
 		frmCadastrarProduto.getContentPane().add(pPesoMedida);
 		pPesoMedida.setLayout(null);
 		
@@ -161,52 +162,58 @@ public class FrmConsultarProduto {
 		pPesoMedida.add(cbPeso);
 		
 		JLabel lblAltura = new JLabel("Altura :");
-		lblAltura.setBounds(459, 76, 46, 14);
+		lblAltura.setBounds(459, 67, 46, 14);
 		pPesoMedida.add(lblAltura);
 		
 		JLabel lblLargura = new JLabel("Largura :");
-		lblLargura.setBounds(331, 76, 58, 14);
+		lblLargura.setBounds(331, 67, 58, 14);
 		pPesoMedida.add(lblLargura);
 		
 		JLabel lblComprimento = new JLabel("Comprimento :");
-		lblComprimento.setBounds(190, 76, 85, 14);
+		lblComprimento.setBounds(190, 67, 85, 14);
 		pPesoMedida.add(lblComprimento);
 		
 		JComboBox cbMedida = new JComboBox (UnidadeMedida.values());
-		cbMedida.setBounds(122, 73, 58, 20);
+		cbMedida.setBounds(122, 64, 58, 20);
 		pPesoMedida.add(cbMedida);
 		
-		JSeparator separator = new JSeparator();
-		separator.setBounds(285, 11, 1, 109);
-		pPesoMedida.add(separator);
-		
 		JSeparator separator_1 = new JSeparator();
-		separator_1.setBounds(10, 63, 578, 2);
+		separator_1.setBounds(10, 51, 578, 2);
 		pPesoMedida.add(separator_1);
 		
 		JLabel lblUnidadeMedida = new JLabel("Unidade  de Medida :");
-		lblUnidadeMedida.setBounds(10, 76, 102, 14);
+		lblUnidadeMedida.setBounds(10, 67, 102, 14);
 		pPesoMedida.add(lblUnidadeMedida);
 		
 		txtComprimento = new JTextField();
-		txtComprimento.setBounds(269, 73, 52, 20);
+		txtComprimento.setBounds(269, 64, 52, 20);
 		pPesoMedida.add(txtComprimento);
 		txtComprimento.setColumns(10);
 		
 		txtLargura = new JTextField();
 		txtLargura.setColumns(10);
-		txtLargura.setBounds(386, 73, 52, 20);
+		txtLargura.setBounds(386, 64, 52, 20);
 		pPesoMedida.add(txtLargura);
 		
 		txtAltura = new JTextField();
 		txtAltura.setColumns(10);
-		txtAltura.setBounds(505, 73, 52, 20);
+		txtAltura.setBounds(505, 64, 52, 20);
 		pPesoMedida.add(txtAltura);
 		
 		JButton btnCancelar = new JButton("Cancelar");
 		btnCancelar.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnCancelar.setBounds(10, 347, 109, 35);
 		frmCadastrarProduto.getContentPane().add(btnCancelar);
+		
+		JPanel pAssociar = new JPanel();
+		pAssociar.setBorder(new TitledBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0)), "", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)), "Associar Empresa", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		pAssociar.setBounds(10, 261, 283, 75);
+		frmCadastrarProduto.getContentPane().add(pAssociar);
+		pAssociar.setLayout(null);
+		
+		JButton btnVinculo = new JButton("Vinculo");
+		btnVinculo.setBounds(69, 21, 135, 43);
+		pAssociar.add(btnVinculo);
 		
 	
 	}

@@ -71,7 +71,7 @@ public class FrmCadastrarProduto {
 		
 		JPanel pProdutos = new JPanel();
 		pProdutos.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0)), "Produto", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
-		pProdutos.setBounds(10, 11, 598, 131);
+		pProdutos.setBounds(10, 11, 598, 109);
 		frmCadastrarProduto.getContentPane().add(pProdutos);
 		pProdutos.setLayout(null);
 		
@@ -80,11 +80,11 @@ public class FrmCadastrarProduto {
 		pProdutos.add(lblNome);
 		
 		JLabel lblDescrio = new JLabel("Descri\u00E7\u00E3o :");
-		lblDescrio.setBounds(10, 63, 74, 14);
+		lblDescrio.setBounds(10, 55, 74, 14);
 		pProdutos.add(lblDescrio);
 		
 		JLabel lblQuantidade = new JLabel("Unidades / Quantidade :");
-		lblQuantidade.setBounds(10, 100, 127, 14);
+		lblQuantidade.setBounds(10, 83, 127, 14);
 		pProdutos.add(lblQuantidade);
 		
 		txtNome = new JTextField();
@@ -93,12 +93,12 @@ public class FrmCadastrarProduto {
 		txtNome.setColumns(10);
 		
 		txtDescricao = new JTextField();
-		txtDescricao.setBounds(91, 60, 280, 20);
+		txtDescricao.setBounds(91, 52, 280, 20);
 		pProdutos.add(txtDescricao);
 		txtDescricao.setColumns(10);
 		
 		txtQuantidade = new JTextField();
-		txtQuantidade.setBounds(147, 97, 86, 20);
+		txtQuantidade.setBounds(147, 80, 86, 20);
 		pProdutos.add(txtQuantidade);
 		txtQuantidade.setColumns(10);
 		
@@ -122,12 +122,12 @@ public class FrmCadastrarProduto {
 		JButton btnNovo = new JButton("Novo");
 		btnNovo.setIcon(new ImageIcon(FrmCadastrarProduto.class.getResource("/br/projeto/logistica/icon/img-novo.png")));
 		btnNovo.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnNovo.setBounds(333, 349, 109, 35);
+		btnNovo.setBounds(347, 347, 109, 35);
 		frmCadastrarProduto.getContentPane().add(btnNovo);
 		
 		JPanel pPesoMedida = new JPanel();
 		pPesoMedida.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0)), "Peso & Medida", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		pPesoMedida.setBounds(10, 156, 598, 120);
+		pPesoMedida.setBounds(10, 131, 598, 102);
 		frmCadastrarProduto.getContentPane().add(pPesoMedida);
 		pPesoMedida.setLayout(null);
 		
@@ -145,19 +145,19 @@ public class FrmCadastrarProduto {
 		pPesoMedida.add(cbPeso);
 		
 		JLabel lblAltura = new JLabel("Altura :");
-		lblAltura.setBounds(459, 76, 46, 14);
+		lblAltura.setBounds(459, 67, 46, 14);
 		pPesoMedida.add(lblAltura);
 		
 		JLabel lblLargura = new JLabel("Largura :");
-		lblLargura.setBounds(331, 76, 58, 14);
+		lblLargura.setBounds(331, 67, 58, 14);
 		pPesoMedida.add(lblLargura);
 		
 		JLabel lblComprimento = new JLabel("Comprimento :");
-		lblComprimento.setBounds(190, 76, 85, 14);
+		lblComprimento.setBounds(190, 67, 85, 14);
 		pPesoMedida.add(lblComprimento);
 		
 		JComboBox cbMedida = new JComboBox (UnidadeMedida.values());
-		cbMedida.setBounds(122, 73, 58, 20);
+		cbMedida.setBounds(122, 64, 58, 20);
 		pPesoMedida.add(cbMedida);
 		
 		JSeparator separator = new JSeparator();
@@ -165,27 +165,37 @@ public class FrmCadastrarProduto {
 		pPesoMedida.add(separator);
 		
 		JSeparator separator_1 = new JSeparator();
-		separator_1.setBounds(10, 63, 578, 2);
+		separator_1.setBounds(10, 51, 578, 2);
 		pPesoMedida.add(separator_1);
 		
 		JLabel lblUnidadeMedida = new JLabel("Unidade  de Medida :");
-		lblUnidadeMedida.setBounds(10, 76, 102, 14);
+		lblUnidadeMedida.setBounds(10, 67, 102, 14);
 		pPesoMedida.add(lblUnidadeMedida);
 		
 		txtComprimento = new JTextField();
-		txtComprimento.setBounds(269, 73, 52, 20);
+		txtComprimento.setBounds(269, 64, 52, 20);
 		pPesoMedida.add(txtComprimento);
 		txtComprimento.setColumns(10);
 		
 		txtLargura = new JTextField();
 		txtLargura.setColumns(10);
-		txtLargura.setBounds(386, 73, 52, 20);
+		txtLargura.setBounds(386, 64, 52, 20);
 		pPesoMedida.add(txtLargura);
 		
 		txtAltura = new JTextField();
 		txtAltura.setColumns(10);
-		txtAltura.setBounds(505, 73, 52, 20);
+		txtAltura.setBounds(505, 64, 52, 20);
 		pPesoMedida.add(txtAltura);
+		
+		JPanel panel = new JPanel();
+		panel.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0)), "Associar Empresa", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		panel.setBounds(10, 237, 300, 76);
+		frmCadastrarProduto.getContentPane().add(panel);
+		panel.setLayout(null);
+		
+		JButton btnVinculo = new JButton("Vincula\u00E7\u00E3o");
+		btnVinculo.setBounds(77, 16, 146, 44);
+		panel.add(btnVinculo);
 		
 	
 	}
