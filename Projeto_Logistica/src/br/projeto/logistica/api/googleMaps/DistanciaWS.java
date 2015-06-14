@@ -61,7 +61,7 @@ public class DistanciaWS implements ActionListener{
     @SuppressWarnings("rawtypes")
     public static String analisaXml(Document document) {
         List list = document
-                .selectNodes("//DirectionsResponse/route/leg/distance/text");
+              .selectNodes("//DirectionsResponse/route/leg/distance/text");
  
         Element element = (Element) list.get(list.size() - 1);
  

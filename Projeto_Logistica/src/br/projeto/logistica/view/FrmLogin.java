@@ -48,13 +48,13 @@ public class FrmLogin {
 	 */
 	@SuppressWarnings("deprecation")
 	private void initialize() {
-		frame = new JFrame("Nome do sistema");
+		frame = new JFrame("SGL - Sistema de Gestão Logística");
 		frame.getContentPane().setBackground(new Color(255, 255, 255));
 		frame.setBounds(100, 100, 516, 317);
 		frame.setDefaultCloseOperation(JFrame.DEFAULT_CURSOR);
 		frame.getContentPane().setLayout(null);
 		
-		JLabel lblNomeDaAplicao = new JLabel("NOME DO SISTEMA");
+		JLabel lblNomeDaAplicao = new JLabel("SGL");
 		lblNomeDaAplicao.setBounds(42, 26, 162, 32);
 		frame.getContentPane().add(lblNomeDaAplicao);
 		

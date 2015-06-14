@@ -9,6 +9,8 @@ usuario VARCHAR(30) NOT NULL,
 senha VARCHAR(15) NOT NULL
 PRIMARY KEY(id_user)) 
 
+INSERT INTO funcionario VALUES ('usuario', '123')
+
 
 create table motorista(
 ID INT IDENTITY(1,1) NOT NULL,
@@ -146,15 +148,45 @@ ORDER BY ID DESC
 
 
 
+select *from usocaminhao
 
 
 
+INSERT INTO motorista VALUES('nome','cpf','cnh','categoria','logradouro',0,'bairro','cidade','cep')
+INSERT INTO caminhao VALUES('placa', 'renavam', 'chassi', 'modelo', 'marca', 'categoria', 'anomodelo', 'eixo', 'cor') 
+INSERT INTO usocaminhao VALUES(0, 'id_placa', 'dt_retirada', 'hr_retirada', 'dt_retorno', 'hr_retorno')
+INSERT INTO contato VALUES(0,'tipo', 'telefone', 'descricao', 'operadora')
+INSERT INTO empresa VALUES('cnpj','nome','insc_estadual','ramo','logradouro',0,'complemento','bairro','cidade','cep','informacao')
+INSERT INTO produto VALUES('nome', 'fragil', 'descricao', 0, 'pesagem',0, 0, 0, 'unid_medida', 0)
+INSERT INTO contato_emp VALUES('cnpj_emp','tipo_emp', 'telefone', 'descricao', 'operadora','representante')
+INSERT INTO relacao VALUES(0,'cnpj_emp','especificacao')
+INSERT INTO rota VALUES('origem','destino','data','hora')
+INSERT INTO carga VALUES(0,0,'placa_cam','tipo_carga','descricao','condicao')
 
 
+UPDATE motorista
+SET nome='',cpf='',cnh='',categoria='',logradouro='',num='',bairro='',cidade='',cep=''
+WHERE ID=''
 
+UPDATE caminhao 
+SET renavam='',chassi='', modelo='',marca='',categoria='',anomodelo='',eixo='',cor='' 
+WHERE placa='' 
 
+UPDATE contato
+SET id_mot='',tipo='',telefone='',descricao='',operadora=''
+WHERE id_contato=''
 
+UPDATE empresa
+SET nome='',insc_estadual='',ramo='',logradouro='',num=0,complemento='',bairro='',cidade='',cep='',informacao=''
+WHERE cnpj=''
 
+UPDATE contato_emp
+SET cnpj_emp='',tipo_emp='',telefone='',descricao='',operadora='',representante=''
+WHERE cnpj_emp=''
+
+UPDATE produto 
+SET nome='', fragil='', descricao='', peso =0,pesagem='',comprimento =0,altura=0,largura=0,unid_medida='',quantidade=0
+WHERE ID
 
 
 
