@@ -35,6 +35,8 @@ public class FrmMenu {
 	private void initialize() {
 		frame = new JFrame("SGL - Sistema de Gestão Logística");
 		frame.getContentPane().setBackground(new Color(255, 255, 204));
+		frame.setBounds(100, 100, 868, 493);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JButton btnCad_Cami = new JButton("Cadastrar Caminh\u00E3o");
 		btnCad_Cami.setBounds(23, 43, 171, 62);
@@ -131,7 +133,5 @@ public class FrmMenu {
 		btnUsoCaminhao.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnUsoCaminhao.setBounds(518, 262, 278, 124);
 		frame.getContentPane().add(btnUsoCaminhao);
-		frame.setBounds(100, 100, 868, 493);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 }

@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -17,10 +18,12 @@ public class FuncionarioController implements ActionListener{
 	
 	private JTextField txtUsuario;
 	private JPasswordField txtSenha;
+	private JFrame frame;
 	
-	public FuncionarioController(JTextField txtUsuario, JPasswordField txtSenha) {
+	public FuncionarioController(JTextField txtUsuario, JPasswordField txtSenha, JFrame frame) {
 		this.txtUsuario = txtUsuario;
 		this.txtSenha = txtSenha;
+		this.frame = frame;
 	}
 
 	@Override
@@ -41,6 +44,7 @@ public class FuncionarioController implements ActionListener{
 			if(fDao.autenticar(f)){
 				FrmMenu menu = new FrmMenu();
 				menu.main(null);
+				frame.dispose();
 			}else{
 				JOptionPane.showMessageDialog(null, "Usuário ou senha incorreto!","Digite os dados corretamente", JOptionPane.ERROR_MESSAGE);
 				limparCampos();
