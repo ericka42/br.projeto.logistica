@@ -1,6 +1,7 @@
 package br.projeto.logistica.view;
 
 import java.awt.Color;
+import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -30,6 +31,19 @@ public class FrmCadastroEmpresa {
 	private JTextField textField_4;
 	private JTextField txtComplemento;
 
+	
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					FrmCadastroEmpresa window = new FrmCadastroEmpresa();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
 	
 	public FrmCadastroEmpresa() {
 		frame =new JFrame("Cadastrar Empresa");
@@ -153,6 +167,11 @@ public class FrmCadastroEmpresa {
 		pContato.setLayout(null);
 		
 		JButton btnContato = new JButton("Cadastrar Contato");
+		btnContato.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
 		btnContato.setIcon(new ImageIcon(FrmCadastroEmpresa.class.getResource("/br/projeto/logistica/icon/1433896496_phone_add.png")));
 		btnContato.setBounds(10, 23, 158, 59);
 		pContato.add(btnContato);
@@ -176,12 +195,6 @@ public class FrmCadastroEmpresa {
 		btnSalvar.setIcon(new ImageIcon(FrmCadastroEmpresa.class.getResource("/br/projeto/logistica/icon/img-disquete.png")));
 		btnSalvar.setBounds(580, 359, 113, 48);
 		contentPane.add(btnSalvar);
-		frame.setVisible(true);
-		
 	}
 	
-	
-	public static void main(String[] args) {
-		new FrmCadastroEmpresa();
-	}
 }
