@@ -24,7 +24,6 @@ public class ProdutoController implements ActionListener{
 	private JTextField txtComprimento;
 	private JTextField txtLargura;
 	private JTextField txtAltura;
-	private JTextField txtID;
 	private JCheckBox cbxFragil;
 	private JComboBox<UnidadeMedida> cbMedida;
 	private JComboBox<Peso> cbPeso;

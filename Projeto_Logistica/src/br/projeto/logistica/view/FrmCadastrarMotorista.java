@@ -11,13 +11,10 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.UIManager;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
-import br.projeto.logistica.controller.ContatoMotoristaController;
 import br.projeto.logistica.controller.MotoristaController;
-import br.projeto.logistica.model.ContatoMotorista;
 
 public class FrmCadastrarMotorista  extends JFrame{
 

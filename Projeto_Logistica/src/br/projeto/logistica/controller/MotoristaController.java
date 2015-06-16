@@ -8,7 +8,6 @@ import java.sql.SQLException;
 import java.util.List;
 
 import javax.swing.JComboBox;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
@@ -25,7 +24,6 @@ public class MotoristaController implements ActionListener, KeyListener{
 	private JTextField txtMotorista;
 	@SuppressWarnings("rawtypes")
 	private JComboBox cmbMotorista;
-	private JTextField txtCod;
 	private List<Motorista> lista = null;
 	
 	
@@ -51,11 +49,10 @@ public class MotoristaController implements ActionListener, KeyListener{
 	
 
 
+	@SuppressWarnings("rawtypes")
 	public MotoristaController(JTextField txtMotorista, JComboBox cmbMotorista) {
 		this.txtMotorista = txtMotorista;
 		this.cmbMotorista = cmbMotorista;
-		this.txtCod = txtCod;
-		
 	}
 	
 
@@ -124,6 +121,7 @@ public class MotoristaController implements ActionListener, KeyListener{
 	}
 
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public void keyReleased(KeyEvent arg0) {
 		try {

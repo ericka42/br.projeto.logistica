@@ -84,6 +84,7 @@ public  class MotoristaDAOImpl implements MotoristaDAO{
 
 
 
+	@SuppressWarnings("unused")
 	@Override
 	public void excluirMotorista(Motorista m) throws SQLException {
 		String sql= "DELETE motorista WHERE id = ?";

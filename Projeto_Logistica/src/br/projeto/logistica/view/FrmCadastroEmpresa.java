@@ -12,6 +12,7 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
+import javax.swing.ImageIcon;
 
 public class FrmCadastroEmpresa {
 	
@@ -152,24 +153,28 @@ public class FrmCadastroEmpresa {
 		pContato.setLayout(null);
 		
 		JButton btnContato = new JButton("Cadastrar Contato");
+		btnContato.setIcon(new ImageIcon(FrmCadastroEmpresa.class.getResource("/br/projeto/logistica/icon/1433896496_phone_add.png")));
 		btnContato.setBounds(10, 23, 158, 59);
 		pContato.add(btnContato);
 		
 		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar.setIcon(new ImageIcon(FrmCadastroEmpresa.class.getResource("/br/projeto/logistica/icon/img-cancela.png")));
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
 			}
 		});
-		btnCancelar.setBounds(10, 359, 89, 48);
+		btnCancelar.setBounds(10, 359, 130, 48);
 		contentPane.add(btnCancelar);
 		
 		JButton btnNovo = new JButton("Novo");
-		btnNovo.setBounds(442, 359, 89, 48);
+		btnNovo.setIcon(new ImageIcon(FrmCadastroEmpresa.class.getResource("/br/projeto/logistica/icon/img-novo.png")));
+		btnNovo.setBounds(418, 359, 113, 48);
 		contentPane.add(btnNovo);
 		
 		JButton btnSalvar = new JButton("Salvar");
-		btnSalvar.setBounds(583, 359, 89, 48);
+		btnSalvar.setIcon(new ImageIcon(FrmCadastroEmpresa.class.getResource("/br/projeto/logistica/icon/img-disquete.png")));
+		btnSalvar.setBounds(580, 359, 113, 48);
 		contentPane.add(btnSalvar);
 		frame.setVisible(true);
 		

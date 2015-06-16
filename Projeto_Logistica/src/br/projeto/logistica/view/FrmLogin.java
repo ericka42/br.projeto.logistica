@@ -54,8 +54,8 @@ public class FrmLogin {
 		frame.setDefaultCloseOperation(JFrame.DEFAULT_CURSOR);
 		frame.getContentPane().setLayout(null);
 		
-		JLabel lblNomeDaAplicao = new JLabel("SGL");
-		lblNomeDaAplicao.setBounds(42, 26, 162, 32);
+		JLabel lblNomeDaAplicao = new JLabel("SGL - Sistema de Gest\u00E3o Log\u00EDstica");
+		lblNomeDaAplicao.setBounds(42, 26, 180, 32);
 		frame.getContentPane().add(lblNomeDaAplicao);
 		
 		JLabel lblUsuario = new JLabel("Usuario :");

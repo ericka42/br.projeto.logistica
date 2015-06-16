@@ -19,6 +19,7 @@ import javax.swing.border.TitledBorder;
 
 import br.projeto.logistica.model.Peso;
 import br.projeto.logistica.model.UnidadeMedida;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -60,13 +61,14 @@ public class FrmConsultarProduto {
 	/**
 	 * Initialize the contents of the frame.
 	 */
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	private void initialize() {
 		frmCadastrarProduto = new JFrame();
 		frmCadastrarProduto.getContentPane().setBackground(new Color(255, 255, 153));
 		frmCadastrarProduto.setTitle("Alterar,Consultar e Excluir"
 				+ " Produto");
 		frmCadastrarProduto.setIconImage(Toolkit.getDefaultToolkit().getImage(FrmConsultarProduto.class.getResource("/javax/swing/plaf/basic/icons/JavaCup16.png")));
-		frmCadastrarProduto.setBounds(100, 100, 634, 471);
+		frmCadastrarProduto.setBounds(100, 100, 634, 449);
 		frmCadastrarProduto.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmCadastrarProduto.getContentPane().setLayout(null);
 		
@@ -110,22 +112,23 @@ public class FrmConsultarProduto {
 		pProdutos.add(cbxFragil);
 		
 		JLabel lblID = new JLabel("Identifica\u00E7\u00E3o do Produto :");
-		lblID.setBounds(10, 21, 143, 14);
+		lblID.setBounds(10, 21, 155, 14);
 		pProdutos.add(lblID);
 		
 		txtID = new JTextField();
-		txtID.setBounds(147, 18, 74, 20);
+		txtID.setBounds(159, 18, 74, 20);
 		pProdutos.add(txtID);
 		txtID.setColumns(10);
 		
 		JButton btnBuscar = new JButton("buscar");
-		btnBuscar.setBounds(338, 42, 86, 23);
+		btnBuscar.setIcon(new ImageIcon(FrmConsultarProduto.class.getResource("/br/projeto/logistica/icon/img-pesquisa.png")));
+		btnBuscar.setBounds(338, 42, 103, 23);
 		pProdutos.add(btnBuscar);
 		
 		JButton btnSalvar = new JButton("Salvar");
 		btnSalvar.setIcon(new ImageIcon(FrmConsultarProduto.class.getResource("/br/projeto/logistica/icon/img-disquete.png")));
 		btnSalvar.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnSalvar.setBounds(486, 347, 109, 35);
+		btnSalvar.setBounds(486, 369, 122, 35);
 		frmCadastrarProduto.getContentPane().add(btnSalvar);
 		
 		JButton btnExcluir = new JButton("Excluir");
@@ -133,16 +136,16 @@ public class FrmConsultarProduto {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		btnExcluir.setIcon(new ImageIcon(FrmConsultarProduto.class.getResource("/br/projeto/logistica/icon/img-cancela.png")));
+		btnExcluir.setIcon(new ImageIcon(FrmConsultarProduto.class.getResource("/br/projeto/logistica/icon/img-excluir.png")));
 		btnExcluir.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnExcluir.setBounds(129, 347, 109, 35);
+		btnExcluir.setBounds(173, 369, 130, 35);
 		frmCadastrarProduto.getContentPane().add(btnExcluir);
 		
 		
 		JButton btnEditar = new JButton("Editar");
 		btnEditar.setIcon(new ImageIcon(FrmConsultarProduto.class.getResource("/br/projeto/logistica/icon/img-novo.png")));
 		btnEditar.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnEditar.setBounds(358, 347, 109, 35);
+		btnEditar.setBounds(337, 369, 125, 35);
 		frmCadastrarProduto.getContentPane().add(btnEditar);
 		
 		JPanel pPesoMedida = new JPanel();
@@ -205,8 +208,9 @@ public class FrmConsultarProduto {
 		pPesoMedida.add(txtAltura);
 		
 		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar.setIcon(new ImageIcon(FrmConsultarProduto.class.getResource("/br/projeto/logistica/icon/img-cancela.png")));
 		btnCancelar.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnCancelar.setBounds(10, 347, 109, 35);
+		btnCancelar.setBounds(10, 369, 125, 35);
 		frmCadastrarProduto.getContentPane().add(btnCancelar);
 		
 		JPanel pAssociar = new JPanel();

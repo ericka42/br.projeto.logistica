@@ -65,7 +65,7 @@ public class FrmCadastrarProduto {
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	@SuppressWarnings("deprecation")
+	@SuppressWarnings({ "deprecation", "unchecked", "rawtypes" })
 	private void initialize() {
 		frmCadastrarProduto = new JFrame();
 		frmCadastrarProduto.getContentPane().setBackground(new Color(255, 255, 153));

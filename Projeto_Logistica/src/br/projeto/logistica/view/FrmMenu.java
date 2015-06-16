@@ -30,7 +30,8 @@ public class FrmMenu {
 	public FrmMenu() {
 		initialize();
 	}
-
+	
+	@SuppressWarnings("static-access")
 	private void initialize() {
 		frame = new JFrame("SGL - Sistema de Gestão Logística");
 		frame.getContentPane().setBackground(new Color(255, 255, 204));
@@ -114,7 +115,7 @@ public class FrmMenu {
 				rota.main(null);
 			}
 		});
-		btnRota.setIcon(new ImageIcon(FrmMenu.class.getResource("/br/projeto/logistica/icon/1432949198_Compass.png")));
+		btnRota.setIcon(new ImageIcon(FrmMenu.class.getResource("/br/projeto/logistica/icon/1432949171_starthere.png")));
 		btnRota.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnRota.setBounds(548, 78, 218, 101);
 		frame.getContentPane().add(btnRota);

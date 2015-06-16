@@ -18,6 +18,7 @@ import br.projeto.logistica.api.googleMaps.DistanciaWS;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
+import javax.swing.ImageIcon;
 
 public class FrmCalculoDistancia {
 
@@ -99,24 +100,28 @@ public class FrmCalculoDistancia {
 		txtResultado.setColumns(10);
 		
 		JButton btnCalcular = new JButton("Calcular");
-		btnCalcular.setBounds(287, 135, 133, 72);
+		btnCalcular.setIcon(new ImageIcon(FrmCalculoDistancia.class.getResource("/br/projeto/logistica/icon/1432949198_Compass.png")));
+		btnCalcular.setBounds(287, 135, 143, 72);
 		frame.getContentPane().add(btnCalcular);
 		
 		JButton btnVoltar = new JButton("Voltar");
+		btnVoltar.setIcon(new ImageIcon(FrmCalculoDistancia.class.getResource("/br/projeto/logistica/icon/1433897020_undo.png")));
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
 			}
 		});
-		btnVoltar.setBounds(10, 255, 89, 48);
+		btnVoltar.setBounds(10, 255, 101, 48);
 		frame.getContentPane().add(btnVoltar);
 		
 		JButton btnNovo = new JButton("Novo");
-		btnNovo.setBounds(331, 255, 89, 48);
+		btnNovo.setIcon(new ImageIcon(FrmCalculoDistancia.class.getResource("/br/projeto/logistica/icon/img-add.png")));
+		btnNovo.setBounds(388, 255, 108, 48);
 		frame.getContentPane().add(btnNovo);
 		
 		JButton btnSalvar = new JButton("Salvar");
-		btnSalvar.setBounds(440, 255, 89, 48);
+		btnSalvar.setIcon(new ImageIcon(FrmCalculoDistancia.class.getResource("/br/projeto/logistica/icon/img-disquete.png")));
+		btnSalvar.setBounds(534, 255, 101, 48);
 		frame.getContentPane().add(btnSalvar);
 		
 		DistanciaWS acao = new DistanciaWS(txtOrigem, txtDestino, txtResultado);

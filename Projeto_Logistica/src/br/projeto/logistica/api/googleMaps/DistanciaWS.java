@@ -11,8 +11,6 @@ import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
-
-import com.sun.xml.internal.txw2.TXW;
  
 public class DistanciaWS implements ActionListener{
 	

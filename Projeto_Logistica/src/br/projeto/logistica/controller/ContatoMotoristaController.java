@@ -5,29 +5,21 @@ import java.awt.event.ActionListener;
 import java.sql.SQLException;
 
 import javax.swing.JComboBox;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import br.projeto.logistica.model.ContatoMotorista;
-import br.projeto.logistica.model.Motorista;
 import br.projeto.logistica.persistence.ContatoMotoristaDAO;
 import br.projeto.logistica.persistence.ContatoMotoristaDAOImpl;
-import br.projeto.logistica.persistence.MotoristaDAO;
-import br.projeto.logistica.persistence.MotoristaDAOImpl;
-import br.projeto.logistica.view.FrmCadastrarContato;
 
 public class ContatoMotoristaController implements ActionListener{
 	
 	
 	JTextField txtFone,txtDescricao,txtIDMot;
+	@SuppressWarnings("rawtypes")
 	JComboBox cbTipoFone, cbOperadora;	
-	private JFrame  frame;
 	
-	
-	
-	
+	@SuppressWarnings("rawtypes")
 	public ContatoMotoristaController( JTextField txtFone,JTextField txtDescricao,
 		JTextField txtIDMot,JComboBox cbTipoFone,JComboBox cbOperadora) {
 		
@@ -59,8 +51,6 @@ public class ContatoMotoristaController implements ActionListener{
 	}
 	
 	public void salvarContatoMotorista(ContatoMotorista cm){
-		MotoristaDAOImpl mdao = new MotoristaDAOImpl();
-		
 		cm.setId_mot(txtIDMot.getHeight());
 		cm.setTipo(cbTipoFone.getSelectedItem().toString());
 		cm.setTelefone(txtFone.getText());
