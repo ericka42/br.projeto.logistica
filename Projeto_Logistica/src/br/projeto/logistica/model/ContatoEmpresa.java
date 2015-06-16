@@ -1,6 +1,6 @@
 package br.projeto.logistica.model;
 
-public class ContatoCaminhao {
+public class ContatoEmpresa {
 	private int id_mot;
 	private int id_contato;
 	private String tipo;
