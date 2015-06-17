@@ -26,7 +26,10 @@ public class MotoristaController implements ActionListener, KeyListener{
 	private JComboBox cmbMotorista;
 	private List<Motorista> lista = null;
 	
-	
+	/*
+	 * Construtor
+	 * @
+	 */
 	public MotoristaController(JTextField txtNome, JTextField txtCpf,
 			JTextField txtCnh, JTextField txtCategoria,
 			JTextField txtLogradouro, JTextField txtNumero,
@@ -50,12 +53,19 @@ public class MotoristaController implements ActionListener, KeyListener{
 
 
 	@SuppressWarnings("rawtypes")
+	/*
+	 * Construtor
+	 */
 	public MotoristaController(JTextField txtMotorista, JComboBox cmbMotorista) {
 		this.txtMotorista = txtMotorista;
 		this.cmbMotorista = cmbMotorista;
 	}
 	
 
+	/*
+	 * Metodo que dá a ação aos botões(non-Javadoc)
+	 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+	 */
 	public void actionPerformed(ActionEvent e) {
 		String cmd =e.getActionCommand();
 		Motorista m =new Motorista();
@@ -64,6 +74,10 @@ public class MotoristaController implements ActionListener, KeyListener{
 		}
 	}
 
+	/*
+	 * Metodo que salva o motorista
+	 * @param objeto Motorista
+	 */
 	public void salvarMotorista(Motorista m){
 		m.setNome(txtNome.getText());
 		m.setCpf(txtCpf.getText());  
@@ -83,6 +97,10 @@ public class MotoristaController implements ActionListener, KeyListener{
 		}
 	}
 	
+	/*
+	 * Metodo que altera o motorista
+	 * @param objeto Motorista
+	 */
 	public void alterarMotorista(Motorista m){
 		m.setNome(txtNome.getText());
 		m.setCpf(txtCpf.getText());  
@@ -103,7 +121,11 @@ public class MotoristaController implements ActionListener, KeyListener{
 	}
 	
 	private MotoristaDAO dao = new MotoristaDAOImpl();
-
+	
+	/*
+	 * metodo que retorna uma lista com o nome dos motoristas
+	 * @param nome dos motoristas
+	 */
 	public List<Motorista> retornaListaMotorista(String nome){
 		try {
 			lista = dao.consultaNomeMotorista(nome);
@@ -123,6 +145,10 @@ public class MotoristaController implements ActionListener, KeyListener{
 
 	@SuppressWarnings("unchecked")
 	@Override
+	/*
+	 * Metodo que retorna o valor da consulta((non-Javadoc)
+	 * @see java.awt.event.KeyListener#keyReleased(java.awt.event.KeyEvent)
+	 */
 	public void keyReleased(KeyEvent arg0) {
 		try {
 			lista = dao.consultaNomeMotorista(txtMotorista.getText());

@@ -20,6 +20,10 @@ public class FuncionarioController implements ActionListener{
 	private JPasswordField txtSenha;
 	private JFrame frame;
 	
+	/*
+	 * Construtor
+	 * @param txtUsusario refere-se ao JTextField Usuario, txtSenha refere-se ao JPasswordField Senha, frame refere-se ao JFrame frame
+	 */
 	public FuncionarioController(JTextField txtUsuario, JPasswordField txtSenha, JFrame frame) {
 		this.txtUsuario = txtUsuario;
 		this.txtSenha = txtSenha;
@@ -27,6 +31,10 @@ public class FuncionarioController implements ActionListener{
 	}
 
 	@Override
+	/*
+	 * Metodo que dá a ação aos botões(non-Javadoc)
+	 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+	 */
 	public void actionPerformed(ActionEvent e) {
 		String cmd = e.getActionCommand();
 		Funcionario f = new Funcionario();
@@ -36,6 +44,9 @@ public class FuncionarioController implements ActionListener{
 	}
 
 	@SuppressWarnings({ "deprecation", "static-access" })
+	/*
+	 * Metodo que faz a aautenticação dos funcionarios
+	 */
 	public void autenticarFuncionario(Funcionario f) {
 		f.setUsuario(txtUsuario.getText());
 		f.setSenha(txtSenha.getText());
@@ -53,7 +64,10 @@ public class FuncionarioController implements ActionListener{
 			JOptionPane.showMessageDialog(null, e.getMessage(), "ERRO", JOptionPane.INFORMATION_MESSAGE);
 		}
 	}
-
+	
+	/*
+	 * Metodo que limpa os campos
+	 */
 	private void limparCampos() {
 		txtUsuario.setText("");
 		txtSenha.setText("");

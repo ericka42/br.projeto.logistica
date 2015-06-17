@@ -20,6 +20,9 @@ public class ContatoMotoristaController implements ActionListener{
 	JComboBox cbTipoFone, cbOperadora;	
 	
 	@SuppressWarnings("rawtypes")
+	/*
+	 * Construtor
+	 */
 	public ContatoMotoristaController( JTextField txtFone,JTextField txtDescricao,
 		JTextField txtIDMot,JComboBox cbTipoFone,JComboBox cbOperadora) {
 		
@@ -36,6 +39,10 @@ public class ContatoMotoristaController implements ActionListener{
 	
 
 	@Override
+	/*
+	 * Metodo que dá a ação aos botões(non-Javadoc)
+	 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+	 */
 	public void actionPerformed(ActionEvent e) {
 		String cmd =e.getActionCommand();
 		ContatoMotorista cm = new ContatoMotorista();
@@ -49,7 +56,10 @@ public class ContatoMotoristaController implements ActionListener{
 		
 		
 	}
-	
+	/*
+	 * Metodo que salva o contado do motorista
+	 * @param objeto ContatoMotorista
+	 */
 	public void salvarContatoMotorista(ContatoMotorista cm){
 		cm.setId_mot(txtIDMot.getHeight());
 		cm.setTipo(cbTipoFone.getSelectedItem().toString());

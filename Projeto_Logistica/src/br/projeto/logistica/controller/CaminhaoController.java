@@ -27,7 +27,7 @@ public class CaminhaoController implements ActionListener, KeyListener {
 
 	
 	/*
-	 * Contrutor
+	 * Construtor
 	 * @param txtModelo refere-se ao JTextField Modelo, txtAnoModelo refere-se ao JTextField AnoModelo, 
 	 * @param txtMarca refere-se ao JTextField Marca, txtPlaca refere-se ao JTextField Placa, 
 	 * @param txtRenaVam refere-se ao JTextField Renavam, txtChassi refere-se ao JTextField Chassi,
