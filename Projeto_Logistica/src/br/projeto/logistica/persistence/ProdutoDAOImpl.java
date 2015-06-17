@@ -3,6 +3,7 @@ package br.projeto.logistica.persistence;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import br.projeto.logistica.model.Produto;
@@ -51,24 +52,24 @@ public class ProdutoDAOImpl implements ProdutoDAO {
 
 	@Override
 	public Produto consultaProduto(String id) throws SQLException {
-		return null;
-//		String sql="SELECT "
-//				+ "id,fragil,descricao,peso,medida,quantidade"
-//				+ "FROM empresa WHERE nome =?";
-//				PreparedStatement ps = con.prepareStatement(sql);
-//				Produto prod= new Produto();
-//				ps.setString(1, id);
-//				ResultSet rs = ps.executeQuery();
-//				if (rs.next()){
-//					prod.setId(rs.getInt("id"));
-//					prod.setFragil(rs.getString("fragil"));
-//					prod.setDescricao(rs.getString("descricao"));
-//					prod.setPeso(rs.getFloat("peso"));
-//					prod.setMedida(rs.getString("medida"));
-//					prod.setQuantidade(rs.getInt("quantidade"));
-//
-//				}
-//		return prod;
+		String sql = "SELECT nome, fragil, descricao, peso, pesagem, comprimento, altura, largura, unid_medida, quantidade FROM produto where id = (?)";
+		PreparedStatement ps = con.prepareStatement(sql);
+		Produto p = new Produto();
+		ps.setString(1, id);
+		ResultSet rs = ps.executeQuery();
+		if(rs.next()){
+			p.setNome(rs.getString("nome"));
+			p.setFragil(rs.getString("fragil"));
+			p.setDescricao(rs.getString("descricao"));
+			p.setPeso(rs.getFloat("peso"));
+			p.setPesagem(rs.getString("pesagem"));
+			p.setComprimento(rs.getFloat("Comprimento"));
+			p.setAltura(rs.getFloat("altura"));
+			p.setLargura(rs.getFloat("largura"));
+			p.setUniMedida(rs.getString("unid_medida"));
+			p.setQuantidade(rs.getInt("quantidade"));
+		}
+		return p;
 	}
 
 	@Override

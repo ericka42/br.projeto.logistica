@@ -35,6 +35,8 @@ public class FrmCadastrarProduto {
 	private JTextField txtComprimento;
 	private JTextField txtLargura;
 	private JTextField txtAltura;
+	private JTextField txtID;
+	private JTextField txtProduto;
 	private JCheckBox cbxFragil;
 	private JComboBox<UnidadeMedida> cbMedida;
 	private JComboBox<Peso> cbPeso;
@@ -220,7 +222,7 @@ public class FrmCadastrarProduto {
 		panel.add(btnVinculo);
 
 		ProdutoController pc = new ProdutoController(txtNome, txtDescricao, txtQuantidade, txtPeso, txtComprimento, txtLargura, txtAltura, 
-				cbxFragil, cbMedida, cbPeso);
+				txtID, txtProduto, cbxFragil, cbMedida, cbPeso);
 		btnNovo.addActionListener(pc);
 		btnSalvar.addActionListener(pc);
 	}

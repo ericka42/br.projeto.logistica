@@ -24,12 +24,14 @@ public class ProdutoController implements ActionListener{
 	private JTextField txtComprimento;
 	private JTextField txtLargura;
 	private JTextField txtAltura;
+	private JTextField txtID;
+	private JTextField txtProduto;
 	private JCheckBox cbxFragil;
 	private JComboBox<UnidadeMedida> cbMedida;
 	private JComboBox<Peso> cbPeso;
 	
 	public ProdutoController(JTextField txtNome, JTextField txtDescricao, JTextField txtQuantidade, JTextField txtPeso, JTextField txtComprimento, 
-			JTextField txtLargura, JTextField txtAltura, JCheckBox cbxFragil, JComboBox<UnidadeMedida> cbMedida, JComboBox<Peso> cbPeso) {
+			JTextField txtLargura, JTextField txtAltura, JTextField txtID, JTextField txtProduto, JCheckBox cbxFragil, JComboBox<UnidadeMedida> cbMedida, JComboBox<Peso> cbPeso) {
 		
 		this.txtNome = txtNome;
 		this.txtDescricao = txtDescricao;
@@ -41,6 +43,8 @@ public class ProdutoController implements ActionListener{
 		this.cbxFragil = cbxFragil;
 		this.cbMedida = cbMedida;
 		this.cbPeso = cbPeso;
+		this.txtID = txtID;
+		this.txtProduto = txtProduto;
 	}
 	
 	@Override
@@ -102,10 +106,8 @@ public class ProdutoController implements ActionListener{
 					"Produto Cadastrado com Sucesso!", "Sucesso",
 					JOptionPane.INFORMATION_MESSAGE);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-//			JOptionPane.showMessageDialog(null, e.getMessage(), "ERRO",
-//					JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, e.getMessage(), "ERRO",
+					JOptionPane.ERROR_MESSAGE);
 		}
 		
 	}
@@ -122,23 +124,38 @@ public class ProdutoController implements ActionListener{
 	}
 	
 	public void consultaProduto(){
-//		ProdutoDAO pDao = new ProdutoDAOImpl();
-//		Produto p = null;
-//		try {
-//			p = pDao.consultaProduto(txtNome.getText());
-//			txtNome.setEditable(false);
-//			txtID.setText(Integer.toString(p.getId()));
-//			txtDescricao.setText(p.getDescricao());
-//			txtPeso.setText(Float.toString(p.getPeso()));
-//			txtComprimento.setText(p.getComprimento());
-//			txtLargura.setText(p.getLargura());
-//			txtAltura.setText(p.getAltura());
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+		ProdutoDAO pDao = new ProdutoDAOImpl();
+		Produto p = null;
+		try {
+			p = pDao.consultaProduto(txtID.getText());
+			txtProduto.setText(p.getNome());
+			txtDescricao.setText(p.getDescricao());
+			txtQuantidade.setText(String.valueOf(p.getQuantidade()));
+			if(p.getFragil() == "s"){
+				cbxFragil.isSelected();
+			}
+			txtPeso.setText(String.valueOf(p.getPeso()));
+			if(p.getPesagem() == "KG"){
+				cbPeso.getSelectedItem().toString();
+			} else {
+				cbPeso.getSelectedItem().toString();
+			}
+			if(p.getUniMedida() == "mm"){
+				cbMedida.getSelectedItem().toString();
+			}else{
+				cbMedida.getSelectedItem().toString();
+			}
+			txtComprimento.setText(String.valueOf(p.getComprimento()));
+			txtLargura.setText(String.valueOf(p.getLargura()));
+			txtAltura.setText(String.valueOf(p.getAltura()));
+		} catch (SQLException e) {
+			e.printStackTrace();
+//			JOptionPane.showMessageDialog(null, e.getMessage(), "ERRO",
+//					JOptionPane.ERROR_MESSAGE);
+		}
+
 	}
-	
+
 	public void alterarProduto(Produto p) {
 		// TODO Auto-generated method stub
 		
