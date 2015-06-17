@@ -143,7 +143,9 @@ public class ProdutoController implements ActionListener{
 		txtQuantidade.setText("");
 	}
 	
-	
+	/*
+	 * Metodo que consulta os produtos
+	 */
 	public void consultaProduto(){
 		ProdutoDAO pDao = new ProdutoDAOImpl();
 		Produto p = null;
@@ -183,6 +185,9 @@ public class ProdutoController implements ActionListener{
 	}
 
 	@SuppressWarnings("unused")
+	/*
+	 * Metodo que exclui o produto
+	 */
 	private void excluiProduto() {
 		ProdutoDAO pDao = new ProdutoDAOImpl();
 		boolean po;
