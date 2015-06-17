@@ -30,6 +30,10 @@ public class UsoCaminhaoController implements ActionListener {
 	private JComboBox<Motorista> cmbMotorista;
 	private List<Motorista> lista;
 	
+	
+	/*
+	 * Construtor
+	 */
 	public UsoCaminhaoController(JTextField txtMotorista, JTextField txtPlaca, JTextField txtModelo, JTextField txtCategoria, JTextField txtDataRetirada,
 			JTextField txtHoraRetirada, JTextField txtDataRetorno, JTextField txtHoraRetorno, JComboBox<Motorista> cmbMotorista, List<Motorista> lista) {
 		this.txtMotorista = txtMotorista;
@@ -45,6 +49,10 @@ public class UsoCaminhaoController implements ActionListener {
 	}
 
 	@Override
+	/*
+	 * Metodo que dá a ação aos botões(non-Javadoc)
+	 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+	 */
 	public void actionPerformed(ActionEvent e) {
 		Motorista m = new Motorista();
 		Caminhao c = new Caminhao();
@@ -58,7 +66,9 @@ public class UsoCaminhaoController implements ActionListener {
 			pesquisaPlaca();
 		}
 	}
-	
+	/*
+	 * Metodo que limpa os campos
+	 */
 	public void limpaCampos() {
 		txtMotorista.setText("");
 		txtPlaca.setText("");
@@ -71,6 +81,9 @@ public class UsoCaminhaoController implements ActionListener {
 		cmbMotorista.removeAllItems();
 	}
 	
+	/*
+	 * Metodo que salva a movimentação
+	 */
 	public void salvaMovimentacao(Motorista m, Caminhao c, UsoCaminhao u) {
 		if(cmbMotorista.getSelectedItem() != null || !cmbMotorista.getSelectedItem().equals("--------------------")){
 			for (Motorista mo : lista){
@@ -95,6 +108,9 @@ public class UsoCaminhaoController implements ActionListener {
 		}
 	}
 
+	/*
+	 * Metodo que pesquisa a placa
+	 */
 	public void pesquisaPlaca() {
 		CaminhaoDAO cDao = new CaminhaoDAOImpl();
 		Caminhao c = null;

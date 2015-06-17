@@ -2,6 +2,7 @@ package br.projeto.logistica.controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.beans.ConstructorProperties;
 import java.sql.SQLException;
 
 import javax.swing.JCheckBox;
@@ -30,6 +31,15 @@ public class ProdutoController implements ActionListener{
 	private JComboBox<UnidadeMedida> cbMedida;
 	private JComboBox<Peso> cbPeso;
 	
+	/*
+	 * Construtor 
+	 * @param txtNome refere-se ao JTextField nome , txtDescricao refere-se ao JTextField descrição , 
+	 * @param txtQuantidade refere-se ao JTextField quantidade , txtPeso refere-se ao JTextField Peso ,
+	 * @param txtComprimento refere-se ao JTextField comprimento , txtLargura refere-se ao JTextField largura,
+	 * @param txtAltura refere-se ao JTextField Altura, cbxFragil  refere-se ao JCheckBox Fragil, cbMedida refere-se ao JComboBox Medida,
+	 * @param cbPeso refere-se ao JComboBox Peso.
+	 */
+	
 	public ProdutoController(JTextField txtNome, JTextField txtDescricao, JTextField txtQuantidade, JTextField txtPeso, JTextField txtComprimento, 
 			JTextField txtLargura, JTextField txtAltura, JTextField txtID, JTextField txtProduto, JCheckBox cbxFragil, JComboBox<UnidadeMedida> cbMedida, JComboBox<Peso> cbPeso) {
 		
@@ -46,7 +56,10 @@ public class ProdutoController implements ActionListener{
 		this.txtID = txtID;
 		this.txtProduto = txtProduto;
 	}
-	
+	/*
+	 * Metodo que dá a ação aos botões(non-Javadoc)
+	 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		String cmd = e.getActionCommand();
@@ -78,6 +91,10 @@ public class ProdutoController implements ActionListener{
 		}
 	}
 	
+	/*
+	 * Metodo que salva o produto
+	 * @param Objeto produto
+	 */
 	public void salvarProduto(Produto p){
 		p.setNome(txtNome.getText());
 		if(cbxFragil.isSelected()){
@@ -112,6 +129,9 @@ public class ProdutoController implements ActionListener{
 		
 	}
 	
+	/*
+	 * Metodo que limpa os campos
+	 */
 	private void limpaCampo() {
 		txtNome.setText("");
 		txtDescricao.setText("");
@@ -122,6 +142,7 @@ public class ProdutoController implements ActionListener{
 		cbxFragil.setSelected(false);
 		txtQuantidade.setText("");
 	}
+	
 	
 	public void consultaProduto(){
 		ProdutoDAO pDao = new ProdutoDAOImpl();

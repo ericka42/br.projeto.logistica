@@ -14,13 +14,19 @@ import org.dom4j.io.SAXReader;
  
 
 /*
- * c
+ * classe responsavel para realizar roterizacao 
+ * 
  */
 public class DistanciaWS implements ActionListener{
 	
 	JTextField txtOrigem;
 	JTextField txtDestino;
 	JTextField txtResultado;
+	
+	/*
+	 * contrutor com passagem de parametro
+	 * 
+	 */
 	
     public DistanciaWS(JTextField txtOrigem, JTextField txtDestino, JTextField txtResultado) {
 	
@@ -31,6 +37,11 @@ public class DistanciaWS implements ActionListener{
 	}
     
     @Override
+    /*
+     * 
+     * (non-Javadoc)
+     * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+     */
 	public void actionPerformed(ActionEvent e) {
 		String cmd = e.getActionCommand();
 		OrigemDestino o = new OrigemDestino();
@@ -42,7 +53,10 @@ public class DistanciaWS implements ActionListener{
     }
     
     
-
+/*
+ * metodo responsavel por calcular a distancia
+ * @return url
+ */
 	public String calcular(OrigemDestino o) {
 
         URL url;
@@ -61,6 +75,10 @@ public class DistanciaWS implements ActionListener{
         return "";
     }
  
+	/*
+	 * metodo responsavel por analizar xml
+	 * @return xml
+	 */
     @SuppressWarnings("rawtypes")
     public static String analisaXml(Document document) {
         List list = document
@@ -70,7 +88,10 @@ public class DistanciaWS implements ActionListener{
  
         return element.getText();
     }
- 
+ /*
+  * metodo responsavel por criar o document
+  * @return document
+  */
     public static Document getDocumento(URL url) throws DocumentException {
         SAXReader reader = new SAXReader();
         Document document = reader.read(url);
