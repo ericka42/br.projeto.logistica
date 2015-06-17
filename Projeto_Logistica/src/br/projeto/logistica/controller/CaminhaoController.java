@@ -25,6 +25,15 @@ public class CaminhaoController implements ActionListener, KeyListener {
 	private JTextField txtEixo;
 	private JTextField txtCategoria;
 
+	
+	/*
+	 * Contrutor
+	 * @param txtModelo refere-se ao JTextField Modelo, txtAnoModelo refere-se ao JTextField AnoModelo, 
+	 * @param txtMarca refere-se ao JTextField Marca, txtPlaca refere-se ao JTextField Placa, 
+	 * @param txtRenaVam refere-se ao JTextField Renavam, txtChassi refere-se ao JTextField Chassi,
+	 * @param txtCor refere-se ao JTextField Cor, txtEixo refere-se ao JTextField Eixo,
+	 * @param txtCategoria refere-se ao JTextField Categoria
+	 */
 	public CaminhaoController(JTextField txtModelo, JTextField txtAnoModelo,
 			JTextField txtMarca, JTextField txtPlaca, JTextField txtRenavam,
 			JTextField txtChassi, JTextField txtCor, JTextField txtEixo,
@@ -41,12 +50,18 @@ public class CaminhaoController implements ActionListener, KeyListener {
 		this.txtCategoria = txtCategoria;
 
 	}
-
+	/*
+	 * Construtor
+	 */
 	public CaminhaoController() {
 
 	}
 
 	@Override
+	/*
+	 * Metodo que dá a ação aos botões(non-Javadoc)
+	 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+	 */
 	public void actionPerformed(ActionEvent e) {
 		String cmd = e.getActionCommand();
 		Caminhao c = new Caminhao();
@@ -108,7 +123,11 @@ public class CaminhaoController implements ActionListener, KeyListener {
 		}
 
 	}
-
+	
+	/*
+	 * Metodo que salva o Caminhão
+	 * @param  Objeto Caminhão
+	 */
 	public void salvarCaminhao(Caminhao ca) {
 		ca.setPlaca(txtPlaca.getText().replaceAll("-", ""));
 		ca.setRenavam(txtRenavam.getText());
@@ -135,7 +154,12 @@ public class CaminhaoController implements ActionListener, KeyListener {
 		}
 
 	}
-
+	
+	
+	/*
+	 * Metodo que altera o caminhão
+	 * @param objeto caminhao
+	 */
 	public void alterarCaminhao(Caminhao c) {
 		c.setPlaca(txtPlaca.getText().replaceAll("-", ""));
 		c.setRenavam(txtRenavam.getText());
@@ -160,7 +184,11 @@ public class CaminhaoController implements ActionListener, KeyListener {
 					JOptionPane.ERROR_MESSAGE);
 		}
 	}
-
+	
+	
+	/*
+	 * Metodo que faz a consulta do caminhao
+	 */
 	public void consultaCaminhao() {
 		CaminhaoDAO cDao = new CaminhaoDAOImpl();
 		Caminhao c = null;
@@ -186,6 +214,9 @@ public class CaminhaoController implements ActionListener, KeyListener {
 	}
 
 	@SuppressWarnings("unused")
+	/*
+	 * Metodo que exclui caminhao
+	 */
 	public void excluiCaminhao() {
 		CaminhaoDAO cDao = new CaminhaoDAOImpl();
 		boolean ca;
@@ -204,6 +235,9 @@ public class CaminhaoController implements ActionListener, KeyListener {
 		}
 	}
 
+	/*
+	 * Metodo que faz a validação do chassi
+	 */
 	public boolean validaChassi() {
 		String chassi = txtChassi.getText();
 		if (chassi.length() < 17) {
@@ -217,7 +251,10 @@ public class CaminhaoController implements ActionListener, KeyListener {
 			return true;
 		}
 	}
-
+	
+	/*
+	 * Metodo que deixa inalteravel os campos
+	 */
 	public void congelaCampo() {
 		txtAnoModelo.setEditable(false);
 		txtChassi.setEditable(false);
@@ -230,6 +267,9 @@ public class CaminhaoController implements ActionListener, KeyListener {
 		txtCategoria.setEditable(false);
 	}
 
+	/*
+	 * Metodo que limpa os campos
+	 */
 	public void limpaCampo() {
 		txtAnoModelo.setText("");
 		txtChassi.setText("");
@@ -242,7 +282,10 @@ public class CaminhaoController implements ActionListener, KeyListener {
 		txtCategoria.setText("");
 		liberaTxtPlaca();
 	}
-
+	
+	/*
+	 * Metodo que deixa os campos alteraveis
+	 */
 	public void descongelaCampo() {
 		txtAnoModelo.setEditable(true);
 		txtChassi.setEditable(true);
@@ -255,6 +298,9 @@ public class CaminhaoController implements ActionListener, KeyListener {
 		txtCategoria.setEditable(true);
 	}
 
+	/*
+	 * Metodo que deixa a JTextField Placa alteravel
+	 */
 	public void liberaTxtPlaca() {
 		txtPlaca.setEditable(true);
 	}
@@ -266,6 +312,10 @@ public class CaminhaoController implements ActionListener, KeyListener {
 	}
 
 	@Override
+	/*
+	 * Metodo que retorna o valor da consulta(non-Javadoc)
+	 * @see java.awt.event.KeyListener#keyReleased(java.awt.event.KeyEvent)
+	 */
 	public void keyReleased(KeyEvent k) {
 		txtChassi.setText(txtChassi.getText().replaceAll("[Q,q,O,o,I,i]", ""));
 	}
